@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#040404" />
+  <rect x="64" y="64" width="1472" height="772" fill="none" stroke="#1C1C1C" stroke-width="2" />
+  <path d="M130 260 L500 180 L760 240 L920 210 L1250 300" stroke="#F6F6F6" fill="none" stroke-width="3" />
+  <path d="M130 420 L410 470 L680 390 L980 520 L1310 460" stroke="#9A9A9A" fill="none" stroke-width="3" />
+  <path d="M130 620 L320 600 L520 660 L780 620 L1100 680 L1300 640" stroke="#4B3FFF" fill="none" stroke-width="3" stroke-dasharray="10 8" />
+  <text x="130" y="125" fill="#9A9A9A" font-family="monospace" font-size="20" letter-spacing="3">LOW-FI / THINKING_IN_PUBLIC</text>
+  <text x="130" y="790" fill="#F6F6F6" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="700">Replace with sketches and rough maps</text>
+</svg>

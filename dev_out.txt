@@ -1,0 +1,540 @@
+
+> usama-zahid-portfolio@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 12.7s (1149 modules)
+ GET / 200 in 13189ms
+ GET / 200 in 40ms
+ ✓ Compiled in 396ms (1131 modules)
+ ✓ Compiled /_not-found in 218ms (1120 modules)
+ GET /_next/static/webpack/1ad594253d917611.webpack.hot-update.json 404 in 348ms
+ GET / 200 in 49ms
+ ✓ Compiled in 290ms (1134 modules)
+ ✓ Compiled in 549ms (569 modules)
+ ✓ Compiled in 241ms (569 modules)
+ ✓ Compiled in 140ms (569 modules)
+ ✓ Compiled in 174ms (569 modules)
+ ✓ Compiled in 348ms (1145 modules)
+ GET / 200 in 230ms
+ ✓ Compiled /_not-found in 140ms (1134 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 783ms (1358 modules)
+ GET /_next/static/chunks/main-app.js?v=1780780043143 500 in 2858ms
+ GET /_next/static/chunks/app-pages-internals.js 500 in 2858ms
+ ✓ Compiled in 218ms (1372 modules)
+ ✓ Compiled in 214ms (1372 modules)
+ ✓ Compiled in 283ms (1372 modules)
+ ✓ Compiled in 268ms (1372 modules)
+ ✓ Compiled in 224ms (1372 modules)
+ ✓ Compiled in 218ms (1367 modules)
+ ✓ Compiled in 230ms (1367 modules)
+ ✓ Compiled in 215ms (1367 modules)
+ ✓ Compiled in 195ms (1367 modules)
+ ✓ Compiled in 194ms (1367 modules)
+ ✓ Compiled in 206ms (1367 modules)
+ ✓ Compiled in 231ms (1367 modules)
+ ✓ Compiled in 186ms (1367 modules)
+ ✓ Compiled in 322ms (1367 modules)
+ ✓ Compiled in 184ms (1367 modules)
+ ✓ Compiled in 196ms (1367 modules)
+ GET / 200 in 100ms
+ ✓ Compiled in 175ms (756 modules)
+ ✓ Compiled in 421ms (1367 modules)
+ ✓ Compiled in 164ms (756 modules)
+ ✓ Compiled in 172ms (756 modules)
+ ✓ Compiled in 188ms (756 modules)
+ ✓ Compiled in 464ms (1367 modules)
+ ✓ Compiled in 378ms (1367 modules)
+ ✓ Compiled in 443ms (1373 modules)
+ ✓ Compiled in 133ms (758 modules)
+ ✓ Compiled in 453ms (1373 modules)
+ ✓ Compiled in 628ms (1362 modules)
+ ✓ Compiled in 210ms (759 modules)
+ ✓ Compiled in 344ms (1379 modules)
+ ✓ Compiled in 143ms (760 modules)
+ ✓ Compiled in 377ms (1379 modules)
+ ✓ Compiled in 381ms (1387 modules)
+ GET / 200 in 88ms
+ GET / 200 in 38ms
+ GET / 200 in 36ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 782ms (1390 modules)
+ ✓ Compiled /_error in 250ms (1378 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 500 in 1100ms
+ GET / 500 in 27ms
+ GET /_next/static/chunks/fallback/webpack.js 500 in 29ms
+ GET /_next/static/chunks/fallback/main.js 500 in 30ms
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 28ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 29ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 29ms
+ GET / 500 in 14ms
+ GET /_next/static/chunks/fallback/webpack.js?ts=1780781454599 500 in 23ms
+ GET /_next/static/chunks/fallback/main.js?ts=1780781454599 500 in 23ms
+ GET /_next/static/chunks/fallback/react-refresh.js?ts=1780781454599 500 in 23ms
+ GET /_next/static/chunks/fallback/pages/_app.js?ts=1780781454599 500 in 15ms
+ GET /_next/static/chunks/fallback/pages/_error.js?ts=1780781454599 500 in 15ms
+ GET / 500 in 11ms
+ GET /_next/static/chunks/fallback/webpack.js?ts=1780781460381 500 in 19ms
+ GET /_next/static/chunks/fallback/main.js?ts=1780781460381 500 in 20ms
+ GET /_next/static/chunks/fallback/react-refresh.js?ts=1780781460381 500 in 19ms
+ GET /_next/static/chunks/fallback/pages/_app.js?ts=1780781460381 500 in 17ms
+ GET /_next/static/chunks/fallback/pages/_error.js?ts=1780781460381 500 in 14ms
+ GET / 500 in 12ms
+ GET /_next/static/chunks/fallback/webpack.js 500 in 20ms
+ GET /_next/static/chunks/fallback/main.js 500 in 30ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 30ms
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 31ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 30ms
+ GET / 500 in 12ms
+ GET /_next/static/chunks/fallback/webpack.js 500 in 24ms
+ GET /_next/static/chunks/fallback/main.js 500 in 24ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 23ms
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 24ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 23ms
+ ✓ Compiled in 359ms (1392 modules)
+ ✓ Compiled in 587ms (1385 modules)
+ ✓ Compiled in 474ms (1385 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 753ms (1388 modules)
+ ✓ Compiled /_error in 130ms (1376 modules)
+ GET / 404 in 16ms
+ GET / 404 in 9ms
+ GET / 404 in 11ms
+ GET / 404 in 7ms
+ GET / 404 in 10ms
+ GET / 404 in 7ms
+ GET / 404 in 9ms
+ GET / 404 in 7ms
+ GET / 404 in 11ms
+ GET / 404 in 13ms
+ GET / 404 in 9ms
+ GET / 404 in 9ms
+ GET / 404 in 16ms
+ GET / 404 in 9ms
+ GET / 404 in 9ms
+ GET / 404 in 7ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 10ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 6ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 6ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 6ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 7ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 6ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 7ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 6ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 6ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 7ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 7ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 8ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 6ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 6ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 500 in 125ms
+ GET / 500 in 13ms
+ GET / 500 in 26ms
+ GET / 500 in 35ms
+ GET / 500 in 14ms
+ GET / 500 in 79ms
+ GET / 500 in 12ms
+ GET / 500 in 153ms
+ GET / 500 in 9ms
+ GET / 500 in 206ms
+ GET / 500 in 9ms
+ GET / 500 in 10ms
+ GET / 500 in 881ms
+ GET / 500 in 12ms
+ GET / 500 in 9ms
+ GET / 500 in 12ms
+ GET / 500 in 11ms
+ GET / 500 in 66ms
+ GET / 500 in 9ms
+ GET / 500 in 13ms
+ GET / 500 in 10ms
+ GET / 500 in 12ms
+ GET / 500 in 329ms
+ GET / 500 in 33ms
+ GET / 500 in 89ms
+ GET / 500 in 10ms
+ GET / 500 in 12ms
+ GET / 500 in 178ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 11ms
+ GET / 500 in 10ms
+ GET / 500 in 18ms
+ GET / 500 in 30ms
+ GET / 500 in 10ms
+ GET / 500 in 85ms
+ GET / 500 in 11ms
+ GET / 500 in 37ms
+ GET / 500 in 10ms
+ GET / 500 in 255ms
+ GET / 500 in 9ms
+ GET / 500 in 11ms
+ GET / 500 in 35ms
+ GET / 500 in 11ms
+ GET / 500 in 10ms
+ GET / 500 in 10ms
+ GET / 500 in 12ms
+ GET / 500 in 23ms
+ GET / 500 in 10ms
+ GET / 500 in 41ms
+ GET / 500 in 9ms
+ GET / 500 in 12ms
+ GET / 500 in 9ms
+ GET / 500 in 88ms
+ GET / 500 in 12ms
+ GET / 500 in 15ms
+ GET / 500 in 13ms
+ GET / 500 in 13ms
+ GET / 500 in 12ms
+ GET / 500 in 11ms
+ GET / 500 in 10ms
+ GET / 500 in 11ms
+ GET / 500 in 11ms
+ GET / 500 in 11ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 11ms
+ GET / 500 in 10ms
+ GET / 500 in 327ms
+ GET / 500 in 10ms
+ GET / 500 in 26ms
+ GET / 500 in 735ms
+ GET / 500 in 8ms
+ GET / 500 in 10ms
+ GET / 500 in 306ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 1025ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 11ms
+ GET / 500 in 13ms
+ GET / 500 in 9ms
+ GET / 500 in 254ms
+ GET / 500 in 10ms
+ GET / 500 in 10ms
+ GET / 500 in 10ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 115ms
+ GET / 500 in 11ms
+ GET / 500 in 10ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 22ms
+ GET / 500 in 19ms
+ GET / 500 in 8ms
+ GET / 500 in 123ms
+ GET / 500 in 11ms
+ GET / 500 in 83ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 10ms
+ GET / 500 in 9ms
+ GET / 500 in 10ms
+ GET / 500 in 8ms
+ GET / 500 in 9ms
+ GET / 500 in 971ms
+ GET / 500 in 18ms
+ GET / 500 in 10ms
+ GET / 500 in 9ms
+ GET / 500 in 140ms
+ GET / 500 in 9ms
+ GET / 500 in 846ms
+ GET / 500 in 19ms
+ GET / 500 in 13ms
+ GET / 500 in 10ms
+ GET / 500 in 247ms
+ GET / 500 in 9ms
+ GET / 500 in 111ms
+ GET / 500 in 10ms
+ GET / 500 in 10ms
+ GET / 500 in 263ms
+ GET / 500 in 10ms
+ GET / 500 in 156ms
+ GET / 500 in 9ms
+ GET / 500 in 127ms
+ GET / 500 in 1013ms
+ GET / 500 in 10ms
+ GET / 500 in 9ms
+ GET / 500 in 15ms
+ GET / 500 in 10ms
+ GET / 500 in 16ms
+ GET / 500 in 17ms
+ GET / 500 in 9ms
+ GET / 500 in 169ms
+ GET / 500 in 9ms
+ GET / 500 in 10ms
+ GET / 500 in 219ms
+ GET / 500 in 18ms
+ GET / 500 in 142ms
+ GET / 500 in 10ms
+ GET / 500 in 9ms
+ GET / 500 in 8ms
+ GET / 500 in 10ms
+ GET / 500 in 101ms
+ GET / 500 in 10ms
+ GET / 500 in 15ms
+ GET / 500 in 908ms
+ GET / 500 in 21ms
+ GET / 500 in 11ms
+ GET / 500 in 361ms
+ GET / 500 in 151ms
+ GET / 500 in 114ms
+ GET / 500 in 16ms
+ GET / 500 in 308ms
+ GET / 500 in 390ms
+ GET / 500 in 9ms
+ GET / 500 in 9ms
+ GET / 500 in 10ms
+ GET / 500 in 10ms
+ GET / 500 in 13ms
+ GET / 200 in 2015ms
+ GET / 200 in 72ms
+ ✓ Compiled in 1314ms (1385 modules)
+ ✓ Compiled /_not-found in 176ms (1374 modules)
+ GET /_next/static/webpack/575c3e894d1706e9.webpack.hot-update.json 404 in 280ms
+ GET / 200 in 70ms
+ ✓ Compiled in 1065ms (1388 modules)
+ ✓ Compiled in 610ms (1388 modules)
+ ✓ Compiled in 569ms (1388 modules)
+ ✓ Compiled in 488ms (763 modules)
+ ✓ Compiled in 191ms (763 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 839ms (1374 modules)
+ ✓ Compiled /_error in 186ms (1376 modules)
+ GET /_next/static/css/app/layout.css?v=1780783690251 500 in 1231ms
+ GET /_next/static/css/app/layout.css?v=1780783690413 500 in 1178ms
+ ✓ Compiled in 179ms (766 modules)
+ ✓ Compiled in 154ms (763 modules)
+ ✓ Compiled in 168ms (763 modules)
+ ✓ Compiled in 177ms (763 modules)
+ ✓ Compiled in 157ms (763 modules)
+ ✓ Compiled in 241ms (763 modules)
+ ✓ Compiled in 171ms (763 modules)
+ ✓ Compiled in 230ms (763 modules)
+ ✓ Compiled in 144ms (763 modules)
+ ✓ Compiled in 192ms (763 modules)
+ ✓ Compiled /_error in 495ms (1373 modules)
+ GET / 200 in 229ms
+ ✓ Compiled /_not-found in 165ms (1376 modules)
+ GET /_next/static/chunks/main-app.js?v=1780783911209 404 in 283ms
+ GET /_next/static/chunks/app/page.js 404 in 272ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 275ms
+ ✓ Compiled in 166ms (766 modules)
+ ✓ Compiled in 435ms (1390 modules)
+ ✓ Compiled in 149ms (766 modules)
+ GET / 200 in 72ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 1626ms (1395 modules)
+ GET /about 200 in 1815ms
+ ✓ Compiled /_not-found in 153ms (1398 modules)
+ ✓ Compiled /_error in 127ms (1400 modules)
+ GET /_next/static/css/app/layout.css?v=1780784158188 500 in 344ms
+ GET /_next/static/chunks/main-app.js?v=1780784158188 500 in 337ms
+ GET /_next/static/chunks/app-pages-internals.js 500 in 337ms
+ GET /_next/static/chunks/app/layout.js 500 in 337ms
+ GET /about 200 in 62ms
+ GET /_next/static/css/app/layout.css?v=1780784164269 500 in 13ms
+ GET /_next/static/chunks/main-app.js?v=1780784164269 500 in 18ms
+ GET /_next/static/chunks/app/layout.js 500 in 19ms
+ GET /_next/static/chunks/app-pages-internals.js 500 in 19ms
+ ✓ Compiled in 418ms (1393 modules)
+ ✓ Compiled /about in 350ms (1409 modules)
+ GET /about 200 in 770ms
+ ✓ Compiled /_not-found in 484ms (1398 modules)
+ ✓ Compiled /_error in 129ms (1400 modules)
+ GET /_next/static/css/app/layout.css?v=1780784396342 500 in 361ms
+ GET /_next/static/chunks/main-app.js?v=1780784396342 500 in 361ms
+ GET /_next/static/chunks/app-pages-internals.js 500 in 362ms
+ ✓ Compiled in 1170ms (771 modules)
+ ✓ Compiled in 106ms (771 modules)
+ ✓ Compiled in 234ms (771 modules)
+ ✓ Compiled in 199ms (771 modules)
+ ✓ Compiled in 277ms (771 modules)
+ ✓ Compiled in 148ms (771 modules)
+ ✓ Compiled in 164ms (771 modules)
+ ✓ Compiled in 142ms (771 modules)
+ ✓ Compiled in 201ms (771 modules)
+ ✓ Compiled in 198ms (771 modules)
+ ✓ Compiled in 209ms (771 modules)
+ ✓ Compiled in 137ms (771 modules)
+ ✓ Compiled in 312ms (1393 modules)
+ ✓ Compiled in 1547ms (770 modules)
+ ✓ Compiled in 136ms (770 modules)

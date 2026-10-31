@@ -1,0 +1,107 @@
+# ==============================================================================
+# usamazahid.design  -  .htaccess for Hostinger (Apache/LiteSpeed)
+# Upload this file into public_html (the folder that contains index.html).
+# If Hostinger already has a .htaccess there, MERGE the two files instead
+# of replacing (keep both sets of rules).
+# ==============================================================================
+
+Options -Indexes
+
+# ------------------------------------------------------------------------------
+# 1) HTTPS + www -> non-www redirect (canonical is https://usamazahid.design)
+# ------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Canonical host redirect: force apex domain for any non-canonical host
+  RewriteCond %{HTTP_HOST} !^usamazahid\.design$ [NC]
+  RewriteRule ^ https://usamazahid.design%{REQUEST_URI} [L,R=301]
+
+  # ----------------------------------------------------------------------------
+  # 301 redirects for retired / reorganized URLs
+  # ----------------------------------------------------------------------------
+  # /work -> /portfolio
+  RewriteRule ^work/?$ /portfolio/ [L,R=301]
+  RewriteRule ^work/.*$ /portfolio/ [L,R=301]
+
+  # Legacy service routes
+  RewriteRule ^services/branding/?$ /services/identity/ [L,R=301]
+  RewriteRule ^services/development/?$ /services/engineering/ [L,R=301]
+
+  # Legacy privacy
+  RewriteRule ^privacy/?$ /privacy-policy/ [L,R=301]
+
+  # Old journal/blog routes
+  RewriteRule ^journals/.*$ /blog/ [L,R=301]
+  RewriteRule ^journal/.*$ /blog/ [L,R=301]
+  RewriteRule ^courses/?$ /services/ [L,R=301]
+  RewriteRule ^process/?$ /services/ [L,R=301]
+
+  # Removed case studies -> portfolio index
+  RewriteRule ^portfolio/neuraldesk-copilot/?$ /portfolio/ [L,R=301]
+  RewriteRule ^portfolio/ledgerflow-ai/?$ /portfolio/ [L,R=301]
+  RewriteRule ^portfolio/opsorbit-assistant/?$ /portfolio/ [L,R=301]
+  RewriteRule ^portfolio/cadence-habit-app/?$ /portfolio/ [L,R=301]
+
+  # Hostinger often cannot serve folders named "_next". Build renames to /nxt/.
+  # Keep this fallback if any cached HTML still requests /_next/.
+  RewriteRule ^_next/(.*)$ /nxt/$1 [L]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 2) Security headers
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+
+  # Strict Transport Security (enable only once you confirm HTTPS works on every page)
+  Header always set Strict-Transport-Security "max-age=31536000"
+
+  # Content-Security-Policy
+  # - 'unsafe-inline' is required for Next.js static export (inline scripts/styles)
+  # - If a feature misbehaves after upload, check browser console for CSP warnings
+  #   and add the reported domain to the matching directive below.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://app.cal.com; style-src 'self' 'unsafe-inline' https://app.cal.com; img-src 'self' data: blob: https://images.unsplash.com; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://cal.com https://app.cal.com; frame-src https://cal.com https://app.cal.com https://www.figma.com https://www.loom.com; worker-src 'self' blob:; base-uri 'self'; form-action 'self' https://cal.com; object-src 'none'; frame-ancestors 'self'"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 3) Cache control
+#    - Hashed JS/CSS from /nxt/static/ -> cache for 1 year (immutable)
+#    - Images -> 30 days
+#    - HTML -> never cached (so new deploys appear immediately)
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|xml)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(webp|png|jpe?g|gif|svg|avif|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  <FilesMatch "\.(woff2?|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 4) Compression (if mod_deflate is available)
+# ------------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>

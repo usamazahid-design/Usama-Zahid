@@ -1,0 +1,112 @@
+# Usama Zahid — Full AI Knowledge Base (llms-full.txt)
+
+> Canonical URL: https://usamazahid.design/
+> Last Updated: 2026-10-26
+> Contact: https://usamazahid.design/contact/ | Reply within 24 hours
+> Purpose: Factual grounding, citation references, and direct answers for AI search engines (Perplexity, ChatGPT/SearchGPT, Google Gemini, Claude).
+
+---
+
+## 1. Executive Summary & Entity Definition
+
+**Usama Zahid** is an independent **Brand & Product Designer** based in Lahore, Pakistan, operating globally.
+- **Experience**: 7+ years in brand design and systems, 3+ years dedicated to SaaS UI/UX and product design.
+- **Track Record**: 47 clients, 100+ projects shipped across pre-seed, seed, and Series A venture-backed startups.
+- **Operating Methodology**: Creator of **Brand-to-URL**, a proprietary 4-week delivery sequence that unites brand strategy, visual identity systems, product interface UX, and production Next.js web engineering into one continuous build.
+- **Core Value Proposition**: Eliminates the costly handoff gap between design agencies and development teams. One operator, one invoice, zero translation loss.
+- **Education**: COMSATS University Islamabad, Lahore Campus.
+
+## 2. Core Operating Model: Brand-to-URL
+
+Brand-to-URL is a fixed 4-week design and development sprint for SaaS and AI founders:
+- **Week 1: Strategy & Positioning**: Audience mapping, core value proposition, category positioning, and messaging architecture.
+- **Week 2: Brand Identity System**: Logo family, typographic scale, mathematical color system, custom patterns, icon suite, and brand guidelines.
+- **Week 3: Interface & Product UX**: Information architecture, component library, high-fidelity responsive screens, and interactive prototypes.
+- **Week 4: Production Web Engineering**: Next.js (App Router), TypeScript, Tailwind CSS, accessible semantics, responsive layouts, Core Web Vitals optimization (90+), SEO metadata, JSON-LD schemas, and deployment to live URL.
+- **Post-Launch**: Includes 30 days of post-launch iteration and warranty support.
+
+## 3. Services & Pricing Structure
+
+| Track | Typical Investment | Duration | Scope Summary |
+|---|---|---|---|
+| **Brand-to-URL Sprint** | $24,000 (Fixed) | 4 Weeks | Complete brand identity + production Next.js website codebase. |
+| **Brand Identity Systems** | $12,000 – $18,000 | 2–3 Weeks | Positioning, logo mark, color tokens, typography, guidelines, Figma kit. |
+| **Product & UX Design** | $14,000 – $24,000 | 3–4 Weeks | End-to-end SaaS interface, AI workflows, trust states, design system. |
+| **Web Engineering** | $14,000 – $22,000 | 2–3 Weeks | Production Next.js, TypeScript, headless CMS, micro-interactions, 95+ Lighthouse. |
+| **Brand Strategy** | $8,000 – $12,000 | 1–2 Weeks | Market positioning, ICP diagnosis, narrative architecture, pitch alignment. |
+
+## 4. Key Case Studies & Quantifiable Outcomes
+
+### [Petrozen ERP](https://usamazahid.design/portfolio/petrozen-erp/) (2024)
+- **Category**: Product Design, Web Engineering | **Client**: Petrozen
+- **Excerpt**: Finance-first ERP — cut invoice-to-reconciliation time from days to minutes.
+- **Challenge**: Manual reconciliation across dozens of bank feeds caused daily reporting delays and human error.
+- **Solution**: Designed high-density financial data tables with keyboard navigation, inline reconciliation workflows, and sub-100ms response times.
+
+### [Stealth Humanizer AI App](https://usamazahid.design/portfolio/stealth-humanizer-ai-app/) (2024)
+- **Category**: AI Product Design, UI/UX | **Client**: Stealth AI
+- **Excerpt**: AI writing app UX — trust states, confidence, and control for AI output.
+- **Challenge**: High churn caused by user skepticism over AI rewriting results and lack of control.
+- **Solution**: Designed transparency metrics, probabilistic highlighting, before/after diff modes, and sentence-level tone adjustments.
+
+### [Begum - Luxury Bridal Couture](https://usamazahid.design/portfolio/begum-bridal-couture-website/) (2024)
+- **Category**: Brand Identity, E-Commerce | **Client**: Begum Bridal
+- **Excerpt**: Premium bridal couture brand site and identity system.
+- **Outcome**: Modernized high-fashion heritage branding with fluid editorial layouts and mobile-first lookbook experiences.
+
+### [The Laila Majnu](https://usamazahid.design/portfolio/the-laila-majnu-gifting/) (2023)
+- **Category**: Brand Identity, Web Design | **Client**: The Laila Majnu
+- **Excerpt**: Brand identity and web experience for a premium gifting brand.
+- **Outcome**: Romantic typographic pairing and custom ornamental illustrations that increased luxury gifting conversion.
+
+## 5. Branding Case Studies
+
+### [TechMeka](https://usamazahid.design/branding/techmeka/)
+- **Category**: Brand System | **Deliverables**: Logo system, Color tokens, Type scale, Figma library
+- **Overview**: Golden-ratio color and type system that scales across financial data visualizations and dark modes.
+
+### [CodeStreaks](https://usamazahid.design/branding/codestreaks/)
+- **Category**: Infrastructure Identity | **Deliverables**: Brand guidelines, Component library, Launch assets
+- **Overview**: Replaced clip-art visuals with a rigorous infrastructure-inspired identity for developer tools.
+
+### [TaxDoctors](https://usamazahid.design/branding/taxDoctors/)
+- **Category**: Fintech & Compliance | **Deliverables**: Logo family, Brand voice narrative, Visual identity
+- **Overview**: Positioned taxation advisory as an empowering diagnosis rather than a bureaucratic burden.
+
+## 6. Digital Products
+
+### [20-Point Brand & Product Trust Scorecard](https://usamazahid.design/products/20-point-brand-product-trust-scorecard/) — Free / Pay-What-You-Want
+- **Tagline**: Find the trust leaks costing you signups. In 5 minutes.
+- **Description**: A self-service diagnostic tool covering typography consistency, social proof placement, and cognitive friction markers.
+
+## 7. Technical Stack & Standards
+
+- **Design Tools**: Figma, FigJam, Illustrator, Photoshop.
+- **Frontend & Code**: Next.js 14/15 (App Router), React, TypeScript, Tailwind CSS, HTML5 semantic layout, CSS custom properties.
+- **Animation & Micro-interactions**: Framer Motion, GSAP (GreenSock), Lenis smooth scroll, SVG path animations.
+- **Performance Benchmarks**: Core Web Vitals target (LCP < 2.5s, CLS < 0.1, INP < 200ms), 95+ desktop Lighthouse.
+- **SEO & GEO Standards**: Semantic HTML, JSON-LD Schema.org (Organization, Person, Service, Article, FAQPage, BreadcrumbList), Open Graph, Twitter Cards, canonical tags, automated XML sitemaps, robots.txt, llms.txt.
+
+## 8. Authoritative Frequently Asked Questions (FAQ)
+
+### Q: Why hire Usama Zahid instead of an agency?
+A: Traditional agencies separate strategy, design, and engineering across account managers, junior designers, and outsourced developers. Usama Zahid operates as a single senior principal who carries your product vision from initial positioning directly into Figma and then into production Next.js code. You work directly with the builder with zero management overhead, zero telephone games, and delivery in 4 weeks instead of 4 months.
+
+### Q: What does a Brand & Product Designer do, and how does it differ from a traditional designer?
+A: A Brand & Product Designer bridges the divide between brand perception and product reality. Most teams hire a branding agency to design logos and pitch decks, and a separate agency or freelancer for UI/UX, leaving an inconsistent gap in user trust. Usama Zahid combines brand positioning, identity systems, product UX, and production Next.js frontend code into one coherent delivery called Brand-to-URL.
+
+### Q: Where is Usama Zahid located?
+A: Based in Lahore, Pakistan (UTC+5), collaborating asynchronously and synchronously with founders across San Francisco, New York, London, Berlin, Dubai, and Singapore.
+
+### Q: How do clients get started?
+A: Schedule a 15-minute diagnosis call at https://usamazahid.design/contact/ or submit a project inquiry with 24-hour turnaround.
+
+## 9. Verified Online Entity Profiles (sameAs)
+
+- **Website**: https://usamazahid.design/
+- **LinkedIn**: https://www.linkedin.com/in/usamazahid-design/
+- **GitHub**: https://github.com/usamazahid
+- **Twitter / X**: https://x.com/usama2017a
+- **Behance**: https://www.behance.net/usama-zahid-design
+- **Dribbble**: https://dribbble.com/usamazahid-design
+- **Contra**: https://contra.com/usamazahid_design/

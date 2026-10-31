@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <radialGradient id="tableGrad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1A1A1E"/>
+      <stop offset="100%" stop-color="#08080A"/>
+    </radialGradient>
+    <linearGradient id="ceramicBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#CCCCCC"/>
+      <stop offset="15%" stop-color="#F2F2F2"/>
+      <stop offset="60%" stop-color="#FFFFFF"/>
+      <stop offset="85%" stop-color="#EAEAEA"/>
+      <stop offset="100%" stop-color="#B8B8B8"/>
+    </linearGradient>
+    <filter id="mugShadow" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="15" dy="25" stdDeviation="25" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#tableGrad)"/>
+  <!-- Ceramic Coffee Mug -->
+  <g transform="translate(420, 180)" filter="url(#mugShadow)">
+    <!-- Handle -->
+    <path d="M280 140 C380 140 380 380 280 380" fill="none" stroke="#E6E6E6" stroke-width="46" stroke-linecap="round"/>
+    <path d="M280 140 C380 140 380 380 280 380" fill="none" stroke="#B0B0B0" stroke-width="6" stroke-linecap="round"/>
+    <!-- Mug Body -->
+    <rect x="40" y="80" width="260" height="420" rx="20" fill="url(#ceramicBody)"/>
+    <!-- Top Rim Oval -->
+    <ellipse cx="170" cy="80" rx="130" ry="24" fill="#E8E8E8" stroke="#D0D0D0" stroke-width="2"/>
+    <!-- Interior Liquid / Coffee -->
+    <ellipse cx="170" cy="84" rx="118" ry="18" fill="#1C1008"/>
+    <!-- Specular highlight streak -->
+    <rect x="75" y="90" width="16" height="400" rx="8" fill="#FFFFFF" opacity="0.45"/>
+  </g>
+</svg>

@@ -1,0 +1,419 @@
+{
+  "redirects": [
+    {
+      "source": "/work",
+      "destination": "/portfolio/",
+      "permanent": true
+    },
+    {
+      "source": "/work/",
+      "destination": "/portfolio/",
+      "permanent": true
+    },
+    {
+      "source": "/work/:path*",
+      "destination": "/portfolio/",
+      "permanent": true
+    },
+    {
+      "source": "/services/branding",
+      "destination": "/services/identity/",
+      "permanent": true
+    },
+    {
+      "source": "/services/development",
+      "destination": "/services/engineering/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy/",
+      "permanent": true
+    },
+    {
+      "source": "/journals/:path*",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/neuraldesk-copilot",
+      "destination": "/portfolio/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/ledgerflow-ai",
+      "destination": "/portfolio/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/opsorbit-assistant",
+      "destination": "/portfolio/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/cadence-habit-app",
+      "destination": "/portfolio/",
+      "permanent": true
+    },
+    {
+      "source": "/design-system",
+      "destination": "/blog/product/saas-design-operating-system/",
+      "permanent": true
+    },
+    {
+      "source": "/design-system/",
+      "destination": "/blog/product/saas-design-operating-system/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/myths-truths-building-brands-2026-bad-ux-kills-conversion",
+      "destination": "/blog/identity/myths-truths-building-brands-2026-bad-ux-kills-conversion/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/myths-truths-building-brands-2026-bad-ux-kills-conversion/",
+      "destination": "/blog/identity/myths-truths-building-brands-2026-bad-ux-kills-conversion/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/brand-identity-for-tech-startups-a-revenue-problem",
+      "destination": "/blog/identity/brand-identity-for-tech-startups-a-revenue-problem/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/brand-identity-for-tech-startups-a-revenue-problem/",
+      "destination": "/blog/identity/brand-identity-for-tech-startups-a-revenue-problem/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/build-a-credible-brand-identity-on-a-pre-seed-budget",
+      "destination": "/blog/identity/build-a-credible-brand-identity-on-a-pre-seed-budget/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/build-a-credible-brand-identity-on-a-pre-seed-budget/",
+      "destination": "/blog/identity/build-a-credible-brand-identity-on-a-pre-seed-budget/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/generic-saas-design-isnt-safe-its-invisible",
+      "destination": "/blog/identity/generic-saas-design-isnt-safe-its-invisible/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/generic-saas-design-isnt-safe-its-invisible/",
+      "destination": "/blog/identity/generic-saas-design-isnt-safe-its-invisible/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-visual-consistency-checklist-saas-founders",
+      "destination": "/blog/identity/the-visual-consistency-checklist-saas-founders/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-visual-consistency-checklist-saas-founders/",
+      "destination": "/blog/identity/the-visual-consistency-checklist-saas-founders/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-is-brand-gravity-why-weak-brand-identity-raises-cpa",
+      "destination": "/blog/identity/what-is-brand-gravity-why-weak-brand-identity-raises-cpa/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-is-brand-gravity-why-weak-brand-identity-raises-cpa/",
+      "destination": "/blog/identity/what-is-brand-gravity-why-weak-brand-identity-raises-cpa/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-credibility-gap-why-a-weak-visual-system-costs-you-more",
+      "destination": "/blog/identity/the-credibility-gap-why-a-weak-visual-system-costs-you-more/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-credibility-gap-why-a-weak-visual-system-costs-you-more/",
+      "destination": "/blog/identity/the-credibility-gap-why-a-weak-visual-system-costs-you-more/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/saas-design-operating-system",
+      "destination": "/blog/product/saas-design-operating-system/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/saas-design-operating-system/",
+      "destination": "/blog/product/saas-design-operating-system/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-ux-design-patterns",
+      "destination": "/blog/product/ai-ux-design-patterns/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-ux-design-patterns/",
+      "destination": "/blog/product/ai-ux-design-patterns/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-product-design-build-saas-products-users-trust",
+      "destination": "/blog/product/ai-product-design-build-saas-products-users-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-product-design-build-saas-products-users-trust/",
+      "destination": "/blog/product/ai-product-design-build-saas-products-users-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-features-that-dont-feel-gimmicky",
+      "destination": "/blog/product/ai-features-that-dont-feel-gimmicky/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-features-that-dont-feel-gimmicky/",
+      "destination": "/blog/product/ai-features-that-dont-feel-gimmicky/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-onboarding-design-why-youre-losing-users",
+      "destination": "/blog/product/ai-onboarding-design-why-youre-losing-users/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-onboarding-design-why-youre-losing-users/",
+      "destination": "/blog/product/ai-onboarding-design-why-youre-losing-users/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/designing-for-uncertainty-ai-ux-patterns",
+      "destination": "/blog/product/designing-for-uncertainty-ai-ux-patterns/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/designing-for-uncertainty-ai-ux-patterns/",
+      "destination": "/blog/product/designing-for-uncertainty-ai-ux-patterns/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-trust-gap-in-ai-products",
+      "destination": "/blog/product/the-trust-gap-in-ai-products/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-trust-gap-in-ai-products/",
+      "destination": "/blog/product/the-trust-gap-in-ai-products/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/saas-design-best-practices-a-founders-diagnostic",
+      "destination": "/blog/product/saas-design-best-practices-a-founders-diagnostic/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/saas-design-best-practices-a-founders-diagnostic/",
+      "destination": "/blog/product/saas-design-best-practices-a-founders-diagnostic/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/audit-your-saas-product-for-cognitive-load",
+      "destination": "/blog/product/audit-your-saas-product-for-cognitive-load/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/audit-your-saas-product-for-cognitive-load/",
+      "destination": "/blog/product/audit-your-saas-product-for-cognitive-load/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/decision-architecture-how-saas-pages-convert-enterprise-buyers",
+      "destination": "/blog/product/decision-architecture-how-saas-pages-convert-enterprise-buyers/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/decision-architecture-how-saas-pages-convert-enterprise-buyers/",
+      "destination": "/blog/product/decision-architecture-how-saas-pages-convert-enterprise-buyers/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/saas-product-designer-vs-ui-designer",
+      "destination": "/blog/product/saas-product-designer-vs-ui-designer/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/saas-product-designer-vs-ui-designer/",
+      "destination": "/blog/product/saas-product-designer-vs-ui-designer/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cognitive-load-is-killing-your-saas-conversions",
+      "destination": "/blog/product/cognitive-load-is-killing-your-saas-conversions/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cognitive-load-is-killing-your-saas-conversions/",
+      "destination": "/blog/product/cognitive-load-is-killing-your-saas-conversions/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nextjs-framer-motion-gsap-triangulation",
+      "destination": "/blog/engineering/nextjs-framer-motion-gsap-triangulation/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nextjs-framer-motion-gsap-triangulation/",
+      "destination": "/blog/engineering/nextjs-framer-motion-gsap-triangulation/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/48-hour-build-protocol",
+      "destination": "/blog/engineering/48-hour-build-protocol/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/48-hour-build-protocol/",
+      "destination": "/blog/engineering/48-hour-build-protocol/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/brand-to-url-operating-system",
+      "destination": "/blog/strategy/brand-to-url-operating-system/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/brand-to-url-operating-system/",
+      "destination": "/blog/strategy/brand-to-url-operating-system/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-i-sign-every-receipt-in-28-days",
+      "destination": "/blog/strategy/why-i-sign-every-receipt-in-28-days/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-i-sign-every-receipt-in-28-days/",
+      "destination": "/blog/strategy/why-i-sign-every-receipt-in-28-days/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/case-for-single-operator-studios",
+      "destination": "/blog/strategy/case-for-single-operator-studios/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/case-for-single-operator-studios/",
+      "destination": "/blog/strategy/case-for-single-operator-studios/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-physics-taught-me-about-design-constraints",
+      "destination": "/blog/strategy/what-physics-taught-me-about-design-constraints/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-physics-taught-me-about-design-constraints/",
+      "destination": "/blog/strategy/what-physics-taught-me-about-design-constraints/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-i-teach-design-as-a-ladder-iop-digital",
+      "destination": "/blog/strategy/why-i-teach-design-as-a-ladder-iop-digital/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-i-teach-design-as-a-ladder-iop-digital/",
+      "destination": "/blog/strategy/why-i-teach-design-as-a-ladder-iop-digital/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/freelance-designer-vs-agency-for-saas",
+      "destination": "/blog/strategy/freelance-designer-vs-agency-for-saas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/freelance-designer-vs-agency-for-saas/",
+      "destination": "/blog/strategy/freelance-designer-vs-agency-for-saas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-design-saas-website-that-converts",
+      "destination": "/blog/website/how-to-design-saas-website-that-converts/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-design-saas-website-that-converts/",
+      "destination": "/blog/website/how-to-design-saas-website-that-converts/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-your-saas-hero-section-loses-visitors-in-3-seconds",
+      "destination": "/blog/website/why-your-saas-hero-section-loses-visitors-in-3-seconds/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-your-saas-hero-section-loses-visitors-in-3-seconds/",
+      "destination": "/blog/website/why-your-saas-hero-section-loses-visitors-in-3-seconds/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/10-saas-landing-pages-torn-apart",
+      "destination": "/blog/website/10-saas-landing-pages-torn-apart/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/10-saas-landing-pages-torn-apart/",
+      "destination": "/blog/website/10-saas-landing-pages-torn-apart/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-much-does-saas-website-design-cost",
+      "destination": "/blog/marketing/how-much-does-saas-website-design-cost/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-much-does-saas-website-design-cost/",
+      "destination": "/blog/marketing/how-much-does-saas-website-design-cost/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-your-saas-website-affects-fundraising",
+      "destination": "/blog/marketing/how-your-saas-website-affects-fundraising/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-your-saas-website-affects-fundraising/",
+      "destination": "/blog/marketing/how-your-saas-website-affects-fundraising/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-design-a-saas-website-that-wins-enterprise-buyers-and-seed-investors",
+      "destination": "/blog/marketing/how-to-design-a-saas-website-that-wins-enterprise-buyers-and-seed-investors/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-design-a-saas-website-that-wins-enterprise-buyers-and-seed-investors/",
+      "destination": "/blog/marketing/how-to-design-a-saas-website-that-wins-enterprise-buyers-and-seed-investors/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/invest-in-your-saas-website-before-paid-ads",
+      "destination": "/blog/marketing/invest-in-your-saas-website-before-paid-ads/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/invest-in-your-saas-website-before-paid-ads/",
+      "destination": "/blog/marketing/invest-in-your-saas-website-before-paid-ads/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-investors-see-on-your-saas-website",
+      "destination": "/blog/marketing/what-investors-see-on-your-saas-website/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-investors-see-on-your-saas-website/",
+      "destination": "/blog/marketing/what-investors-see-on-your-saas-website/",
+      "permanent": true
+    }
+  ]
+}

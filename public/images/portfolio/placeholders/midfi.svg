@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#040404" />
+  <rect x="64" y="64" width="1472" height="772" fill="none" stroke="#1C1C1C" stroke-width="2" />
+  <rect x="140" y="170" width="840" height="560" fill="none" stroke="#F6F6F6" stroke-width="2" />
+  <rect x="1020" y="170" width="440" height="560" fill="none" stroke="#4A4A4A" stroke-width="2" />
+  <line x1="140" y1="250" x2="980" y2="250" stroke="#4A4A4A" />
+  <line x1="140" y1="330" x2="980" y2="330" stroke="#4A4A4A" />
+  <line x1="140" y1="410" x2="980" y2="410" stroke="#4A4A4A" />
+  <line x1="140" y1="490" x2="980" y2="490" stroke="#4A4A4A" />
+  <text x="140" y="125" fill="#4B3FFF" font-family="monospace" font-size="20" letter-spacing="3">MID-FI / STRUCTURE_AND_HIERARCHY</text>
+  <text x="140" y="790" fill="#F6F6F6" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="700">Replace with mid-fidelity wireframes</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <radialGradient id="appBg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#141418"/>
+      <stop offset="100%" stop-color="#060608"/>
+    </radialGradient>
+    <filter id="postShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="25" stdDeviation="30" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#appBg)"/>
+  <!-- 1:1 Social Media Announcement Post Container (640x640) -->
+  <g transform="translate(280, 130)" filter="url(#postShadow)">
+    <rect width="640" height="640" rx="16" fill="#0E0E12" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="1.5"/>
+    <!-- Top simulated social account header -->
+    <circle cx="50" cy="50" r="18" fill="#4B3FFF" fill-opacity="0.2"/>
+    <circle cx="50" cy="50" r="18" fill="none" stroke="#4B3FFF" stroke-width="1.5"/>
+    <rect x="80" y="42" width="120" height="8" rx="4" fill="#FFFFFF" opacity="0.8"/>
+    <rect x="80" y="54" width="80" height="6" rx="3" fill="#FFFFFF" opacity="0.3"/>
+    <circle cx="600" cy="50" r="3" fill="#FFFFFF" opacity="0.5"/>
+    <circle cx="590" cy="50" r="3" fill="#FFFFFF" opacity="0.5"/>
+    <circle cx="580" cy="50" r="3" fill="#FFFFFF" opacity="0.5"/>
+    <!-- Inner graphic canvas card -->
+    <rect x="30" y="90" width="580" height="460" rx="8" fill="#18181E" stroke="#FFFFFF" stroke-opacity="0.06"/>
+    <!-- Bottom engagement bar -->
+    <path d="M40 580 C40 570 50 565 60 575 C70 565 80 570 80 580 C80 595 60 605 60 605 C60 605 40 595 40 580 Z" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="2"/>
+    <circle cx="105" cy="585" r="10" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="2"/>
+    <path d="M140 585 L160 575 L155 595 Z" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="2"/>
+  </g>
+</svg>

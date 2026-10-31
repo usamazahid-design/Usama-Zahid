@@ -1,0 +1,21 @@
+(function () {
+  try {
+    var html = document.documentElement;
+    html.classList.add('authentic-route', 'ready');
+    var saved = localStorage.getItem('uz_theme');
+    var theme = saved === 'dark' || saved === 'light' ? saved : 'light';
+    html.dataset.theme = theme;
+    html.style.backgroundColor = theme === 'light' ? '#FDFDFD' : '#040404';
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ua = (navigator && navigator.userAgent) || '';
+    var isBot =
+      Boolean(navigator && navigator.webdriver) ||
+      /bot|crawl|spider|slurp|google|bing|yandex|duckduck|baidu|lighthouse|pagespeed|gtmetrix/i.test(ua);
+    var seen = isBot;
+    try {
+      if (sessionStorage.getItem('uz_pre_done') === '1') seen = true;
+    } catch (e) {}
+    if (reduce || seen) html.classList.add('pre-skip');
+    else html.classList.add('is-preloading');
+  } catch (e) {}
+})();

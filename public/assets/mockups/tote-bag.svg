@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <radialGradient id="wallGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#EBE8E3"/>
+      <stop offset="100%" stop-color="#CCC8C0"/>
+    </radialGradient>
+    <filter id="bagShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="25" stdDeviation="30" flood-color="#302C26" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#wallGrad)"/>
+  <!-- Canvas Tote Bag Graphic -->
+  <g transform="translate(370, 110)" filter="url(#bagShadow)">
+    <!-- Straps -->
+    <path d="M120 220 C120 20 180 0 230 0 C280 0 340 20 340 220" fill="none" stroke="#D3CEBF" stroke-width="26" stroke-linecap="round"/>
+    <path d="M120 220 C120 20 180 0 230 0 C280 0 340 20 340 220" fill="none" stroke="#A8A292" stroke-width="2" stroke-dasharray="4,4"/>
+    <!-- Bag Body (Natural Canvas) -->
+    <path d="M40 220 L420 220 L400 700 C400 715 385 725 370 725 L90 725 C75 725 60 715 60 700 Z" fill="#F4F1EA"/>
+    <!-- Top stitched hem -->
+    <line x1="40" y1="240" x2="420" y2="240" stroke="#C2BCAC" stroke-width="1.5" stroke-dasharray="6,4"/>
+    <!-- Gentle fabric drape folds -->
+    <path d="M80 240 Q110 500 130 720" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="18"/>
+    <path d="M380 240 Q350 500 330 720" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="18"/>
+  </g>
+</svg>

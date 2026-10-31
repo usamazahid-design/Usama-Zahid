@@ -1,0 +1,43 @@
+{
+  "name": "usama-zahid-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && node scripts/rewrite-next-dir.mjs",
+    "start": "next start",
+    "lint": "next lint",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "deploy:zip": "node scripts/make-deploy-zip.mjs"
+  },
+  "dependencies": {
+    "@next/swc-win32-x64-msvc": "^16.2.7",
+    "@react-three/drei": "^9.108.3",
+    "@react-three/fiber": "^8.17.5",
+    "@types/jszip": "^3.4.0",
+    "framer-motion": "^11.3.19",
+    "gsap": "^3.12.5",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "jszip": "^3.10.2",
+    "lenis": "^1.1.6",
+    "next": "14.2.5",
+    "posthog-js": "^1.407.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.167.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.167.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8.4.40",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.3"
+  }
+}
