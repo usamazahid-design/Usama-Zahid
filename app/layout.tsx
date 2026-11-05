@@ -9,6 +9,7 @@ import { JsonLd, OrganizationSchema, PersonSchema } from '@/lib/seo';
 import LenisProvider from '@/components/providers/LenisProvider';
 import DeferredCustomCursor from '@/components/DeferredCustomCursor';
 import DeferredAnalytics from '@/components/DeferredAnalytics';
+import DeferredAiChatbot from '@/components/chat/DeferredAiChatbot';
 import Preloader from '@/components/Preloader';
 import PreloaderDismiss from '@/components/PreloaderDismiss';
 
@@ -137,6 +138,7 @@ export default function RootLayout({
         <LenisProvider>
           <DeferredAnalytics />
           <DeferredCustomCursor />
+          <DeferredAiChatbot />
           {children}
         </LenisProvider>
       </body>
