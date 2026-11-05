@@ -122,18 +122,17 @@ export default function ProductDesignHeroExact() {
         <div className="ht">
           <h1>
             <span className="ln">
-              <span style={{ '--d': '.05s' } as React.CSSProperties}>Products that ask</span>
+              <span style={{ '--d': '.05s' } as React.CSSProperties}>User-Centric Product</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.17s' } as React.CSSProperties}>less effort of the</span>
+              <span style={{ '--d': '.17s' } as React.CSSProperties}>UI/UX Design &</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.29s' } as React.CSSProperties}>people using them.</span>
+              <span style={{ '--d': '.29s' } as React.CSSProperties}>Design Systems.</span>
             </span>
           </h1>
           <p className="sub">
-            <b>Interfaces and flows for web and mobile products that remove the friction users never report.</b>{' '}
-            Designed on the same system as your brand.
+            <b>Usama Zahid</b> architects SaaS and AI interfaces centered around real user workflows, mental models, and atomic design systems. By eliminating cognitive load and onboarding friction, products retain more users and ship faster. Typical investment: $14,000–$24,000.
           </p>
           <Link className="btn" href="/contact/">
             Book a call <span aria-hidden="true">&rarr;</span>

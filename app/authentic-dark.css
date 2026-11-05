@@ -1047,11 +1047,23 @@
   padding: 9px 18px;
   border-right: 1px solid var(--ink);
   font-weight: 500;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.12s ease;
+  user-select: none;
+}
+
+:is(html.authentic-route, html.new-home-route) .tb:hover:not(.on) {
+  background: rgba(75, 63, 255, 0.08);
+  color: var(--ind);
+}
+
+:is(html.authentic-route, html.new-home-route) .tb:active {
+  transform: scale(0.95);
 }
 
 :is(html.authentic-route, html.new-home-route) .tb.on {
   background: var(--ink);
   color: var(--bg);
+  font-weight: 600;
 }
 
 :is(html.authentic-route, html.new-home-route) .tb:focus-visible {
@@ -1242,21 +1254,46 @@
   stroke: var(--ink);
   stroke-width: 1.2;
   stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
   stroke-opacity: 0;
+  fill-opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
 }
 
+@keyframes wf-draw-app {
+  0% {
+    stroke-dashoffset: 1;
+    stroke-opacity: 1;
+    fill-opacity: 0;
+  }
+  24% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+    fill-opacity: 0;
+  }
+  44%, 82% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 0.25;
+    fill-opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 0;
+    fill-opacity: 1;
+  }
+}
+
 :is(html.authentic-route, html.new-home-route) .stg[data-scene=app] .ph {
-  animation: dr 0.9s var(--ease) both;
+  animation: dr 0.8s var(--ease) both;
 }
 
 :is(html.authentic-route, html.new-home-route) .stg[data-scene=app] .wf {
-  animation: dr 0.8s var(--ease) calc(0.8s + var(--i)*0.1s) both, fi 0.5s ease calc(3.2s + var(--i)*0.07s) both, so 0.4s ease 4.9s both;
+  animation: wf-draw-app 6.8s cubic-bezier(0.16, 1, 0.3, 1) calc(0.2s + var(--i)*0.06s) both;
 }
 
 :is(html.authentic-route, html.new-home-route) .stg[data-scene=app] .wf.bt {
-  animation: dr 0.8s var(--ease) calc(0.8s + var(--i)*0.1s) both, fi 0.5s ease calc(3.2s + var(--i)*0.07s) both, so 0.4s ease 4.9s both, prs 0.3s ease 6.05s;
+  animation: wf-draw-app 6.8s cubic-bezier(0.16, 1, 0.3, 1) calc(0.2s + var(--i)*0.06s) both, prs 0.35s ease 5.6s;
 }
 
 :is(html.authentic-route, html.new-home-route) .ptr {
@@ -1264,19 +1301,42 @@
 }
 
 :is(html.authentic-route, html.new-home-route) .stg[data-scene=app] .ptr {
-  animation: cmv 0.9s var(--ease) 5.1s both;
+  animation: cmv 0.85s var(--ease) 4.8s both;
+}
+
+@keyframes wf-draw-web {
+  0% {
+    stroke-dashoffset: 1;
+    stroke-opacity: 1;
+    fill-opacity: 0;
+  }
+  24% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+    fill-opacity: 0;
+  }
+  44%, 82% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 0.25;
+    fill-opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 0;
+    fill-opacity: 1;
+  }
 }
 
 :is(html.authentic-route, html.new-home-route) .stg[data-scene=web] .ph {
-  animation: dr 0.9s var(--ease) both;
+  animation: dr 0.8s var(--ease) both;
 }
 
 :is(html.authentic-route, html.new-home-route) .stg[data-scene=web] .wf {
-  animation: dr 0.7s var(--ease) calc(0.6s + var(--i)*0.08s) both, fi 0.5s ease calc(2.8s + var(--i)*0.07s) both, so 0.4s ease 4.6s both;
+  animation: wf-draw-web 6.8s cubic-bezier(0.16, 1, 0.3, 1) calc(0.2s + var(--i)*0.06s) both;
 }
 
 :is(html.authentic-route, html.new-home-route) .stg[data-scene=web] .wf.bt {
-  animation: dr 0.7s var(--ease) calc(0.6s + var(--i)*0.08s) both, fi 0.5s ease calc(2.8s + var(--i)*0.07s) both, so 0.4s ease 4.6s both, prs 0.3s ease 5.95s;
+  animation: wf-draw-web 6.8s cubic-bezier(0.16, 1, 0.3, 1) calc(0.2s + var(--i)*0.06s) both, prs 0.35s ease 5.6s;
 }
 
 :is(html.authentic-route, html.new-home-route) .ptr2 {
@@ -1289,7 +1349,7 @@
 }
 
 :is(html.authentic-route, html.new-home-route) .stg[data-scene=web] .ptr2 {
-  animation: cmv2 0.9s var(--ease) 5s both;
+  animation: cmv2 0.85s var(--ease) 4.8s both;
 }
 
 :is(html.authentic-route, html.new-home-route) .mq {

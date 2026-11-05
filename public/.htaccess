@@ -14,11 +14,8 @@ Options -Indexes
   RewriteEngine On
   RewriteBase /
 
-  # Force HTTPS
-  RewriteCond %{HTTPS} off
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-  # Canonical host redirect: force apex domain for any non-canonical host
+  # 1-hop canonical redirect: force HTTPS and apex usamazahid.design in a single hop
+  RewriteCond %{HTTPS} off [OR]
   RewriteCond %{HTTP_HOST} !^usamazahid\.design$ [NC]
   RewriteRule ^ https://usamazahid.design%{REQUEST_URI} [L,R=301]
 
@@ -36,7 +33,12 @@ Options -Indexes
   # Legacy privacy
   RewriteRule ^privacy/?$ /privacy-policy/ [L,R=301]
 
-  # Old journal/blog routes
+  # Lowercase branding slugs
+  RewriteRule ^branding/taxDoctors/?$ /branding/taxdoctors/ [L,R=301]
+
+  # 1:1 legacy journal routes to matching articles (prevents soft-404)
+  RewriteRule ^journals/what-is-brand-identity-system-logo-not-one/?$ /blog/identity/brand-identity-for-tech-startups-a-revenue-problem/ [L,R=301]
+  RewriteRule ^journals/vibe-coding-vs-hiring-developer/?$ /blog/strategy/freelance-designer-vs-agency-for-saas/ [L,R=301]
   RewriteRule ^journals/.*$ /blog/ [L,R=301]
   RewriteRule ^journal/.*$ /blog/ [L,R=301]
   RewriteRule ^courses/?$ /services/ [L,R=301]
@@ -82,8 +84,7 @@ Options -Indexes
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
   <FilesMatch "\.(html|xml)$">
-    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-    Header set Pragma "no-cache"
+    Header set Cache-Control "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
   </FilesMatch>
 
   <FilesMatch "\.(js|css)$">

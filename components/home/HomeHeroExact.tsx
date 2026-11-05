@@ -24,6 +24,8 @@ export interface BrandLogoItem {
   svgPolarity?: 'web' | 'dark' | 'light' | 'color';
   /** Optional fallback inline SVG nodes if `src` / `iconSrc` is not used */
   mark?: React.ReactNode;
+  /** Internal or external link to the case study or proof */
+  href?: string;
 }
 
 const brandLogos: BrandLogoItem[] = [
@@ -31,33 +33,39 @@ const brandLogos: BrandLogoItem[] = [
     name: 'Codestreaks',
     src: '/images/brands/codestreaks.svg',
     svgPolarity: 'web',
+    href: '/branding/codestreaks/',
   },
   {
     name: 'Petrozen',
     src: '/images/brands/petrozen.svg',
     svgPolarity: 'web',
+    href: '/portfolio/petrozen-erp/',
   },
   {
     name: 'Laila Majnu',
     src: '/images/brands/laila-majnu.svg',
     serif: true,
     svgPolarity: 'web',
+    href: '/portfolio/the-laila-majnu-gifting/',
   },
   {
     name: 'Begum Retails',
     src: '/images/brands/begum-retails.svg',
     serif: true,
     svgPolarity: 'web',
+    href: '/portfolio/begum-bridal-couture-website/',
   },
   {
     name: 'TaxDoctors',
     src: '/images/brands/taxdoctors.svg',
     svgPolarity: 'web',
+    href: '/branding/taxdoctors/',
   },
   {
     name: 'IOP Digital',
     src: '/images/brands/iop-digital.svg',
     svgPolarity: 'web',
+    href: '/portfolio/',
   },
 ];
 
@@ -107,14 +115,12 @@ function renderBrandLogo(brand: BrandLogoItem) {
               <img
                 src={logoSrc}
                 alt=""
-                loading="lazy"
                 decoding="async"
                 className="brand-logo-icon brand-logo-for-light"
               />
               <img
                 src={brand.darkSrc}
                 alt=""
-                loading="lazy"
                 decoding="async"
                 className="brand-logo-icon brand-logo-for-dark"
               />
@@ -123,7 +129,6 @@ function renderBrandLogo(brand: BrandLogoItem) {
             <img
               src={logoSrc}
               alt=""
-              loading="lazy"
               decoding="async"
               data-svg-polarity={brand.svgPolarity ?? 'web'}
               className="brand-logo-icon"
@@ -156,11 +161,21 @@ function renderBrandLogo(brand: BrandLogoItem) {
 export default function HomeHeroExact() {
   return (
     <section className="hero pad" style={{ paddingTop: '110px' }}>
-      <div className="fo"><span>Usama Zahid · Brand &amp; Product Designer</span><span>Brand and website, four weeks</span><span>usamazahid.design</span></div>
+      <div className="fo"><span>Usama Zahid · Brand &amp; Product Designer</span><span>Brand to Live URL in 4 Weeks</span><span>usamazahid.design</span></div>
       <div className="hg">
         <div className="ht">
-          <h1><span className="ln"><span style={sx({ '--d': '.05s' })}>Brand &amp; Product</span></span><span className="ln"><span style={sx({ '--d': '.15s' })}>Designer.</span></span><span className="ln it2"><span style={sx({ '--d': '.25s' })}>Live in four weeks.</span></span></h1>
-          <p className="sub"><b>Usama Zahid is an independent Brand &amp; Product Designer.</b> Strategy, identity, UI/UX interface design, and production Next.js code as one continuous sequence with zero handoff gap.</p>
+          <h1>
+            <span className="ln">
+              <span style={sx({ '--d': '.05s' })}>Brand &amp; Product</span>
+            </span>
+            <span className="ln">
+              <span style={sx({ '--d': '.15s' })}>Systems</span>
+            </span>
+            <span className="ln it2">
+              <span style={sx({ '--d': '.25s' })}>for Modern Startups.</span>
+            </span>
+          </h1>
+          <p className="sub"><b>Usama Zahid is an independent Brand &amp; User-Centric Product Designer.</b> Brand strategy, visual identity systems, user-centric product UI/UX, and production Next.js code delivered as one continuous sequence with zero handoff gap.</p>
           <Link className="btn" href="/contact/" data-cur="Contact">Start your four-week build <span aria-hidden={true}>→</span></Link>
           <p className="rw">Recent work: Petrozen ERP, Stealth Humanizer, CodeStreaks, Begum, and The Laila Majnu.</p>
         </div>
@@ -226,18 +241,28 @@ export default function HomeHeroExact() {
         <div className="brands-stage">
           <div className="brands-row brands-row-a">
             {brandLogos.slice(0, 3).map((brand, idx) => (
-              <article key={brand.name} className="brand-card" style={sx({ '--i': String(idx) })}>
+              <Link
+                key={brand.name}
+                href={brand.href || '/portfolio/'}
+                className="brand-card"
+                style={sx({ '--i': String(idx), textDecoration: 'none' })}
+              >
                 <span className="brand-dot" aria-hidden="true" />
                 {renderBrandLogo(brand)}
-              </article>
+              </Link>
             ))}
           </div>
           <div className="brands-row brands-row-b">
             {brandLogos.slice(3).map((brand, idx) => (
-              <article key={brand.name} className="brand-card" style={sx({ '--i': String(idx + 3) })}>
+              <Link
+                key={brand.name}
+                href={brand.href || '/portfolio/'}
+                className="brand-card"
+                style={sx({ '--i': String(idx + 3), textDecoration: 'none' })}
+              >
                 <span className="brand-dot" aria-hidden="true" />
                 {renderBrandLogo(brand)}
-              </article>
+              </Link>
             ))}
           </div>
         </div>

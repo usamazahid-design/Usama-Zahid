@@ -12,8 +12,9 @@ import { BreadcrumbSchema, FAQPageSchema, JsonLd, PersonSchema, WebPageSchema } 
 
 export const metadata: Metadata = {
   title: 'Hire Usama Zahid | Brand & Product Designer',
+  robots: { index: false, follow: true },
   description:
-    'Hiring page for recruiters and HR: 7+ years in design and 3+ years in UI/UX and product design, with portfolio proof and direct scheduling.',
+    'Overview: role fit, outcomes, experience timeline, portfolio highlights, and direct scheduling.',
   openGraph: {
     title: 'Hire Usama Zahid | Brand & Product Designer',
     description:

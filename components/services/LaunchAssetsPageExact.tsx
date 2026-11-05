@@ -16,6 +16,10 @@ const launchFaqs = [
     a: 'A launch plan, social media templates, print collateral and the files to reuse them, all built from the same system as your brand and website.',
   },
   {
+    q: 'How much does brand strategy and launch planning cost?',
+    a: 'Brand positioning strategy and launch assets typically range from $8,000–$12,000 (1–2 weeks), covering narrative architecture, investor-ready collateral, and go-to-market templates.',
+  },
+  {
     q: 'Do I need an existing brand identity?',
     a: 'The assets are built from your identity. If you do not have one yet, the identity and the assets can be designed together as one system.',
   },
@@ -44,11 +48,15 @@ export default function LaunchAssetsPageExact() {
       />
       <JsonLd
         data={ServiceSchema({
-          name: 'Brand Strategy & Launch Assets',
+          name: 'Brand Positioning Strategy & Launch Systems',
           description:
-            'Launch plans, social media templates, print collateral, and reusable brand files built from your identity by Usama Zahid, Brand & Product Designer.',
+            'Strategic positioning, competitive diagnosis, messaging architecture, and investor launch assets aligned with your brand and web product.',
           url: 'https://usamazahid.design/services/strategy/',
-          provider: 'Usama Zahid',
+          provider: 'Usama Zahid — Brand-to-URL Studio',
+          offers: {
+            price: '8000',
+            priceCurrency: 'USD',
+          },
         })}
       />
       <JsonLd

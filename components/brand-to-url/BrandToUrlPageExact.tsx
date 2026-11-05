@@ -29,7 +29,7 @@ const brandToUrlFaqs = [
   },
   {
     q: 'How much does it cost?',
-    a: 'It depends on the scope, so we agree the price on a call before any work begins.',
+    a: 'The complete Brand-to-URL 4-week sprint is a fixed $24,000 investment covering strategy, visual identity system, user-centric UI/UX design, and production Next.js codebase. Individual tracks start at $8,000 to $14,000.',
   },
   {
     q: 'Who do you work with?',
@@ -90,11 +90,15 @@ export default function BrandToUrlPageExact() {
       />
       <JsonLd
         data={ServiceSchema({
-          name: 'Brand-to-URL (Brand Identity & Production Website)',
+          name: 'Brand-to-URL (Brand Identity, User-Centric UX & Production Next.js Website)',
           description:
-            'Brand identity and a production-ready website, designed and built together over four weeks by Usama Zahid, Brand & Product Designer. One invoice, no handoff.',
+            'Brand-to-URL is a fixed 4-week design and web engineering sprint delivering brand identity, user-centric product UI/UX, and a production Next.js website codebase. $24,000 fixed investment.',
           url: 'https://usamazahid.design/brand-to-url/',
-          provider: 'Usama Zahid',
+          provider: 'Usama Zahid — Brand-to-URL Studio',
+          offers: {
+            price: '24000',
+            priceCurrency: 'USD',
+          },
         })}
       />
       <JsonLd

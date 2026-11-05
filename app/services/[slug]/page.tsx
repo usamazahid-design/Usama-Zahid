@@ -19,22 +19,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   if (params.slug === 'identity') {
     return {
-      title: 'Brand Identity Systems & Logo Design — Strategy, Guidelines & Tokens',
+      title: 'SaaS Brand Identity Systems & Design Tokens',
       description:
-        'Complete brand identity systems by Usama Zahid, Brand & Product Designer: positioning, logo & identity systems, colour & typography tokens, custom patterns, and 38-slide brand guidelines.',
+        'Beyond static logos: positioning, mathematical color scales, typographic grids, and Figma token libraries engineered for product UI and web scale.',
       openGraph: {
-        title: 'Brand Identity Systems & Logo Design | Usama Zahid',
+        title: 'SaaS Brand Identity Systems & Design Tokens | Usama Zahid',
         description:
-          'Complete brand identity systems by Usama Zahid: positioning, logo & identity systems, colour, type, custom pattern, and 38-slide brand guidelines.',
+          'Beyond static logos: positioning, mathematical color scales, typographic grids, and Figma token libraries engineered for product UI and web scale.',
         type: 'website',
         url: 'https://usamazahid.design/services/identity/',
         images: [{ url: '/images/og-image.jpg' }],
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'Brand Identity Systems & Logo Design | Usama Zahid',
+        title: 'SaaS Brand Identity Systems & Design Tokens | Usama Zahid',
         description:
-          'Complete brand identity systems by Usama Zahid: positioning, logo & identity systems, colour, type, custom pattern, and brand guidelines.',
+          'Beyond static logos: positioning, mathematical color scales, typographic grids, and Figma token libraries engineered for product UI and web scale.',
         images: ['/images/og-image.jpg'],
       },
       alternates: {
@@ -45,22 +45,22 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   if (params.slug === 'engineering') {
     return {
-      title: 'Website Design & Next.js Development — Production-Ready Web',
+      title: 'Startup Website Design & Production Next.js Builds',
       description:
-        'Production-ready website design and Next.js development by Usama Zahid, Brand & Product Designer: structure, responsive design, components, and launch.',
+        'Designed in Figma and engineered in Next.js, TypeScript, and Tailwind CSS by the same designer. 95+ Core Web Vitals, zero handoff loss.',
       openGraph: {
-        title: 'Website Design & Next.js Development | Usama Zahid',
+        title: 'Startup Website Design & Production Next.js Builds | Usama Zahid',
         description:
-          'Production-ready website design and Next.js development by Usama Zahid: structure, responsive design, components, and launch.',
+          'Designed in Figma and engineered in Next.js, TypeScript, and Tailwind CSS by the same designer. 95+ Core Web Vitals, zero handoff loss.',
         type: 'website',
         url: 'https://usamazahid.design/services/engineering/',
         images: [{ url: '/images/og-image.jpg' }],
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'Website Design & Next.js Development | Usama Zahid',
+        title: 'Startup Website Design & Production Next.js Builds | Usama Zahid',
         description:
-          'Production-ready website design and Next.js development by Usama Zahid: structure, responsive design, components, and launch.',
+          'Designed in Figma and engineered in Next.js, TypeScript, and Tailwind CSS by the same designer. 95+ Core Web Vitals, zero handoff loss.',
         images: ['/images/og-image.jpg'],
       },
       alternates: {
@@ -71,22 +71,22 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   if (params.slug === 'product') {
     return {
-      title: 'Product & UX Design Services — Flows, Interfaces & Design Systems',
+      title: 'User-Centric SaaS & AI Product UI/UX Design',
       description:
-        'Product and UX design by Usama Zahid, Brand & Product Designer: friction audits, redesigned flows, web and mobile interfaces, and Figma design systems.',
+        'User-centric workflow modeling, component libraries, and high-trust AI/SaaS interfaces that eliminate onboarding friction and churn.',
       openGraph: {
-        title: 'Product & UX Design Services | Usama Zahid',
+        title: 'User-Centric SaaS & AI Product UI/UX Design | Usama Zahid',
         description:
-          'Product and UX design by Usama Zahid: friction audits, redesigned flows, web and mobile interfaces, and design systems.',
+          'User-centric workflow modeling, component libraries, and high-trust AI/SaaS interfaces that eliminate onboarding friction and churn.',
         type: 'website',
         url: 'https://usamazahid.design/services/product/',
         images: [{ url: '/images/og-image.jpg' }],
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'Product & UX Design Services | Usama Zahid',
+        title: 'User-Centric SaaS & AI Product UI/UX Design | Usama Zahid',
         description:
-          'Product and UX design by Usama Zahid: friction audits, redesigned flows, web and mobile interfaces, and design systems.',
+          'User-centric workflow modeling, component libraries, and high-trust AI/SaaS interfaces that eliminate onboarding friction and churn.',
         images: ['/images/og-image.jpg'],
       },
       alternates: {
@@ -97,22 +97,22 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   if (params.slug === 'strategy') {
     return {
-      title: 'Brand Strategy & Launch Assets — Social & Print Collateral',
+      title: 'Brand Positioning Strategy & Launch Systems',
       description:
-        'Brand strategy, social media templates, and print launch assets by Usama Zahid, Brand & Product Designer: built from the same system as your brand and website.',
+        'Strategic positioning, competitive diagnosis, messaging architecture, and investor launch assets aligned with your brand and web product.',
       openGraph: {
-        title: 'Brand Strategy & Launch Assets | Usama Zahid',
+        title: 'Brand Positioning Strategy & Launch Systems | Usama Zahid',
         description:
-          'Social and print launch assets by Usama Zahid: templates, collateral, and ready-to-use files built from the same system as your brand and website.',
+          'Strategic positioning, competitive diagnosis, messaging architecture, and investor launch assets aligned with your brand and web product.',
         type: 'website',
         url: 'https://usamazahid.design/services/strategy/',
         images: [{ url: '/images/og-image.jpg' }],
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'Brand Strategy & Launch Assets | Usama Zahid',
+        title: 'Brand Positioning Strategy & Launch Systems | Usama Zahid',
         description:
-          'Social and print launch assets by Usama Zahid: templates, collateral, and ready-to-use files built from the same system as your brand and website.',
+          'Strategic positioning, competitive diagnosis, messaging architecture, and investor launch assets aligned with your brand and web product.',
         images: ['/images/og-image.jpg'],
       },
       alternates: {
@@ -123,22 +123,22 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   if (params.slug === 'brand-to-url') {
     return {
-      title: 'Brand-to-URL — Brand Identity & Website in Four Weeks',
+      title: '4-Week Brand & Next.js Website Sprint',
       description:
-        'Brand identity and a production-ready website, designed and built together over four weeks by Usama Zahid, Brand & Product Designer. One invoice, no handoff.',
+        'Brand-to-URL delivers brand strategy, visual identity systems, user-centric product UI/UX, and a live Next.js codebase in one 4-week sprint. Fixed investment: $24,000.',
       openGraph: {
-        title: 'Brand-to-URL | Usama Zahid',
+        title: '4-Week Brand & Next.js Website Sprint | Usama Zahid',
         description:
-          'Brand identity and a production-ready website, designed and built together over four weeks by Usama Zahid. One invoice, no handoff.',
+          'Brand-to-URL delivers brand strategy, visual identity systems, user-centric product UI/UX, and a live Next.js codebase in one 4-week sprint. Fixed investment: $24,000.',
         type: 'website',
         url: 'https://usamazahid.design/brand-to-url/',
         images: [{ url: '/images/og-image.jpg' }],
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'Brand-to-URL | Usama Zahid',
+        title: '4-Week Brand & Next.js Website Sprint | Usama Zahid',
         description:
-          'Brand identity and a production-ready website, designed and built together over four weeks by Usama Zahid. One invoice, no handoff.',
+          'Brand-to-URL delivers brand strategy, visual identity systems, user-centric product UI/UX, and a live Next.js codebase in one 4-week sprint. Fixed investment: $24,000.',
         images: ['/images/og-image.jpg'],
       },
       alternates: {

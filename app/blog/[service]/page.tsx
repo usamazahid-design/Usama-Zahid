@@ -77,7 +77,12 @@ export default function BlogServicePage({ params }: ServicePageProps) {
         ]}
       />
 
-      <BlogIndexExact featured={featured} posts={rest} />
+      <BlogIndexExact
+        featured={featured}
+        posts={rest}
+        title={`${serviceLabel} Essays & Field Notes`}
+        description={`Practical teardowns and field guides on ${serviceLabel.toLowerCase()} by Usama Zahid.`}
+      />
 
       <CTA
         id="contact"

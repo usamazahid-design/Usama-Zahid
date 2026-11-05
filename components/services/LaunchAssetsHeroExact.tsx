@@ -84,8 +84,8 @@ export default function LaunchAssetsHeroExact() {
     <div className="fo"><span><Link href="/services/" style={{ textDecoration: 'underline', textUnderlineOffset: '4px' }}>Services</Link> / Launch assets</span><span>Brand and product designer</span><span>usamazahid.design</span></div>
     <div className="hg">
     <div className="ht">
-    <h1><span className="ln"><span style={{ ['--d' as string]: '.05s' } as React.CSSProperties}>Launch assets that</span></span><span className="ln it2"><span style={{ ['--d' as string]: '.17s' } as React.CSSProperties}>look like one brand,</span></span><span className="ln it2"><span style={{ ['--d' as string]: '.29s' } as React.CSSProperties}>everywhere.</span></span></h1>
-    <p className="sub"><b>Social and print pieces built from the same system as your brand and your website.</b> So launch day looks as considered as the product.</p>
+    <h1><span className="ln"><span style={{ ['--d' as string]: '.05s' } as React.CSSProperties}>Brand Positioning</span></span><span className="ln it2"><span style={{ ['--d' as string]: '.17s' } as React.CSSProperties}>Strategy & Investor</span></span><span className="ln it2"><span style={{ ['--d' as string]: '.29s' } as React.CSSProperties}>Launch Systems.</span></span></h1>
+    <p className="sub"><b>Usama Zahid</b> crafts brand positioning strategy, competitive differentiation, and investor-ready launch assets for startups. Every narrative, social kit, and collateral piece stems directly from the core brand and web architecture. Typical investment: $8,000–$12,000.</p>
     <a className="btn" href="https://cal.com/usama-zahid-haadwj/15min" target="_blank" rel="noopener" data-cur="Calendar">Book a call <span aria-hidden={true}>→</span></a>
     </div>
     <div className="hl" aria-hidden={true}><div className="wvs"><svg viewBox="0 0 600 500">

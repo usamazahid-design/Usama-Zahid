@@ -122,18 +122,17 @@ export default function WebEngineeringHeroExact() {
         <div className="ht">
           <h1>
             <span className="ln">
-              <span style={{ '--d': '.05s' } as React.CSSProperties}>Websites that are</span>
+              <span style={{ '--d': '.05s' } as React.CSSProperties}>Startup Website Design</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.17s' } as React.CSSProperties}>designed and built</span>
+              <span style={{ '--d': '.17s' } as React.CSSProperties}>& Production Next.js</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.29s' } as React.CSSProperties}>to launch.</span>
+              <span style={{ '--d': '.29s' } as React.CSSProperties}>Web Engineering.</span>
             </span>
           </h1>
           <p className="sub">
-            <b>A production-ready website, designed from your brand identity and built by the same person.</b>{' '}
-            Delivered with the identity in four weeks.
+            <b>Usama Zahid</b> designs and develops high-conversion marketing websites for startups in Next.js, TypeScript, and Tailwind CSS. Built directly from design tokens by the same designer with 95+ Core Web Vitals, accessible semantics, and zero handoff loss. Investment starts at $14,000.
           </p>
           <Link className="btn" href="/contact/">
             Book a call <span aria-hidden="true">&rarr;</span>

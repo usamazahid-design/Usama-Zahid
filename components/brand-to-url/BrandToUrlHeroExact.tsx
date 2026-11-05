@@ -125,15 +125,14 @@ export default function BrandToUrlHeroExact() {
               <span style={{ '--d': '.05s' } as React.CSSProperties}>Brand-to-URL.</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.17s' } as React.CSSProperties}>Your brand and your site,</span>
+              <span style={{ '--d': '.17s' } as React.CSSProperties}>Brand Identity & User-Centric UX,</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.29s' } as React.CSSProperties}>one system, four weeks.</span>
+              <span style={{ '--d': '.29s' } as React.CSSProperties}>live Next.js site in 4 weeks.</span>
             </span>
           </h1>
           <p className="sub">
-            <b>Brand identity and a production-ready website, designed and built together.</b> One invoice, no
-            handoff, for founders and growing brands.
+            <b>Brand-to-URL</b> is a fixed 4-week design and web engineering sprint by independent designer Usama Zahid. It delivers brand strategy, visual identity systems, user-centric product UI/UX, and a production Next.js website from one operator with zero handoff translation loss. Fixed investment: $24,000.
           </p>
           <Link className="btn" href="/contact/">
             Book a call <span aria-hidden="true">&rarr;</span>

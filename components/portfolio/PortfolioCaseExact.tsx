@@ -48,14 +48,9 @@ function nameLines(title: string): string[] {
 }
 
 function italicPunch(text: string): string {
-  const clean = firstSentence(text).replace(/\.$/, '');
-  const words = clean.split(/\s+/).filter(Boolean);
-  if (words.length === 0) return 'Clarity over clutter.';
-  if (words.length <= 4) return `${clean}.`;
-  const stop = new Set(['for', 'to', 'of', 'with', 'and', 'a', 'the', 'in', 'on', 'at']);
-  let n = 4;
-  while (n > 2 && stop.has(words[n - 1].toLowerCase())) n -= 1;
-  return `${words.slice(0, n).join(' ')}.`;
+  const clean = firstSentence(text).replace(/\.$/, '').trim();
+  if (!clean) return 'Clarity over clutter.';
+  return `${clean}.`;
 }
 
 function briefHead(text: string, maxWords = 5) {

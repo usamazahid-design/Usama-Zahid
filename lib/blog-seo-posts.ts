@@ -477,7 +477,7 @@ export const seoPillarPosts: BlogDraftPost[] = [
       { type: 'h2', text: 'Independent operator ranges (this studio)', id: 'operator-ranges' },
       {
         type: 'p',
-        text: 'My published tracks start roughly here: brand strategy from $12K, brand systems from $18K, web engineering from $22K, product design from $24K, fixed scope, fixed price. Smaller packages and sprints exist for focused surfaces; see <a href="/services/">services</a> and the <a href="/special-offer/">current sprint offer</a>. The point is predictability: you should know the exit before the invoice.',
+        text: 'At this studio, published tracks start here: Brand Strategy from $8,000–$12,000 (1–2 weeks), Brand Identity Systems from $12,000–$18,000 (2–3 weeks), Web Engineering from $14,000–$22,000 (2–3 weeks), and Product UI/UX Design from $14,000–$24,000 (3–4 weeks). The full 4-week <a href="/brand-to-url/">Brand-to-URL Sprint</a> is a fixed $24,000 investment covering brand positioning, visual identity, user-centric product UI, and a live Next.js codebase. The point is predictability: you know the deliverables, timeline, and exit before the first invoice. Explore all options on the <a href="/services/">services page</a>.',
       },
       { type: 'h2', text: 'Agency ranges (what founders report)', id: 'agency-ranges' },
       {

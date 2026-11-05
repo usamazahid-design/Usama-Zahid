@@ -16,6 +16,10 @@ const brandFaqs = [
     a: 'A logo is a single mark; a brand identity system is the complete operating layer that governs how your company looks and communicates everywhere. It combines brand positioning, primary and secondary logo lockups, WCAG-tested color tokens, typography hierarchy, custom geometric patterns, and a 38-slide brand guidelines book so your website, product UI, and marketing stay cohesive.',
   },
   {
+    q: 'How much does a brand identity system cost?',
+    a: 'Standalone brand identity and token systems start at $12,000–$18,000 (2–3 weeks). They are also included in the complete 4-week Brand-to-URL sprint for $24,000.',
+  },
+  {
     q: 'What do I receive at the end of a logo & identity systems project?',
     a: 'Positioning and messaging, a complete logo & identity system (primary mark, wordmark, monochrome and dark/light variants), colour and type tokens, a custom brand pattern, and a 38-slide brand guidelines deck alongside production-ready SVG/PNG/Figma files.',
   },
@@ -48,11 +52,15 @@ export default function BrandIdentityPageExact() {
       />
       <JsonLd
         data={ServiceSchema({
-          name: 'Brand Identity Design',
+          name: 'SaaS Brand Identity Systems & Design Tokens',
           description:
-            'Brand positioning, logo system, colour, typography, custom pattern, and comprehensive brand guidelines designed by Usama Zahid, Brand & Product Designer.',
+            'Brand positioning, mathematical logo systems, color and typography tokens, custom patterns, and comprehensive brand guidelines designed by Usama Zahid.',
           url: 'https://usamazahid.design/services/identity/',
-          provider: 'Usama Zahid',
+          provider: 'Usama Zahid — Brand-to-URL Studio',
+          offers: {
+            price: '12000',
+            priceCurrency: 'USD',
+          },
         })}
       />
       <JsonLd

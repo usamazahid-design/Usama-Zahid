@@ -86,18 +86,18 @@ export default function ServicesHeroExact() {
         <div className="ht">
           <h1>
             <span className="ln">
-              <span style={{ '--d': '.05s' } as React.CSSProperties}>Brand and product</span>
+              <span style={{ '--d': '.05s' } as React.CSSProperties}>Brand Identity,</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.17s' } as React.CSSProperties}>design, built as</span>
+              <span style={{ '--d': '.17s' } as React.CSSProperties}>User-Centric UX &</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.29s' } as React.CSSProperties}>one system.</span>
+              <span style={{ '--d': '.29s' } as React.CSSProperties}>Next.js Engineering.</span>
             </span>
           </h1>
 
           <p className="sub">
-            <b>Brand identity and a production-ready website, together in four weeks.</b> Product design and launch assets on the same system.
+            <b>Fixed-scope design systems and production web engineering for high-growth startups.</b> Delivered by Usama Zahid across strategy, brand identity, user-centric product UI/UX, and live Next.js code with zero agency handoff gap.
           </p>
 
           <a

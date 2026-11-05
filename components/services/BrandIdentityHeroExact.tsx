@@ -135,18 +135,18 @@ export default function BrandIdentityHeroExact() {
         <div className="ht">
           <h1>
             <span className="ln">
-              <span style={{ '--d': '.05s' } as React.CSSProperties}>Brand identity that</span>
+              <span style={{ '--d': '.05s' } as React.CSSProperties}>Brand Identity Systems</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.17s' } as React.CSSProperties}>people recognise</span>
+              <span style={{ '--d': '.17s' } as React.CSSProperties}>& Design Tokens</span>
             </span>
             <span className="ln it2">
-              <span style={{ '--d': '.29s' } as React.CSSProperties}>and trust.</span>
+              <span style={{ '--d': '.29s' } as React.CSSProperties}>for SaaS Startups.</span>
             </span>
           </h1>
 
           <p className="sub">
-            <b>Positioning, a logo system, colour, type, a custom pattern and the guidelines to use them.</b> Delivered with your website in four weeks, or scoped on its own.
+            <b>Usama Zahid</b> engineers mathematical brand identity systems and Figma design token libraries for high-growth tech startups. From positioning and logo marks to WCAG-tested color scales and typographic grids, every asset is built to scale across marketing sites and complex product interfaces. Investment starts at $12,000.
           </p>
 
           <a

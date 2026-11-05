@@ -75,17 +75,25 @@ export default function HomeClient() {
       if (!stg || !stc || !bar || !stp) return;
       stg.classList.add('stg-live');
       html.classList.add('motion-ready');
+
+      // Remove and re-add data-scene with reflow to reliably restart SVG CSS animations from frame 0
+      stg.removeAttribute('data-scene');
+      void stg.offsetWidth;
       stg.dataset.scene = sc;
+
       stc.textContent = SC[sc].cap;
       tbs.forEach((b) => b.classList.toggle('on', b.dataset.s === sc));
-      // Avoid forced reflow on mobile — just reset animation
+
+      // Reset animation on the progress bar
       bar.style.animation = 'none';
-      if (!isMobile) {
-        void bar.offsetWidth;
+      void bar.offsetWidth;
+      bar.style.animation = '';
+
+      // Immediately set the initial step label
+      if (SC[sc].st.length > 0) {
+        stp.textContent = SC[sc].st[0][1];
       }
-      requestAnimationFrame(() => {
-        if (bar) bar.style.animation = '';
-      });
+
       SC[sc].st.forEach((x) => {
         tm.push(
           setTimeout(() => {

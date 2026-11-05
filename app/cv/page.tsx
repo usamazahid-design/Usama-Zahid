@@ -15,9 +15,10 @@ import { getAllProjects } from '@/lib/portfolio-utils';
 import { JsonLd, PersonSchema, BreadcrumbSchema, WebPageSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'CV — Brand & Product Designer (7+ Years)',
+  title: 'CV — Brand & User-Centric Product Designer',
+  robots: { index: false, follow: true },
   description:
-    'Full CV of Usama Zahid: Brand & Product Designer with 7+ years in brand identity, product UI/UX, and Next.js web engineering. Petrozen ERP, Stealth Humanizer, Begum. Lahore, remote-ready.',
+    'Full CV of Usama Zahid: Brand & User-Centric Product Designer with 6 years in brand identity, 3 years in product UI/UX, and Next.js web engineering. Petrozen ERP, Stealth Humanizer, Begum.',
   openGraph: {
     title: 'CV — Brand & Product Designer | Usama Zahid',
     description:

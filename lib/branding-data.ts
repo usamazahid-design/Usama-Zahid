@@ -438,7 +438,7 @@ export const brandingCases: BrandingCase[] = [
   },
   techmekaCase,
   {
-    slug: 'taxDoctors',
+    slug: 'taxdoctors',
     title: 'TaxDoctors - Brand Identity',
     category: 'IDENTITY',
     tags: ['Identity', 'Strategy', 'Consulting'],

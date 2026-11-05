@@ -9,9 +9,9 @@
 
 ## 1. Executive Summary & Entity Definition
 
-**Usama Zahid** is an independent **Brand & Product Designer** based in Lahore, Pakistan, operating globally.
-- **Experience**: 7+ years in brand design and systems, 3+ years dedicated to SaaS UI/UX and product design.
-- **Track Record**: 47 clients, 100+ projects shipped across pre-seed, seed, and Series A venture-backed startups.
+**Usama Zahid** is an independent **Brand & User-Centric Product Designer** based in Lahore, Pakistan, operating globally.
+- **Experience**: 6 years in brand design and systems, 3 years dedicated to user-centric SaaS UI/UX and product design.
+- **Track Record**: 50+ projects shipped across 30+ global clients across pre-seed, seed, and Series A venture-backed startups.
 - **Operating Methodology**: Creator of **Brand-to-URL**, a proprietary 4-week delivery sequence that unites brand strategy, visual identity systems, product interface UX, and production Next.js web engineering into one continuous build.
 - **Core Value Proposition**: Eliminates the costly handoff gap between design agencies and development teams. One operator, one invoice, zero translation loss.
 - **Education**: COMSATS University Islamabad, Lahore Campus.
@@ -69,7 +69,7 @@ Brand-to-URL is a fixed 4-week design and development sprint for SaaS and AI fou
 - **Category**: Infrastructure Identity | **Deliverables**: Brand guidelines, Component library, Launch assets
 - **Overview**: Replaced clip-art visuals with a rigorous infrastructure-inspired identity for developer tools.
 
-### [TaxDoctors](https://usamazahid.design/branding/taxDoctors/)
+### [TaxDoctors](https://usamazahid.design/branding/taxdoctors/)
 - **Category**: Fintech & Compliance | **Deliverables**: Logo family, Brand voice narrative, Visual identity
 - **Overview**: Positioned taxation advisory as an empowering diagnosis rather than a bureaucratic burden.
 
@@ -105,7 +105,7 @@ A: Schedule a 15-minute diagnosis call at https://usamazahid.design/contact/ or 
 
 - **Website**: https://usamazahid.design/
 - **LinkedIn**: https://www.linkedin.com/in/usamazahid-design/
-- **GitHub**: https://github.com/usamazahid
+- **GitHub**: https://github.com/usamazahid-design
 - **Twitter / X**: https://x.com/usama2017a
 - **Behance**: https://www.behance.net/usama-zahid-design
 - **Dribbble**: https://dribbble.com/usamazahid-design

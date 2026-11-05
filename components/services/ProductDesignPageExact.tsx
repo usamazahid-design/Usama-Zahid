@@ -16,6 +16,10 @@ const productFaqs = [
     a: 'A friction audit, redesigned flows, interface designs for web and mobile, a design system, and a baseline with measures so the change can be seen in the numbers.',
   },
   {
+    q: 'How much does product and UX design cost?',
+    a: 'End-to-end SaaS product UI/UX design and design system sprints range between $14,000–$24,000 (3–4 weeks), depending on product scope and workflow complexity.',
+  },
+  {
     q: 'Which products do you work on?',
     a: 'Web and mobile digital products, customer-facing platforms, and internal tools such as ERPs. The best fit is a product that already works but costs its users effort.',
   },
@@ -44,11 +48,15 @@ export default function ProductDesignPageExact() {
       />
       <JsonLd
         data={ServiceSchema({
-          name: 'Product & UX Design',
+          name: 'User-Centric SaaS & AI Product UI/UX Design',
           description:
-            'Flow and friction audits, redesigned user journeys, web and mobile interfaces, and Figma design systems by Usama Zahid, Brand & Product Designer.',
+            'User-centric workflow modeling, component libraries, and high-trust AI/SaaS interfaces that eliminate onboarding friction and churn.',
           url: 'https://usamazahid.design/services/product/',
-          provider: 'Usama Zahid',
+          provider: 'Usama Zahid — Brand-to-URL Studio',
+          offers: {
+            price: '14000',
+            priceCurrency: 'USD',
+          },
         })}
       />
       <JsonLd

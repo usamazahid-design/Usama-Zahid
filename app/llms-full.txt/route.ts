@@ -28,9 +28,9 @@ export function GET() {
   lines.push('');
   lines.push('## 1. Executive Summary & Entity Definition');
   lines.push('');
-  lines.push('**Usama Zahid** is an independent **Brand & Product Designer** based in Lahore, Pakistan, operating globally.');
-  lines.push('- **Experience**: 7+ years in brand design and systems, 3+ years dedicated to SaaS UI/UX and product design.');
-  lines.push('- **Track Record**: 47 clients, 100+ projects shipped across pre-seed, seed, and Series A venture-backed startups.');
+  lines.push('**Usama Zahid** is an independent **Brand & User-Centric Product Designer** based in Lahore, Pakistan, operating globally.');
+  lines.push('- **Experience**: 6 years in brand design and systems, 3 years dedicated to user-centric SaaS UI/UX and product design.');
+  lines.push('- **Track Record**: 50+ projects shipped across 30+ global clients across pre-seed, seed, and Series A venture-backed startups.');
   lines.push('- **Operating Methodology**: Creator of **Brand-to-URL**, a proprietary 4-week delivery sequence that unites brand strategy, visual identity systems, product interface UX, and production Next.js web engineering into one continuous build.');
   lines.push('- **Core Value Proposition**: Eliminates the costly handoff gap between design agencies and development teams. One operator, one invoice, zero translation loss.');
   lines.push('- **Education**: COMSATS University Islamabad, Lahore Campus.');
@@ -115,7 +115,7 @@ export function GET() {
   lines.push('');
   lines.push('- **Website**: https://usamazahid.design/');
   lines.push('- **LinkedIn**: https://www.linkedin.com/in/usamazahid-design/');
-  lines.push('- **GitHub**: https://github.com/usamazahid');
+  lines.push('- **GitHub**: https://github.com/usamazahid-design');
   lines.push('- **Twitter / X**: https://x.com/usama2017a');
   lines.push('- **Behance**: https://www.behance.net/usama-zahid-design');
   lines.push('- **Dribbble**: https://dribbble.com/usamazahid-design');

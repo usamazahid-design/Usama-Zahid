@@ -2,9 +2,9 @@
 
 import { useEffect } from 'react';
 
-const MIN_MS = 220;
-const MAX_MS = 450;
-const EXIT_MS = 300;
+const MIN_MS = 80;
+const MAX_MS = 200;
+const EXIT_MS = 150;
 
 /**
  * Dismisses the server-rendered #uz-pre shell after load.

@@ -9,11 +9,13 @@ import { formatDate } from '@/lib/blog-utils';
 interface BlogIndexExactProps {
   featured: BlogPost;
   posts: BlogPost[];
+  title?: string;
+  description?: string;
 }
 
 const PAGE_SIZE = 6;
 
-export default function BlogIndexExact({ featured, posts }: BlogIndexExactProps) {
+export default function BlogIndexExact({ featured, posts, title, description }: BlogIndexExactProps) {
   const [activeService, setActiveService] = useState<BlogService | 'ALL'>('ALL');
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
@@ -35,10 +37,15 @@ export default function BlogIndexExact({ featured, posts }: BlogIndexExactProps)
   const hasMore = visibleCount < filtered.length;
 
   return (
-    <section id="blog-list">
-      <div className="pad wh">
+    <section id="blog-list" style={{ paddingTop: '80px' }}>
+      <div className="pad wh" style={{ alignItems: 'flex-start' }}>
         <div>
-          <h2>Operator&rsquo;s log</h2>
+          <h1 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, lineHeight: 1.15, marginBottom: '10px' }}>
+            {title || "SaaS Brand, Product & Web Engineering Essays"}
+          </h1>
+          <p style={{ color: 'var(--mute)', maxWidth: '640px', fontSize: '15px', lineHeight: 1.5, marginBottom: '14px' }}>
+            {description || "Field notes, teardowns, and tactical guides on building high-trust brand systems, user-centric product UI/UX, and production Next.js websites for fast-moving startups."}
+          </p>
           <span className="lab">
             {String(filtered.length).padStart(2, '0')} essays
             {activeService !== 'ALL'

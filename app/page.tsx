@@ -7,10 +7,10 @@ export default function Home() {
       <JsonLd data={WebSiteSchema()} />
       <JsonLd
         data={WebPageSchema({
-          name: 'Usama Zahid — Brand & Product Designer | Brand-to-URL',
+          name: 'Usama Zahid — SaaS Brand & User-Centric Product Designer | Brand-to-URL',
           url: 'https://usamazahid.design/',
           description:
-            'Brand & Product Designer. Brand identity and a production-ready website, built together in four weeks. One system, one invoice, no handoff.',
+            'Brand & User-Centric Product Designer. Brand identity and a production-ready website, built together in four weeks. One system, one invoice, no handoff.',
         })}
       />
       <JsonLd
@@ -18,6 +18,10 @@ export default function Home() {
           {
             q: 'How does the four-week timeline work?',
             a: 'Week 1 is Strategy & Positioning. Week 2 is Identity. Week 3 is Interface. Week 4 is Production Engineering and deployment to a live URL. One system, one invoice, zero handoff gap.',
+          },
+          {
+            q: 'How much does a Brand-to-URL sprint cost?',
+            a: 'The full 4-week Brand-to-URL sprint is a fixed $24,000 investment covering brand strategy, visual identity systems, user-centric product UI/UX, and production Next.js codebase. Individual tracks start at $8,000 to $14,000.',
           },
           {
             q: 'What is included in the Brand-to-URL delivery?',

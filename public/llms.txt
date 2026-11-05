@@ -1,6 +1,6 @@
 # usamazahid.design
 
-> Independent Brand & Product Designer. Creator of Brand-to-URL: brand strategy, visual identity systems, product UI/UX design, and Next.js web engineering as one unified 4-week delivery sequence for founders and growing brands. Based in Lahore, working globally.
+> Independent Brand & User-Centric Product Designer. Creator of Brand-to-URL: brand strategy, visual identity systems, user-centric product UI/UX design, and Next.js web engineering as one unified 4-week delivery sequence for founders and growing brands. Based in Lahore, working globally.
 
 > Last updated: 2026-10-26
 > Full Knowledge Base & Citations: https://usamazahid.design/llms-full.txt
@@ -8,7 +8,7 @@
 ## About
 
 - [About Usama Zahid](https://usamazahid.design/about/): Background, method, daily practice, tools, and influences of the single operator.
-- [CV & Full Record](https://usamazahid.design/cv/): 7+ years, 47 clients, 100+ projects shipped. Complete work history with stack and capabilities.
+- [CV & Full Record](https://usamazahid.design/cv/): 6 years in brand identity, 3 years in user-centric product UI/UX. 50+ projects shipped across 30+ clients. Complete work history with stack and capabilities.
 - [Brand to URL](https://usamazahid.design/brand-to-url/): Full-system design and code from concept to deployed brand and website in 4 weeks.
 - [Hire Usama Zahid](https://usamazahid.design/hire/): Recruiter and founder overview: role fit, outcomes, experience timeline, and portfolio proof.
 
@@ -39,7 +39,7 @@
 - [Branding Index](https://usamazahid.design/branding/): Identity-focused case studies in the same terminal OS format.
 - [TechMeka](https://usamazahid.design/branding/techmeka/): Golden-ratio color and type system with comprehensive Figma design tokens.
 - [CodeStreaks](https://usamazahid.design/branding/codestreaks/): Infrastructure brand identity, component guidelines, and launch assets.
-- [TaxDoctors](https://usamazahid.design/branding/taxDoctors/): Financial brand identity and clinical clarity narrative for cross-border tax advisory.
+- [TaxDoctors](https://usamazahid.design/branding/taxdoctors/): Financial brand identity and clinical clarity narrative for cross-border tax advisory.
 
 ## Blog & Writing
 

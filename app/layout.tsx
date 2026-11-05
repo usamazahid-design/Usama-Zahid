@@ -4,7 +4,7 @@ import Script from 'next/script';
 import './globals.css';
 import './authentic-dark.css';
 import Navigation from '@/components/Navigation';
-import { JsonLd, OrganizationSchema } from '@/lib/seo';
+import { JsonLd, OrganizationSchema, PersonSchema } from '@/lib/seo';
 
 import LenisProvider from '@/components/providers/LenisProvider';
 import DeferredCustomCursor from '@/components/DeferredCustomCursor';
@@ -40,31 +40,11 @@ const ogImage = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Usama Zahid — Brand Identity, Product UI/UX & Next.js Designer (Live in 4 Weeks)',
+    default: 'Usama Zahid — SaaS Brand & User-Centric Product Designer (Live in 4 Weeks)',
     template: '%s | Usama Zahid',
   },
   description:
-    'Independent Brand & Product Designer. Brand identity systems, UI/UX product design, and production Next.js websites built together in 4 weeks (127% brand lift, 58% fewer UX errors). Try the free Brand Kit Generator.',
-  keywords: [
-    'Brand & Product Designer',
-    'Brand and Product Designer',
-    'Brand & Product Design',
-    'Brand Designer',
-    'Product Designer',
-    'Brand to URL',
-    'Brand-to-URL',
-    'brand identity designer',
-    'product UX designer',
-    'UI/UX designer',
-    'website designer and developer',
-    'brand strategy and identity',
-    'design to code',
-    'Next.js developer',
-    'Usama Zahid',
-    'freelance brand and product designer',
-    'fractional product designer',
-    'product design services',
-  ],
+    'Independent Brand & User-Centric Product Designer. Brand identity systems, user-centric product UI/UX, and production Next.js websites built in 4 weeks. Try the free Brand Kit Generator.',
   authors: [{ name: 'Usama Zahid', url: 'https://usamazahid.design/' }],
   creator: 'Usama Zahid',
   publisher: 'Usama Zahid',
@@ -146,6 +126,7 @@ export default function RootLayout({
         <Preloader />
         <PreloaderDismiss />
         <JsonLd data={OrganizationSchema()} />
+        <JsonLd data={PersonSchema()} />
         <div className="page-grid" aria-hidden="true" />
         <div className="atmospheric-noise" aria-hidden="true" />
 

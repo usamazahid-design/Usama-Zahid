@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import SimplePageHero from '@/components/SimplePageHero';
@@ -170,6 +171,48 @@ export default function PostPage({ params }: PostPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             <div className="lg:col-span-8 lg:max-w-3xl">
               <PostBody blocks={post.content} />
+
+              {/* Contextual Service Bridge Card */}
+              <div className="mt-16 p-8 border border-uz-graphite bg-uz-surface/50 rounded-none">
+                <span className="font-mono text-[10px] text-uz-indigo uppercase tracking-[0.2em] block mb-2">
+                  [ HOW_THIS_IS_SOLVED_IN_PRACTICE ]
+                </span>
+                <h4 className="font-display text-uz-white text-[20px] md:text-[24px] mb-3">
+                  Need this shipped for your product?
+                </h4>
+                <p className="text-uz-silver text-[14px] leading-relaxed mb-6">
+                  {post.service === 'identity' &&
+                    "Usama Zahid engineers complete brand identity systems, mathematical logo lockups, and design token libraries in 2–3 weeks, or as part of the 4-week Brand-to-URL sprint."}
+                  {post.service === 'product' &&
+                    "Usama Zahid audits product friction and architects user-centric SaaS UI/UX workflows and component libraries designed to eliminate onboarding churn."}
+                  {(post.service === 'engineering' || post.service === 'website') &&
+                    "Usama Zahid designs and builds production Next.js websites with 95+ Core Web Vitals, accessible semantics, and zero agency handoff gap."}
+                  {(post.service === 'strategy' || post.service === 'marketing') &&
+                    "Usama Zahid shapes category positioning, narrative architecture, and investor launch assets that tie brand strategy directly to the live product."}
+                </p>
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link
+                    href={
+                      post.service === 'identity'
+                        ? '/services/identity/'
+                        : post.service === 'product'
+                        ? '/services/product/'
+                        : post.service === 'engineering' || post.service === 'website'
+                        ? '/services/engineering/'
+                        : '/services/strategy/'
+                    }
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-uz-indigo text-uz-white font-mono text-[11px] tracking-wider uppercase hover:bg-uz-indigo/90 transition-colors"
+                  >
+                    View Matching Service Track →
+                  </Link>
+                  <Link
+                    href="/brand-to-url/"
+                    className="inline-flex items-center gap-2 px-4 py-2 border border-uz-graphite text-uz-white font-mono text-[11px] tracking-wider uppercase hover:border-uz-indigo transition-colors"
+                  >
+                    4-Week Brand-to-URL Sprint →
+                  </Link>
+                </div>
+              </div>
             </div>
             <div className="lg:col-span-4">
               <PostTOC items={toc} />

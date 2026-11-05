@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function HomePraiseExact() {
   return (
     <section className="tsx" id="praise">
@@ -12,8 +14,18 @@ export default function HomePraiseExact() {
         <div className="tv" aria-live="polite">
           <figure className="tsq on" data-index="0">
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
-              <span className="lab">Brand assets · CodeStreaks</span>
-              <span className="lab">Verified founder review</span>
+              <Link href="/branding/codestreaks/" className="lab" style={{ textDecoration: 'underline' }}>
+                Brand assets · CodeStreaks ↗
+              </Link>
+              <a
+                href="https://codestreaks.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lab"
+                style={{ color: 'var(--ind)', textDecoration: 'underline' }}
+              >
+                Verified founder review ↗
+              </a>
             </div>
             <blockquote className="tsq-text">
               <span aria-hidden="true" style={{ fontSize: 'clamp(32px,4vw,52px)', lineHeight: 1, color: 'var(--ind)', display: 'block', marginBottom: 10 }}>“</span>
@@ -30,8 +42,18 @@ export default function HomePraiseExact() {
 
           <figure className="tsq" data-index="1">
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
-              <span className="lab">Brand identity & platform · Begum</span>
-              <span className="lab">Verified founder review</span>
+              <Link href="/portfolio/begum-bridal-couture-website/" className="lab" style={{ textDecoration: 'underline' }}>
+                Brand identity & platform · Begum ↗
+              </Link>
+              <a
+                href="https://begumretails.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lab"
+                style={{ color: 'var(--ind)', textDecoration: 'underline' }}
+              >
+                Verified founder review ↗
+              </a>
             </div>
             <blockquote className="tsq-text">
               <span aria-hidden="true" style={{ fontSize: 'clamp(32px,4vw,52px)', lineHeight: 1, color: 'var(--ind)', display: 'block', marginBottom: 10 }}>“</span>
@@ -49,7 +71,7 @@ export default function HomePraiseExact() {
           <figure className="tsq" data-index="2">
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
               <span className="lab">Clean, modern design · Code Cross</span>
-              <span className="lab">Verified client review</span>
+              <span className="lab" style={{ color: 'var(--ind)' }}>Verified client review</span>
             </div>
             <blockquote className="tsq-text">
               <span aria-hidden="true" style={{ fontSize: 'clamp(32px,4vw,52px)', lineHeight: 1, color: 'var(--ind)', display: 'block', marginBottom: 10 }}>“</span>
@@ -65,7 +87,7 @@ export default function HomePraiseExact() {
           <figure className="tsq" data-index="3">
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
               <span className="lab">UI/UX · Vieapps</span>
-              <span className="lab">Verified client review</span>
+              <span className="lab" style={{ color: 'var(--ind)' }}>Verified client review</span>
             </div>
             <blockquote className="tsq-text">
               <span aria-hidden="true" style={{ fontSize: 'clamp(32px,4vw,52px)', lineHeight: 1, color: 'var(--ind)', display: 'block', marginBottom: 10 }}>“</span>
@@ -81,8 +103,18 @@ export default function HomePraiseExact() {
 
           <figure className="tsq" data-index="4">
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
-              <span className="lab">Graphic & UI/UX · The Laila Majnu</span>
-              <span className="lab">Verified founder review</span>
+              <Link href="/portfolio/the-laila-majnu-gifting/" className="lab" style={{ textDecoration: 'underline' }}>
+                Graphic & UI/UX · The Laila Majnu ↗
+              </Link>
+              <a
+                href="https://thelailamajnu.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lab"
+                style={{ color: 'var(--ind)', textDecoration: 'underline' }}
+              >
+                Verified founder review ↗
+              </a>
             </div>
             <blockquote className="tsq-text">
               <span aria-hidden="true" style={{ fontSize: 'clamp(32px,4vw,52px)', lineHeight: 1, color: 'var(--ind)', display: 'block', marginBottom: 10 }}>“</span>

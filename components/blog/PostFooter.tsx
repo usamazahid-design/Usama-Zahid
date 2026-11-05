@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -78,11 +78,11 @@ export default function PostFooter({ post }: PostFooterProps) {
               </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-5 font-mono text-[10px] text-uz-slate tracking-[0.2em] uppercase">
-                <Link href="/cv" className="hover:text-uz-indigo transition-colors border-b border-uz-graphite hover:border-uz-indigo">
-                  FULL_RECORD →
+                <Link href="/services" className="hover:text-uz-indigo transition-colors border-b border-uz-graphite hover:border-uz-indigo">
+                  EXPLORE_SERVICES →
                 </Link>
-                <Link href="/card" className="hover:text-uz-indigo transition-colors border-b border-uz-graphite hover:border-uz-indigo">
-                  VISITING_CARD →
+                <Link href="/brand-to-url" className="hover:text-uz-indigo transition-colors border-b border-uz-graphite hover:border-uz-indigo">
+                  BRAND_TO_URL_SPRINT →
                 </Link>
               </div>
             </div>

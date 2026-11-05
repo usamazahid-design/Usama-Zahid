@@ -16,6 +16,10 @@ const webEngineeringFaqs = [
     a: 'A live, production-ready website: the site map and copy direction, responsive design, a component kit and flows, the built site, and testing and launch.',
   },
   {
+    q: 'How much does web engineering cost?',
+    a: 'Production Next.js website design and engineering starts at $14,000–$22,000 (2–3 weeks) with 95+ Core Web Vitals, headless CMS, and schema-ready semantics. Also available in the 4-week Brand-to-URL sprint for $24,000.',
+  },
+  {
     q: 'Do you design and build it?',
     a: 'Yes. The website is designed and built by the same person, so what ships matches what was designed and nothing is lost in a handoff.',
   },
@@ -44,11 +48,15 @@ export default function WebEngineeringPageExact() {
       />
       <JsonLd
         data={ServiceSchema({
-          name: 'Production-Ready Website Design & Next.js Development',
+          name: 'Startup Website Design & Production Next.js Builds',
           description:
-            'Responsive website design, component kits, and Next.js engineering built from your brand identity by Usama Zahid, Brand & Product Designer.',
+            'Designed in Figma and engineered in Next.js, TypeScript, and Tailwind CSS by the same designer. 95+ Core Web Vitals, zero handoff loss.',
           url: 'https://usamazahid.design/services/engineering/',
-          provider: 'Usama Zahid',
+          provider: 'Usama Zahid — Brand-to-URL Studio',
+          offers: {
+            price: '14000',
+            priceCurrency: 'USD',
+          },
         })}
       />
       <JsonLd
