@@ -7,7 +7,7 @@ import { getFeaturedPost, getNonFeaturedPosts } from '@/lib/blog-utils';
 import { JsonLd, BreadcrumbSchema, WebPageSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Brand & Product Design Blog — Essays & Field Notes',
+  title: 'Brand & Product Design Blog: Essays & Field Notes',
   description:
     'Essays on brand identity, product UX design, Brand-to-URL systems, and the craft of shipping. Field notes from Usama Zahid, Brand & Product Designer.',
   openGraph: {

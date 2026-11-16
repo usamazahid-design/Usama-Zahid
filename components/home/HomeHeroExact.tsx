@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { sx } from './sx';
 
 export interface BrandLogoItem {
@@ -161,7 +162,11 @@ function renderBrandLogo(brand: BrandLogoItem) {
 export default function HomeHeroExact() {
   return (
     <section className="hero pad" style={{ paddingTop: '110px' }}>
-      <div className="fo"><span>Usama Zahid · Brand &amp; Product Designer</span><span>Brand to Live URL in 4 Weeks</span><span>usamazahid.design</span></div>
+      <div className="fo">
+        <span>Usama Zahid · Brand &amp; Product Designer</span>
+        <span className="hero-avail"><i className="hero-avail-dot" aria-hidden={true} />Open to Product Design roles &amp; select client builds</span>
+        <span>usamazahid.design</span>
+      </div>
       <div className="hg">
         <div className="ht">
           <h1>
@@ -169,20 +174,28 @@ export default function HomeHeroExact() {
               <span style={sx({ '--d': '.05s' })}>Brand &amp; Product</span>
             </span>
             <span className="ln">
-              <span style={sx({ '--d': '.15s' })}>Systems</span>
+              <span style={sx({ '--d': '.15s' })}>Designer</span>
             </span>
             <span className="ln it2">
-              <span style={sx({ '--d': '.25s' })}>for Modern Startups.</span>
+              <span style={sx({ '--d': '.25s' })}>who ships code.</span>
             </span>
           </h1>
-          <p className="sub"><b>Usama Zahid is an independent Brand &amp; User-Centric Product Designer.</b> Brand strategy, visual identity systems, user-centric product UI/UX, and production Next.js code delivered as one continuous sequence with zero handoff gap.</p>
-          <Link className="btn" href="/contact/" data-cur="Contact">Start your four-week build <span aria-hidden={true}>→</span></Link>
-          <p className="rw">Recent work: Petrozen ERP, Stealth Humanizer, CodeStreaks, Begum, and The Laila Majnu.</p>
+          <p className="sub"><b>I’m Usama Zahid.</b> I design brand systems, product UX, and production Next.js interfaces, with zero handoff gap.</p>
+          <div className="hero-actions">
+            <Link className="btn" href="/contact/" data-cur="Contact">Get in touch <span aria-hidden={true}>→</span></Link>
+            <a className="btn btn-ghost" href="#work" data-cur="Work">Explore selected work <span aria-hidden={true}>↓</span></a>
+          </div>
         </div>
         <div className="hl in" style={sx({ '--fx': '0px', '--fy': '60px', '--d': '.3s' })}>
           <div className="stg" id="stg" data-scene="logo">
-            <div className="stg-t"><button className="tb on" type="button" data-s="logo">Logo</button><button className="tb" type="button" data-s="app">App</button><button className="tb" type="button" data-s="web">Website</button><span className="stg-p" id="stp">Grid</span></div>
-            <svg viewBox="0 0 400 420" role="img" aria-label="Animation of a logo being constructed from a grid, then an app screen and a website being designed from wireframe to interface">
+            <div className="stg-t">
+              <button className="tb on" type="button" data-s="logo">Logo</button>
+              <button className="tb" type="button" data-s="app">App</button>
+              <button className="tb" type="button" data-s="web">Website</button>
+              <button className="tb" type="button" data-s="live">Live UI</button>
+              <span className="stg-p" id="stp">Grid</span>
+            </div>
+            <svg className="stg-svg" viewBox="0 0 400 420" role="img" aria-label="Animation of a logo being constructed from a grid, then an app screen and a website being designed from wireframe to interface">
               <g className="sc sc-logo">
                 <g className="gl"><line style={sx({ '--i': '0' })} x1="86.9" y1="30" x2="86.9" y2="410" pathLength="1" /><line style={sx({ '--i': '1' })} x1="103" y1="30" x2="103" y2="410" pathLength="1" /><line style={sx({ '--i': '2' })} x1="313" y1="30" x2="313" y2="410" pathLength="1" /><line style={sx({ '--i': '3' })} x1="0" y1="52" x2="400" y2="52" pathLength="1" /><line style={sx({ '--i': '4' })} x1="0" y1="94.3" x2="400" y2="94.3" pathLength="1" /><line style={sx({ '--i': '5' })} x1="0" y1="304.3" x2="400" y2="304.3" pathLength="1" /><line style={sx({ '--i': '6' })} x1="0" y1="391" x2="400" y2="391" pathLength="1" /><circle className="arc" cx="103" cy="94.3" r="296.9" pathLength="1" /></g>
                 <g transform="translate(0,52) scale(.0926) translate(0,-328)"><rect className="pc pA" pathLength="1" x="0" y="328" width="938" height="2724" /><path className="pc pB" pathLength="1" d="M3380 328H4318V784.5A3206 3206 0 0 1 3380 3052Z" /><path className="pc pC" pathLength="1" d="M939 3052H3380A3206 3206 0 0 1 1112 3990H939Z" /><rect className="pc pD" pathLength="1" x="3380" y="3052" width="938" height="938" /></g>
@@ -195,6 +208,54 @@ export default function HomeHeroExact() {
               </g>
               <g className="sc sc-web"><rect className="ph" pathLength="1" x="30" y="34" width="340" height="348" rx="6" /><rect className="wf" style={sx({ '--i': '0', fill: 'var(--ink)' })} pathLength="1" x="42" y="45" width="7" height="7" /><rect className="wf" style={sx({ '--i': '1', fill: 'var(--ink)' })} pathLength="1" x="54" y="45" width="7" height="7" /><rect className="wf" style={sx({ '--i': '2', fill: '#4B3FFF' })} pathLength="1" x="66" y="45" width="7" height="7" /><rect className="wf" style={sx({ '--i': '3', fill: 'var(--mute)' })} pathLength="1" x="86" y="43" width="198" height="14" rx="7" /><rect className="wf" style={sx({ '--i': '4', fill: 'var(--ink)' })} pathLength="1" x="46" y="76" width="14" height="14" /><rect className="wf" style={sx({ '--i': '5', fill: '#4B3FFF' })} pathLength="1" x="60" y="90" width="8" height="8" /><rect className="wf" style={sx({ '--i': '6', fill: 'var(--mute)' })} pathLength="1" x="250" y="80" width="28" height="6" rx="3" /><rect className="wf" style={sx({ '--i': '7', fill: 'var(--mute)' })} pathLength="1" x="286" y="80" width="28" height="6" rx="3" /><rect className="wf" style={sx({ '--i': '8', fill: 'var(--mute)' })} pathLength="1" x="322" y="80" width="28" height="6" rx="3" /><rect className="wf" style={sx({ '--i': '9', fill: 'var(--ink)' })} pathLength="1" x="46" y="118" width="150" height="16" rx="2" /><rect className="wf" style={sx({ '--i': '10', fill: 'var(--ink)' })} pathLength="1" x="46" y="142" width="120" height="16" rx="2" /><rect className="wf" style={sx({ '--i': '11', fill: 'var(--ink)' })} pathLength="1" x="46" y="166" width="80" height="16" rx="2" /><rect className="wf" style={sx({ '--i': '12', fill: 'var(--mute)' })} pathLength="1" x="46" y="196" width="140" height="6" rx="3" /><rect className="wf" style={sx({ '--i': '13', fill: 'var(--mute)' })} pathLength="1" x="46" y="208" width="110" height="6" rx="3" /><rect className="wf bt" style={sx({ '--i': '14', fill: '#4B3FFF' })} pathLength="1" x="46" y="228" width="96" height="30" rx="0" /><rect className="wf" style={sx({ '--i': '15', fill: '#fff' })} pathLength="1" x="62" y="240" width="50" height="6" rx="3" /><path className="wf" style={sx({ '--i': '16', fill: 'var(--ink)' })} pathLength="1" d="M212 258V108A150 150 0 0 1 362 258Z" /><rect className="wf" style={sx({ '--i': '17', fill: '#4B3FFF' })} pathLength="1" x="320" y="218" width="42" height="40" /><rect className="wf" style={sx({ '--i': '18', fill: 'var(--ink)' })} pathLength="1" x="46" y="292" width="96" height="70" rx="4" /><rect className="wf" style={sx({ '--i': '19', fill: '#4B3FFF' })} pathLength="1" x="152" y="292" width="96" height="70" rx="4" /><rect className="wf" style={sx({ '--i': '20', fill: 'var(--ink)' })} pathLength="1" x="258" y="292" width="96" height="70" rx="4" /><g className="ptr ptr2"><path d="M0 0L0 18L5 14L9 22L12 20L8 13L15 13Z" style={sx({ fill: 'var(--ink)', stroke: 'var(--bg)' })} strokeWidth="1.2" /></g></g>
             </svg>
+            <div className="stg-live-reel">
+              <div className="stg-live-browser">
+                <span className="stg-live-dot" aria-hidden="true" />
+                <a
+                  href="https://www.begumretails.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="stg-live-url"
+                >
+                  https://www.begumretails.com/ ↗
+                </a>
+              </div>
+              <a
+                href="https://www.begumretails.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="stg-live-img"
+                data-cur="Live"
+              >
+                <Image
+                  src="/images/portfolio/Begum/hero-begum.webp"
+                  alt="Begum Retails live website"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 40vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </a>
+              <div className="stg-live-meta">
+                <div>
+                  <span className="lab">Live Website · Brand-to-URL</span>
+                  <strong>Begum Retails · 6 → 3 step booking</strong>
+                </div>
+                <div className="stg-live-actions">
+                  <a
+                    href="https://www.begumretails.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="stg-live-go"
+                    data-cur="Live"
+                  >
+                    Visit live ↗
+                  </a>
+                  <Link href="/portfolio/begum-bridal-couture-website/" className="stg-live-case" data-cur="Case">
+                    Case study →
+                  </Link>
+                </div>
+              </div>
+            </div>
             <div className="stg-b"><span id="stc">Fig. A. Logo construction</span><i className="bar" id="bar"></i></div>
           </div>
         </div>

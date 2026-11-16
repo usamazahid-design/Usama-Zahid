@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { BrandingCase } from '@/lib/branding-data';
 import { formatBrandingCategory } from '@/lib/branding-utils';
@@ -67,9 +67,101 @@ function SectionHead({ title, lab }: { title: string; lab: string }) {
 
 const PLATE = ['ivo', 'cr', 'ink', 'ind'] as const;
 
+type BrandFigure = {
+  src: string;
+  alt: string;
+  title: string;
+  caption?: string;
+};
+
+type LightboxState = {
+  figures: BrandFigure[];
+  index: number;
+} | null;
+
+function BrandLightbox({
+  state,
+  onChangeIndex,
+  onClose,
+}: {
+  state: LightboxState;
+  onChangeIndex: (index: number) => void;
+  onClose: () => void;
+}) {
+  const total = state?.figures.length ?? 0;
+  const current = state ? state.figures[state.index] : null;
+
+  useEffect(() => {
+    if (!state) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight' && total > 1) onChangeIndex((state.index + 1) % total);
+      if (e.key === 'ArrowLeft' && total > 1) onChangeIndex((state.index - 1 + total) % total);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [state, total, onChangeIndex, onClose]);
+
+  if (!state || !current) return null;
+  return (
+    <div
+      className="uz-lightbox-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label={current.title}
+      onClick={onClose}
+    >
+      <div className="uz-lightbox-panel" onClick={(e) => e.stopPropagation()}>
+        <div className="uz-lightbox-bar">
+          <div>
+            <span className="lab">
+              Plate {String(state.index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+            </span>
+            <strong>{current.title}</strong>
+          </div>
+          <div className="uz-lightbox-actions">
+            {total > 1 ? (
+              <>
+                <button
+                  type="button"
+                  className="uz-lightbox-nav"
+                  onClick={() => onChangeIndex((state.index - 1 + total) % total)}
+                  aria-label="Previous plate"
+                >
+                  ← Prev
+                </button>
+                <button
+                  type="button"
+                  className="uz-lightbox-nav"
+                  onClick={() => onChangeIndex((state.index + 1) % total)}
+                  aria-label="Next plate"
+                >
+                  Next →
+                </button>
+              </>
+            ) : null}
+            <button type="button" className="uz-lightbox-close" onClick={onClose} aria-label="Close preview">
+              ESC · Close ×
+            </button>
+          </div>
+        </div>
+        <div className="uz-lightbox-img-wrap">
+          <img src={current.src} alt={current.alt} />
+        </div>
+        {current.caption ? <p className="uz-lightbox-cap">{current.caption}</p> : null}
+      </div>
+    </div>
+  );
+}
+
 export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExactProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const appsRef = useRef<HTMLElement>(null);
+  const [lightbox, setLightbox] = useState<LightboxState>(null);
+  const [copiedHex, setCopiedHex] = useState<string | null>(null);
+  const [lockSurface, setLockSurface] = useState<'default' | 'light' | 'dark' | 'accent'>('default');
+  const [showGrid, setShowGrid] = useState(false);
+  const [liveType, setLiveType] = useState('');
   const name = shortTitle(project.title);
   const contextParts = project.context.split('\n\n').filter(Boolean);
   const lockups = project.visualSystem.lockups.filter((l) => l.src);
@@ -133,6 +225,13 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
         if (top <= y) current = section.id;
       }
       setActive(current);
+
+      const bar = document.getElementById('uz-brand-progress');
+      if (bar) {
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+        bar.style.transform = `scaleX(${pct.toFixed(4)})`;
+      }
     };
 
     const onClick = (e: MouseEvent) => {
@@ -230,12 +329,80 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
   const heroLines = nameLines(name);
   const accent = project.accentColor || 'var(--ind)';
 
+  const gallery = useMemo<BrandFigure[]>(() => {
+    const items: BrandFigure[] = [
+      { src: project.heroImage.src, alt: project.heroImage.alt, title: name, caption: punch },
+    ];
+    if (project.strategyBlock?.image) {
+      items.push({
+        src: project.strategyBlock.image.src,
+        alt: project.strategyBlock.image.alt,
+        title: project.strategyBlock.heading || 'Brand Strategy',
+        caption: project.strategyBlock.image.alt,
+      });
+    }
+    if (logoFigure) {
+      items.push({
+        src: logoFigure.image.src,
+        alt: logoFigure.image.alt,
+        title: logoFigure.label || 'Primary mark',
+        caption: logoFigure.caption,
+      });
+    }
+    if (colourFigure) {
+      items.push({
+        src: colourFigure.image.src,
+        alt: colourFigure.image.alt,
+        title: colourFigure.label || 'Colour system',
+        caption: colourFigure.caption,
+      });
+    }
+    if (patternFigure) {
+      items.push({
+        src: patternFigure.image.src,
+        alt: patternFigure.image.alt,
+        title: patternFigure.label || 'Pattern system',
+        caption: patternFigure.description,
+      });
+    }
+    project.brandInUse.forEach((f) => {
+      items.push({
+        src: f.image.src,
+        alt: f.image.alt,
+        title: f.caption,
+        caption: f.description,
+      });
+    });
+    return items;
+  }, [project, name, punch, logoFigure, colourFigure, patternFigure]);
+
+  const openInspect = (figure: BrandFigure) => {
+    const idx = gallery.findIndex((g) => g.src === figure.src);
+    setLightbox({
+      figures: idx >= 0 ? gallery : [figure],
+      index: idx >= 0 ? idx : 0,
+    });
+  };
+
+  const copySwatch = (hex: string) => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      void navigator.clipboard.writeText(hex).catch(() => undefined);
+    }
+    setCopiedHex(hex);
+    window.setTimeout(() => {
+      setCopiedHex((prev) => (prev === hex ? null : prev));
+    }, 1500);
+  };
+
   return (
     <div
       ref={rootRef}
       className="brand-case work-case"
       style={{ ['--case-accent' as string]: accent }}
     >
+      <div className="uz-scroll-progress" aria-hidden="true">
+        <span id="uz-brand-progress" />
+      </div>
       <section className="hero pad brand-case-hero work-case-hero" id="top">
         <div className="fo">
           <span>
@@ -250,22 +417,16 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
         </div>
 
         <div className="work-hero-top">
-          <h1>
-            {heroLines.map((line, i) => (
-              <span key={line} className="ln">
-                <span style={{ '--d': `${0.05 + i * 0.1}s` } as React.CSSProperties}>{line}</span>
-              </span>
-            ))}
-            <span className="ln it2">
-              <span
-                style={
-                  { '--d': `${0.05 + heroLines.length * 0.1 + 0.05}s` } as React.CSSProperties
-                }
-              >
-                {punch}
-              </span>
-            </span>
-          </h1>
+          <div className="work-hero-lead">
+            <h1>
+              {heroLines.map((line, i) => (
+                <span key={line} className="ln">
+                  <span style={{ '--d': `${0.05 + i * 0.1}s` } as React.CSSProperties}>{line}</span>
+                </span>
+              ))}
+            </h1>
+            <p className="work-hero-punch">{punch}</p>
+          </div>
           <div className="work-hero-side">
             <p className="sub">
               <b>
@@ -292,7 +453,19 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
           </div>
         </div>
 
-        <div className="stage work-hero-stage" style={{ background: accent }}>
+        <div
+          className="stage work-hero-stage is-zoomable"
+          style={{ background: accent }}
+          onClick={() =>
+            openInspect({
+              src: project.heroImage.src,
+              alt: project.heroImage.alt,
+              title: name,
+              caption: punch,
+            })
+          }
+          data-cur="Zoom"
+        >
           <div className="full">
             <img src={project.heroImage.src} alt={project.heroImage.alt} />
           </div>
@@ -334,31 +507,29 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
         <div className="ovw">
           <h2>{firstSentence(project.overview)}</h2>
           <dl className="info2">
-            <dt>Role</dt>
-            <dd>{project.role}</dd>
-            <dt>Platform</dt>
-            <dd>{project.platform}</dd>
             <dt>Team</dt>
             <dd>{project.team}</dd>
             <dt>Tools</dt>
             <dd>{project.tools.slice(0, 4).join(', ')}</dd>
-            <dt>Year</dt>
-            <dd>{project.year}</dd>
+            <dt>Deliverables</dt>
+            <dd>{project.tags.slice(0, 3).join(', ') || 'Brand identity system'}</dd>
+            <dt>Focus</dt>
+            <dd>{project.platform}</dd>
           </dl>
         </div>
         <div className="pc3">
           <div>
             <span className="lab">The challenge</span>
             <h3>{briefHead(contextParts[0] || project.descriptor, 5)}</h3>
-            <p>{firstSentence(contextParts[0] || project.descriptor)}</p>
+            <p>{contextParts[0] || project.descriptor}</p>
           </div>
           <div>
             <span className="lab">The idea</span>
             <h3>{briefHead(project.strategyBlock?.heading || 'One idea, held hard', 6)}</h3>
             <p>
-              {project.strategyBlock?.body
-                ? firstSentence(project.strategyBlock.body)
-                : firstSentence(project.brandGoals[0]?.text || 'A system the team can run.')}
+              {project.strategyBlock?.body ||
+                project.brandGoals[0]?.text ||
+                'A system the team can run.'}
             </p>
           </div>
           <div>
@@ -408,9 +579,8 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
           <div className="work-insight-list" style={{ marginTop: 'clamp(36px,5vw,64px)' }}>
             {project.keyInsights.slice(0, 4).map((item, i) => (
               <article key={item.num} className="work-insight">
-                <span className="lab">{String(i + 1).padStart(2, '0')}</span>
-                <h3>{briefHead(item.text, 6)}</h3>
-                <p>{firstSentence(item.text)}</p>
+                <span className="lab">Insight {String(i + 1).padStart(2, '0')}</span>
+                <p>{item.text}</p>
               </article>
             ))}
           </div>
@@ -425,7 +595,18 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
         </p>
         {logoFigure ? (
           <figure className="work-plate">
-            <div className="bd ivo">
+            <div
+              className="bd ivo is-zoomable"
+              onClick={() =>
+                openInspect({
+                  src: logoFigure.image.src,
+                  alt: logoFigure.image.alt,
+                  title: logoFigure.label || 'Primary mark',
+                  caption: logoFigure.caption,
+                })
+              }
+              data-cur="Zoom"
+            >
               <img src={logoFigure.image.src} alt={logoFigure.image.alt} loading="lazy" />
             </div>
             <figcaption className="cap3">
@@ -473,21 +654,51 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
           </div>
         ) : null}
         {lockups.length > 0 ? (
-          <div className="lock-grid">
-            {lockups.map((lockup) => {
-              const onDark = (lockup.surface ?? 'light') === 'dark';
-              return (
-                <figure key={lockup.name}>
-                  <div className={`lock-plate${onDark ? ' is-dark' : ''}`}>
-                    <img src={lockup.src} alt={lockup.alt || lockup.name} loading="lazy" />
-                  </div>
-                  <figcaption>
-                    <b>{lockup.name}</b>
-                    {lockup.usage}
-                  </figcaption>
-                </figure>
-              );
-            })}
+          <div className="brand-lockup-wrap">
+            <div className="brand-lockup-toolbar" role="group" aria-label="Logo surface and grid tester">
+              <div className="brand-tool-pills">
+                <span className="lab">Surface</span>
+                {(['default', 'light', 'dark', 'accent'] as const).map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    className={`brand-tool-btn${lockSurface === s ? ' is-on' : ''}`}
+                    onClick={() => setLockSurface(s)}
+                  >
+                    {s === 'default' ? 'Auto' : s === 'light' ? 'Light' : s === 'dark' ? 'Dark' : 'Brand'}
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                className={`brand-tool-btn${showGrid ? ' is-on' : ''}`}
+                onClick={() => setShowGrid((g) => !g)}
+              >
+                {showGrid ? '✓ Clearspace Grid' : 'Show Grid'}
+              </button>
+            </div>
+            <div className={`lock-grid${showGrid ? ' has-grid' : ''}`}>
+              {lockups.map((lockup) => {
+                const onDark =
+                  lockSurface === 'dark' ||
+                  (lockSurface === 'default' && (lockup.surface ?? 'light') === 'dark');
+                const onAccent = lockSurface === 'accent';
+                return (
+                  <figure key={lockup.name}>
+                    <div
+                      className={`lock-plate${onDark ? ' is-dark' : ''}${onAccent ? ' is-accent' : ''}`}
+                      style={onAccent ? { background: accent } : undefined}
+                    >
+                      <img src={lockup.src} alt={lockup.alt || lockup.name} loading="lazy" />
+                    </div>
+                    <figcaption>
+                      <b>{lockup.name}</b>
+                      {lockup.usage}
+                    </figcaption>
+                  </figure>
+                );
+              })}
+            </div>
           </div>
         ) : null}
         {project.brandGoals.length > 0 ? (
@@ -509,7 +720,18 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
         <p className="dh2">A palette with reserved power.</p>
         {colourFigure ? (
           <figure className="work-plate">
-            <div className="bd cr">
+            <div
+              className="bd cr is-zoomable"
+              onClick={() =>
+                openInspect({
+                  src: colourFigure.image.src,
+                  alt: colourFigure.image.alt,
+                  title: colourFigure.label || 'Colour system',
+                  caption: colourFigure.caption,
+                })
+              }
+              data-cur="Zoom"
+            >
               <img src={colourFigure.image.src} alt={colourFigure.image.alt} loading="lazy" />
             </div>
             <figcaption className="cap3">
@@ -519,19 +741,46 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
           </figure>
         ) : null}
         <div className="swatch-grid">
-          {project.visualSystem.palette.map((swatch) => (
-            <div key={swatch.hex} className="swatch">
-              <i style={{ background: swatch.hex }} />
-              <b>{swatch.name}</b>
-              <code>{swatch.hex}</code>
-              <span>{swatch.usage}</span>
-            </div>
-          ))}
+          {project.visualSystem.palette.map((swatch) => {
+            const isCopied = copiedHex === swatch.hex;
+            return (
+              <button
+                key={swatch.hex}
+                type="button"
+                className={`swatch swatch-btn${isCopied ? ' is-copied' : ''}`}
+                onClick={() => copySwatch(swatch.hex)}
+                title={`Copy ${swatch.hex}`}
+              >
+                <i style={{ background: swatch.hex }} />
+                <b>{swatch.name}</b>
+                <code>{isCopied ? 'COPIED ✓' : swatch.hex}</code>
+                <span>{swatch.usage}</span>
+              </button>
+            );
+          })}
         </div>
 
         <div style={{ marginTop: 'clamp(48px, 7vw, 88px)' }}>
           <SectionHead title="Typography" lab="How the voice is set" />
           <p className="dh2">Type that holds at every size.</p>
+          <div className="brand-type-tester">
+            <label htmlFor="uz-live-type" className="lab">
+              Live Type Tester
+            </label>
+            <input
+              id="uz-live-type"
+              type="text"
+              value={liveType}
+              onChange={(e) => setLiveType(e.target.value)}
+              placeholder={`Type anything to test ${name}’s typography...`}
+              className="brand-type-input"
+            />
+            {liveType ? (
+              <button type="button" className="brand-tool-btn" onClick={() => setLiveType('')}>
+                Reset
+              </button>
+            ) : null}
+          </div>
           <div className="type-board">
             {project.visualSystem.typography.map((spec) => {
               const stack =
@@ -543,7 +792,7 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
                     <span className="lab">{spec.role}</span>
                     <code>{spec.family}</code>
                   </div>
-                  <p className="type-sample">{spec.sample}</p>
+                  <p className="type-sample">{liveType.trim() || spec.sample}</p>
                   <p className="type-usage">{spec.usage}</p>
                 </article>
               );
@@ -578,8 +827,17 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
             return (
               <article key={figure.id} className="apps-card">
                 <div
-                  className={`bd apps-plate ${tone}`}
+                  className={`bd apps-plate ${tone} is-zoomable`}
                   style={tone === 'ind' ? { background: accent } : undefined}
+                  onClick={() =>
+                    openInspect({
+                      src: figure.image.src,
+                      alt: figure.image.alt,
+                      title: figure.caption,
+                      caption: figure.description,
+                    })
+                  }
+                  data-cur="Zoom"
                 >
                   <img src={figure.image.src} alt={figure.image.alt} loading="lazy" />
                 </div>
@@ -646,6 +904,29 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
         </div>
       </section>
 
+      <section className="pad work-cta-band" aria-label="Work with Usama Zahid">
+        <div className="work-cta-inner">
+          <div>
+            <span className="lab">Open to roles &amp; select brand builds</span>
+            <h3>Need a cohesive brand identity system or a senior designer on your team?</h3>
+          </div>
+          <div className="work-cta-actions">
+            <a
+              className="btn"
+              href="https://cal.com/usama-zahid-haadwj/secret"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cur="Calendar"
+            >
+              Book a 15-min call <span aria-hidden="true">&rarr;</span>
+            </a>
+            <Link className="btn btn-ghost" href="/cv/" data-cur="CV">
+              View CV &amp; resume <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="pad work-sec" id="next">
         <SectionHead
           title="Next project"
@@ -679,6 +960,11 @@ export default function BrandingCaseExact({ project, nextCase }: BrandingCaseExa
           </Link>
         )}
       </section>
+      <BrandLightbox
+        state={lightbox}
+        onChangeIndex={(index) => setLightbox((prev) => (prev ? { ...prev, index } : null))}
+        onClose={() => setLightbox(null)}
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Deferred home interactions — loaded after idle so parse/exec
  * does not contribute to Total Blocking Time on first load.
  */
@@ -41,15 +41,6 @@ if (lit) {
   }
   lw = Array.from(lit.querySelectorAll<HTMLElement>('.w'));
 }
-
-const onMouseMove = (e: MouseEvent) => {
-  tx = (e.clientX / innerWidth) * 2 - 1;
-  ty = (e.clientY / innerHeight) * 2 - 1;
-  px = e.clientX;
-  py = e.clientY;
-  scheduleFrame();
-};
-window.addEventListener('mousemove', onMouseMove, { passive: true });
 
 let rafId: number | null = null;
 let frameRunning = false;
@@ -100,15 +91,6 @@ function tick() {
   }
 
   if (!reduce && workActive) {
-    mvs.forEach((g) => {
-      const k = +(g.dataset.k || 0);
-      g.style.transform =
-        'translate(' +
-        (mx * k + Math.min(sy, vh) * 0.012 * k).toFixed(1) +
-        'px,' +
-        (my * k - Math.min(sy, vh) * 0.012 * Math.abs(k) * 0.4).toFixed(1) +
-        'px)';
-    });
     panels.forEach((p, i) => {
       const rr = Math.max(-600, Math.min(600, p.getBoundingClientRect().top - (tops[i] || 0)));
       p.style.setProperty('--py', (-rr * 0.08).toFixed(1));
@@ -172,43 +154,6 @@ const sectionIO = new IntersectionObserver(
 if (workSec) sectionIO.observe(workSec);
 if (processSec) sectionIO.observe(processSec);
 if (litSec) sectionIO.observe(litSec);
-
-const mg = Array.from(
-  d.querySelectorAll<HTMLElement>(
-    '.btn, a.mail, .see-all-link, .faq-mail-link, .cta-btn-primary, .cta-btn-secondary, .work-btn, .svc-all-btn, .tbs button, .t-pill, .tb'
-  )
-);
-let magRaf = 0;
-const onMagneticMove = (e: MouseEvent) => {
-  if (reduce) return;
-  px = e.clientX;
-  py = e.clientY;
-  if (magRaf) return;
-  magRaf = requestAnimationFrame(() => {
-    magRaf = 0;
-    mg.forEach((el) => {
-      const r = el.getBoundingClientRect();
-      const dx = px - (r.left + r.width / 2);
-      const dy = py - (r.top + r.height / 2);
-      el.style.transform =
-        Math.hypot(dx, dy) < r.width / 2 + 90
-          ? 'translate(' + (dx * 0.12).toFixed(1) + 'px,' + (dy * 0.25).toFixed(1) + 'px)'
-          : '';
-    });
-  });
-};
-// Defer magnetic hover work â€” not needed for LCP/TBT on load
-let magIdle = 0;
-let magIdleIsRic = false;
-const attachMagnetic = () => {
-  window.addEventListener('mousemove', onMagneticMove, { passive: true });
-};
-if (typeof window.requestIdleCallback === 'function') {
-  magIdleIsRic = true;
-  magIdle = window.requestIdleCallback(attachMagnetic, { timeout: 2000 });
-} else {
-  magIdle = setTimeout(attachMagnetic, 1200) as unknown as number;
-}
 
 scheduleFrame();
 
@@ -534,19 +479,9 @@ counters.forEach((el) => {
     html.classList.remove('js');
 
     if (rafId) cancelAnimationFrame(rafId);
-    if (magRaf) cancelAnimationFrame(magRaf);
     clearInterval(quoteInterval);
-    if (magIdle) {
-      if (magIdleIsRic && typeof window.cancelIdleCallback === 'function') {
-        window.cancelIdleCallback(magIdle);
-      } else {
-        clearTimeout(magIdle);
-      }
-    }
 
     window.removeEventListener('resize', meas);
-    window.removeEventListener('mousemove', onMouseMove);
-    window.removeEventListener('mousemove', onMagneticMove);
     window.removeEventListener('scroll', onScroll);
     window.removeEventListener('keydown', onKeydown);
     sectionIO.disconnect();

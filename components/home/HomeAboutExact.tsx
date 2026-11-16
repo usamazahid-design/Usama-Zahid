@@ -19,9 +19,9 @@ export default function HomeAboutExact() {
             <Link className="fn-link" href="/about/" data-cur="Story">Explore full story & daily rhythm <span aria-hidden={true}>→</span></Link>
           </aside>
           <div className="body">
-          <p>I failed a physics exam. Then I passed by drawing the system first. That habit never left: before I design a logo or a layout, I draw the system the business actually runs on.</p>
-          <p>Most founders share one problem: the brand was made by one agency and the product or website by another, and customers feel the gap between them. As a solo Brand &amp; Product Designer, I deliver the identity and a production-ready Next.js website together, as one system and one invoice, with no handoff between the two.</p>
-          <p>I treat design as business infrastructure. The work I value most removes friction nobody reported: six booking steps cut to three, ledger work that no longer lives in spreadsheets, brands that read as systems.</p>
+          <p>I failed a physics exam, then passed by drawing the system first. That habit stuck: before I draw a logo or interface, I map the system the business actually runs on.</p>
+          <p>Most teams split brand and product across separate people, leaving a gap customers feel. I design the identity, architect the product UX, and write the production Next.js code so nothing gets lost in handoff.</p>
+          <p>Design is business infrastructure: cutting 6-step flows to 3, replacing spreadsheet chaos with clear ledgers, and shipping systems that hold.</p>
           <div className="facts"><div><b data-n="50" data-s="+">50+</b><span className="mono">projects</span></div><div><b data-n="30" data-s="+">30+</b><span className="mono">clients</span></div><div><b data-n="4">4</b><span className="mono">weeks per build</span></div></div>
           <div className="ab-actions" style={{ marginTop: '36px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <Link className="btn" href="/about/" data-cur="About">Read full story & method <span aria-hidden={true}>→</span></Link>

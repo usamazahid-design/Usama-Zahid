@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Instrument_Serif } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import './authentic-dark.css';
@@ -30,6 +30,15 @@ const jetbrains = JetBrains_Mono({
   preload: false,
 });
 
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+  weight: ['400'],
+  style: ['normal', 'italic'],
+  preload: true,
+});
+
 const baseUrl = 'https://usamazahid.design';
 const ogImage = {
   url: '/images/og-image.jpg',
@@ -41,7 +50,7 @@ const ogImage = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Usama Zahid — SaaS Brand & User-Centric Product Designer (Live in 4 Weeks)',
+    default: 'Usama Zahid | Brand & Product Designer',
     template: '%s | Usama Zahid',
   },
   description:
@@ -72,7 +81,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'Usama Zahid',
-    title: 'Usama Zahid — Brand & Product Designer | Brand-to-URL',
+    title: 'Usama Zahid | Brand & Product Designer',
     description:
       'Brand & Product Designer. Strategy, brand identity, product UX, and production code built as one continuous system.',
     url: `${baseUrl}/`,
@@ -80,7 +89,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Usama Zahid — Brand & Product Designer | Brand-to-URL',
+    title: 'Usama Zahid | Brand & Product Designer',
     description:
       'Brand & Product Designer. Strategy, brand identity, product UX, and production code built as one continuous system.',
     creator: '@usama2017a',
@@ -109,7 +118,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`authentic-route ready ${inter.variable} ${jetbrains.variable}`}
+      className={`authentic-route ready ${inter.variable} ${jetbrains.variable} ${instrumentSerif.variable}`}
       suppressHydrationWarning
     >
       <head>

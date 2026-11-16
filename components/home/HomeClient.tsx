@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-type SceneKey = 'logo' | 'app' | 'web';
+type SceneKey = 'logo' | 'app' | 'web' | 'live';
 
 const SC: Record<SceneKey, { cap: string; st: [number, string][] }> = {
   logo: {
@@ -29,6 +29,10 @@ const SC: Record<SceneKey, { cap: string; st: [number, string][] }> = {
       [1400, 'Layout'],
       [3800, 'Live'],
     ],
+  },
+  live: {
+    cap: 'Fig. D. Shipped production UI',
+    st: [[0, 'Shipped']],
   },
 };
 
@@ -107,7 +111,8 @@ export default function HomeClient() {
             const nextMap: Record<SceneKey, SceneKey> = {
               logo: 'app',
               app: 'web',
-              web: 'logo',
+              web: 'live',
+              live: 'logo',
             };
             play(nextMap[sc], true);
           }, 7400)
@@ -140,6 +145,21 @@ export default function HomeClient() {
     let runtimeCleanup: (() => void) | undefined;
     let idleId = 0;
     let stageIdleId = 0;
+    let scrollRaf = 0;
+
+    const scrollBar = d.getElementById('uz-scroll-bar');
+    const updateScrollProgress = () => {
+      scrollRaf = 0;
+      if (!scrollBar) return;
+      const docHeight = d.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / docHeight)) : 0;
+      scrollBar.style.transform = `scaleX(${pct.toFixed(4)})`;
+    };
+    const onScrollProgress = () => {
+      if (!scrollRaf) scrollRaf = requestAnimationFrame(updateScrollProgress);
+    };
+    window.addEventListener('scroll', onScrollProgress, { passive: true });
+    updateScrollProgress();
 
     const loadRuntime = () => {
       if (cancelled) return;
@@ -185,6 +205,8 @@ export default function HomeClient() {
     return () => {
       cancelled = true;
       window.removeEventListener('load', armRuntime);
+      window.removeEventListener('scroll', onScrollProgress);
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
       if (idleId) cancelIdle(idleId, usedRic);
       if (stageIdleId) cancelIdle(stageIdleId, usedRic);
       runtimeCleanup?.();

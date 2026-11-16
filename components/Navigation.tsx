@@ -168,21 +168,30 @@ export default function Navigation() {
                 id="nav-dd-work"
                 className={`nav-dropdown-menu ${openDropdown !== 'portfolio' ? 'is-closed' : ''}`}
               >
-                <div className="dd-header"><span className="dd-label">Selected work</span></div>
-                <Link href="/portfolio/" className="dd-item" onClick={closeDropdownImmediately}>
+                <div className="dd-header">
+                  <span className="dd-label">Selected work</span>
+                  <span className="dd-kicker">02 TRACKS</span>
+                </div>
+                <Link href="/portfolio/" className="dd-item dd-featured" onClick={closeDropdownImmediately}>
+                  <span className="dd-idx">01</span>
                   <div className="dd-text">
                     <span className="dd-title">Product &amp; UX</span>
-                    <span className="dd-desc">Systems and shipped interfaces</span>
+                    <span className="dd-desc">SaaS systems, AI UX &amp; shipped interfaces</span>
                   </div>
                   <span className="dd-arr" aria-hidden="true">&rarr;</span>
                 </Link>
                 <Link href="/branding/" className="dd-item" onClick={closeDropdownImmediately}>
+                  <span className="dd-idx">02</span>
                   <div className="dd-text">
                     <span className="dd-title">Branding</span>
-                    <span className="dd-desc">Identity systems and guidelines</span>
+                    <span className="dd-desc">Identity systems, marks &amp; guidelines</span>
                   </div>
                   <span className="dd-arr" aria-hidden="true">&rarr;</span>
                 </Link>
+                <div className="dd-footer">
+                  <span>Open to Product Design roles</span>
+                  <Link href="/cv/" onClick={closeDropdownImmediately}>View CV &rarr;</Link>
+                </div>
               </div>
             </div>
 
@@ -208,42 +217,48 @@ export default function Navigation() {
                 id="nav-dd-services"
                 className={`nav-dropdown-menu ${openDropdown !== 'services' ? 'is-closed' : ''}`}
               >
-                <div className="dd-header"><span className="dd-label">Four-week system</span></div>
+                <div className="dd-header">
+                  <span className="dd-label">Capabilities</span>
+                  <span className="dd-kicker">END-TO-END</span>
+                </div>
                 <Link href="/brand-to-url/" className="dd-item dd-featured" onClick={closeDropdownImmediately}>
+                  <span className="dd-idx">01</span>
                   <div className="dd-text">
-                    <span className="dd-title">Brand-to-URL</span>
-                    <span className="dd-desc">Brand and website, one system</span>
+                    <span className="dd-title">
+                      Brand-to-URL <em className="dd-pill">4 Weeks</em>
+                    </span>
+                    <span className="dd-desc">Brand and website, built as one system</span>
                   </div>
                   <span className="dd-arr" aria-hidden="true">&rarr;</span>
                 </Link>
                 <Link href="/services/identity/" className="dd-item" onClick={closeDropdownImmediately}>
+                  <span className="dd-idx">02</span>
                   <div className="dd-text">
                     <span className="dd-title">Brand identity</span>
-                    <span className="dd-desc">Positioning, logo, and tokens</span>
+                    <span className="dd-desc">Positioning, logo, and Figma tokens</span>
                   </div>
                   <span className="dd-arr" aria-hidden="true">&rarr;</span>
                 </Link>
                 <Link href="/services/engineering/" className="dd-item" onClick={closeDropdownImmediately}>
+                  <span className="dd-idx">03</span>
                   <div className="dd-text">
-                    <span className="dd-title">Website</span>
-                    <span className="dd-desc">Production Next.js build</span>
+                    <span className="dd-title">Web engineering</span>
+                    <span className="dd-desc">Production Next.js &amp; TypeScript build</span>
                   </div>
                   <span className="dd-arr" aria-hidden="true">&rarr;</span>
                 </Link>
                 <Link href="/services/product/" className="dd-item" onClick={closeDropdownImmediately}>
+                  <span className="dd-idx">04</span>
                   <div className="dd-text">
                     <span className="dd-title">Product &amp; UX</span>
-                    <span className="dd-desc">Interfaces and friction audits</span>
+                    <span className="dd-desc">SaaS interfaces and friction audits</span>
                   </div>
                   <span className="dd-arr" aria-hidden="true">&rarr;</span>
                 </Link>
-                <Link href="/services/" className="dd-item" onClick={closeDropdownImmediately}>
-                  <div className="dd-text">
-                    <span className="dd-title">All services</span>
-                    <span className="dd-desc">Overview and ways of working</span>
-                  </div>
-                  <span className="dd-arr" aria-hidden="true">&rarr;</span>
-                </Link>
+                <div className="dd-footer">
+                  <Link href="/services/" onClick={closeDropdownImmediately}>All capabilities &rarr;</Link>
+                  <Link href="/contact/" onClick={closeDropdownImmediately}>Book a call &rarr;</Link>
+                </div>
               </div>
             </div>
 

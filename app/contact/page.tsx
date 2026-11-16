@@ -9,7 +9,7 @@ import SeoBreadcrumbs from '@/components/SeoBreadcrumbs';
 import { JsonLd, BreadcrumbSchema, FAQPageSchema, WebPageSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Contact — Book a Strategy Call or Start a Project',
+  title: 'Contact: Book a Call or Start a Project',
   description:
     'Book a call or write to Usama Zahid, Brand & Product Designer, about brand identity, production-ready websites, and product UX design.',
   openGraph: {

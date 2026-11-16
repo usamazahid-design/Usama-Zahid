@@ -18,9 +18,18 @@ export default function HomeWorkExact() {
                 <span className="lab">Fig. 1. Product design · Enterprise ERP</span>
                 <span className="view-tag">Case Study <span aria-hidden={true}>→</span></span>
               </div>
-              <div>
+              <div className="panel-body">
+                <div className="panel-metric">
+                  <strong>Days → Mins</strong>
+                  <span>Invoice reconciliation speed</span>
+                </div>
                 <h3>Petrozen ERP</h3>
                 <p>Multi-tenant ledger replacing spreadsheet chaos for invoice entry and reconciliation.</p>
+                <div className="panel-tags">
+                  <span>Product UX</span>
+                  <span>Data Tables</span>
+                  <span>Design System</span>
+                </div>
                 <span className="meta-tag">Lead Product Designer · Shipped 2025</span>
               </div>
             </div>
@@ -35,9 +44,18 @@ export default function HomeWorkExact() {
                 <span className="lab">Fig. 2. AI Product Design · Mobile App</span>
                 <span className="view-tag">Case Study <span aria-hidden={true}>→</span></span>
               </div>
-              <div>
+              <div className="panel-body">
+                <div className="panel-metric">
+                  <strong>1-Click Flow</strong>
+                  <span>High-frequency AI trust &amp; diff UX</span>
+                </div>
                 <h3>Stealth Humanizer</h3>
                 <p>Redesigned UX eliminating clutter for high-frequency AI text humanization.</p>
+                <div className="panel-tags">
+                  <span>AI UX</span>
+                  <span>Trust States</span>
+                  <span>Mobile UI</span>
+                </div>
                 <span className="meta-tag">Lead UI/UX Designer · Shipped 2026</span>
               </div>
             </div>
@@ -52,9 +70,18 @@ export default function HomeWorkExact() {
                 <span className="lab">Fig. 3. Brand Identity · Infrastructure</span>
                 <span className="view-tag">Case Study <span aria-hidden={true}>→</span></span>
               </div>
-              <div>
+              <div className="panel-body">
+                <div className="panel-metric">
+                  <strong>100% Unified</strong>
+                  <span>Identity, component kit &amp; launch assets</span>
+                </div>
                 <h3>CodeStreaks</h3>
                 <p>Automation repositioned as infrastructure across web and print.</p>
+                <div className="panel-tags">
+                  <span>Brand System</span>
+                  <span>Guidelines</span>
+                  <span>DevTools</span>
+                </div>
                 <span className="meta-tag">Brand Identity · Shipped 2025</span>
               </div>
             </div>
@@ -69,9 +96,18 @@ export default function HomeWorkExact() {
                 <span className="lab">Fig. 4. Brand-to-URL · Luxury Couture</span>
                 <span className="view-tag">Case Study <span aria-hidden={true}>→</span></span>
               </div>
-              <div>
+              <div className="panel-body">
+                <div className="panel-metric">
+                  <strong>6 → 3 Steps</strong>
+                  <span>Booking flow &amp; 38-slide brand guidelines</span>
+                </div>
                 <h3>Begum Couture</h3>
                 <p>Mughal-inspired visual identity, 38-slide guidelines, artisan storytelling, and bespoke e-commerce store.</p>
+                <div className="panel-tags">
+                  <span>Brand-to-URL</span>
+                  <span>Next.js</span>
+                  <span>E-Commerce</span>
+                </div>
                 <span className="meta-tag">Brand-to-URL · Shipped 2026</span>
               </div>
             </div>

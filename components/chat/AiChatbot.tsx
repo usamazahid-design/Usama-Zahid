@@ -6,7 +6,7 @@ export interface ChatMessage {
   id: string;
   sender: 'bot' | 'user';
   text: string;
-  cardType?: 'pricing' | 'process' | 'casestudies' | 'cal';
+  cardType?: 'pricing' | 'process' | 'casestudies' | 'cal' | 'cv';
   showCalBtn?: boolean;
   time: string;
 }
@@ -122,7 +122,7 @@ function queryStudioKnowledge(userQuery: string, history: ChatMessage[] = []): {
     q.includes('handoff')
   ) {
     return {
-      text: "Traditional agencies separate strategy, design, and engineering across account managers, junior contractors, and outsourced dev teams—causing massive delays and lost vision. **Usama operates as a solo senior principal**: the person you brief is the exact person designing the Figma system and writing the production Next.js code. Zero translation loss, one invoice, and 4-week delivery instead of 4 months.",
+      text: "Traditional agencies separate strategy, design, and engineering across account managers, junior contractors, and outsourced dev teams, causing massive delays and lost vision. **Usama operates as a solo senior principal**: the person you brief is the exact person designing the Figma system and writing the production Next.js code. Zero translation loss, one invoice, and 4-week delivery instead of 4 months.",
       showCalBtn: false,
     };
   }
@@ -141,7 +141,7 @@ function queryStudioKnowledge(userQuery: string, history: ChatMessage[] = []): {
     q.includes('investment')
   ) {
     return {
-      text: "Our flagship engagement is the **Brand-to-URL Sprint at a fixed $24,000 for 4 weeks**—delivering strategy, brand identity, user-centric SaaS UI/UX, and production Next.js code. Modular tracks are also available depending on your exact scope:",
+      text: "Usama works flexibly depending on your stage, from **full-time Product & Brand Design roles** to **fixed-scope client sprints** (UX audits, landing pages, or full Brand-to-URL builds). Let's align on scope and budget on a quick 15-minute call:",
       cardType: 'pricing',
       showCalBtn: true,
     };
@@ -238,7 +238,7 @@ function queryStudioKnowledge(userQuery: string, history: ChatMessage[] = []): {
   // 9. Design tools & Figma
   if (q.includes('figma') || q.includes('design system') || q.includes('token') || q.includes('component') || q.includes('wireframe')) {
     return {
-      text: "All design work is conducted in **Figma** using scalable atomic design systems—including typography tokens, mathematical color ramps, auto-layout components, and interactive micro-prototypes that mirror production code 1:1.",
+      text: "All design work is conducted in **Figma** using scalable atomic design systems, including typography tokens, mathematical color ramps, auto-layout components, and interactive micro-prototypes that mirror production code 1:1.",
       showCalBtn: false,
     };
   }
@@ -259,6 +259,24 @@ function queryStudioKnowledge(userQuery: string, history: ChatMessage[] = []): {
     };
   }
 
+  // 11b. Hiring / Full-Time Role / CV / Resume
+  if (
+    q.includes('cv') ||
+    q.includes('resume') ||
+    q.includes('role') ||
+    q.includes('job') ||
+    q.includes('full-time') ||
+    q.includes('full time') ||
+    q.includes('position') ||
+    q.includes('hiring')
+  ) {
+    return {
+      text: "Usama is open to **Product Designer** and **Brand & Design Systems** roles (full-time or contract). He brings **6 years in Brand Identity** and **3 years in SaaS UI/UX & Next.js**, bridging Figma and production code with zero handoff gap.",
+      cardType: 'cv',
+      showCalBtn: true,
+    };
+  }
+
   // 12. Availability / Booking / Meeting
   if (
     q.includes('book') ||
@@ -274,7 +292,7 @@ function queryStudioKnowledge(userQuery: string, history: ChatMessage[] = []): {
     q.includes('hire')
   ) {
     return {
-      text: "Usama takes on a limited number of founders per cohort. You can reserve a **15-minute discovery call** directly on his calendar below to evaluate fit and discuss your roadmap:",
+      text: "Usama is currently open to **Product Design roles** and **select client projects**. You can book a quick **15-minute intro call** directly on his calendar below:",
       cardType: 'cal',
       showCalBtn: true,
     };
@@ -282,22 +300,22 @@ function queryStudioKnowledge(userQuery: string, history: ChatMessage[] = []): {
 
   // 13. Conversational default / General query
   return {
-    text: "Usama specializes in **Brand-to-URL: delivering brand strategy, visual identity systems, SaaS UI/UX, and production Next.js code in 4 weeks ($24,000)**. Would you like to review our pricing tracks, examine the 4-week roadmap, inspect past case studies, or schedule a quick 15-minute discovery call?",
+    text: "Usama Zahid is an independent **Brand & Product Designer** who designs in Figma and ships production Next.js code. Would you like to view his **CV & experience**, explore **case studies**, see **ways to work together**, or book a quick **15-minute call**?",
     showCalBtn: history.length >= 2,
   };
 }
 
+const INITIAL_MESSAGE: ChatMessage = {
+  id: 'init-0',
+  sender: 'bot',
+  text: "Hey! I'm Usama's AI assistant. Ask me about his Product & Brand Design experience, CV, case studies (Petrozen ERP, Begum Couture), or availability for roles & client builds.",
+  showCalBtn: false,
+  time: getNowTime(),
+};
+
 export default function AiChatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'init-0',
-      sender: 'bot',
-      text: "Hey! I'm Usama's studio concierge. Ask me anything about our 4-week Brand-to-URL builds, pricing, product design systems, or client case studies—or book a direct discovery call below.",
-      showCalBtn: false,
-      time: getNowTime(),
-    },
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showCalModal, setShowCalModal] = useState(false);
@@ -317,15 +335,28 @@ export default function AiChatbot() {
   }, [isOpen, scrollToBottom]);
 
   useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (showCalModal) setShowCalModal(false);
+        else setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen, showCalModal]);
+
+  useEffect(() => {
     scrollToBottom();
   }, [messages, isLoading, scrollToBottom]);
 
-  const handleQuickTopic = (topic: 'pricing' | 'process' | 'casestudies' | 'cal') => {
+  const handleQuickTopic = (topic: 'cv' | 'pricing' | 'process' | 'casestudies' | 'cal') => {
     let prompt = '';
-    if (topic === 'pricing') prompt = 'What is your pricing and service scope?';
-    if (topic === 'process') prompt = 'How does the 4-week Brand-to-URL sprint work?';
-    if (topic === 'casestudies') prompt = 'Show me past case studies and clients.';
-    if (topic === 'cal') prompt = 'I would like to schedule a 15-minute discovery call.';
+    if (topic === 'cv') prompt = 'Are you open to Product Design roles? Share your CV.';
+    if (topic === 'pricing') prompt = 'What are your engagement options and pricing?';
+    if (topic === 'process') prompt = 'How does your 4-week Brand-to-URL process work?';
+    if (topic === 'casestudies') prompt = 'Show me past case studies and shipped work.';
+    if (topic === 'cal') prompt = 'I would like to schedule a 15-minute intro call.';
 
     const answer = queryStudioKnowledge(prompt, messages);
     const userMsg: ChatMessage = { id: String(Date.now()), sender: 'user', text: prompt, time: getNowTime() };
@@ -357,14 +388,14 @@ export default function AiChatbot() {
     setInput('');
     setIsLoading(true);
 
-    const systemPrompt = `You are the executive AI studio concierge for Usama Zahid (https://usamazahid.design), an independent Brand & Product Systems Architect in Lahore, Pakistan.
-Background: 6 years Brand Identity & Systems, 3 years SaaS UI/UX and Next.js engineering. 50+ projects shipped for 30+ venture-backed startups (pre-seed to Series A).
-Core thesis: Zero handoff gap. The person you brief is the person who designs the Figma system and writes the production Next.js code.
-Flagship build: Brand-to-URL (4 weeks, $24,000 fixed). Takes founders from strategy & identity to product UX & production Next.js code.
-Modular tracks: Visual Infrastructure ($12K-$18K), Product & AI UX ($14K-$24K), Web Engineering ($14K-$22K), Market Strategy ($8K-$12K).
-Case studies: Petrozen ERP (financial data tables), Begum Couture (luxury Next.js commerce), CodeStreaks (infrastructure identity), Stealth Humanizer AI (AI UX trust states), The Laila Majnu (luxury gifting).
-Tone: Conversational, sharp, articulate, confident (2-3 sentences max). Talk naturally like an elite design partner.
-Directive: If the user asks about booking or scheduling, provide the link ${CAL_URL}.`;
+    const systemPrompt = `You are the AI portfolio assistant for Usama Zahid (https://usamazahid.design), an independent Brand & Product Designer in Lahore, Pakistan.
+Availability: Open to full-time Product/Brand Design roles as well as direct client projects (from focused UX audits and MVP interfaces to full 4-week Brand-to-URL builds).
+Background: 6 years Brand Identity & Systems, 3 years SaaS UI/UX and Next.js engineering. 50+ projects shipped across startups and brands.
+Core thesis: Zero handoff gap. The same designer architects the Figma system and writes the production Next.js code.
+Pricing: Flexible by scope and engagement type (full-time roles, monthly retainers, or fixed-scope sprints agreed after a 15-min intro call). Never scare away smaller clients or recruiters with a rigid single price.
+Case studies: Petrozen ERP (financial data tables), Stealth Humanizer AI (AI UX trust states), Begum Couture (luxury Next.js commerce), CodeStreaks (infrastructure identity), The Laila Majnu (luxury gifting).
+Tone: Warm, conversational, sharp, articulate (2-3 sentences max).
+Directive: Invite hiring teams or clients to book a 15-minute call at ${CAL_URL} or view his CV at https://usamazahid.design/cv/.`;
 
     let reply = '';
     let success = false;
@@ -404,7 +435,8 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
     } catch {}
 
     if (!success) {
-      // Natural conversational fallback engine
+      // Snappy natural response beat for local engine
+      await new Promise((r) => setTimeout(r, 280));
       const fallback = queryStudioKnowledge(query, messages);
       const botMsg: ChatMessage = {
         id: String(Date.now() + 1),
@@ -440,23 +472,23 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
 
   return (
     <>
-      {/* Editorial Launcher with Official Studio Logo Mark */}
+      {/* Editorial Launcher with Official Brand Logo Mark */}
       {!isOpen && (
         <div className="uz-chat-launcher">
           <button
             type="button"
             onClick={() => setIsOpen(true)}
             className="uz-launcher-capsule"
-            aria-label="Open studio concierge"
+            aria-label="Open Usama Zahid AI assistant"
             aria-expanded={false}
           >
-            <span className="uz-launcher-mark" title="Usama Zahid Studio">
+            <span className="uz-launcher-mark" title="Usama Zahid">
               <StudioLogo size={18} />
             </span>
             <span className="uz-launcher-copy">
               <span className="uz-launcher-title">ASK USAMA’S AI</span>
               <span className="uz-launcher-sub">
-                <i className="uz-status-dot" /> STUDIO CONCIERGE
+                <i className="uz-status-dot" /> ROLES &amp; PROJECTS
               </span>
             </span>
             <span className="uz-launcher-arrow" aria-hidden="true">
@@ -466,9 +498,9 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
         </div>
       )}
 
-      {/* Editorial Concierge Panel */}
+      {/* Editorial Assistant Panel */}
       {isOpen && (
-        <aside className="uz-chat-window" role="dialog" aria-label="Usama Zahid Studio AI Concierge">
+        <aside className="uz-chat-window" role="dialog" aria-label="Usama Zahid AI Assistant">
           <header className="uz-win-header">
             <div className="uz-win-lead">
               <div className="uz-win-avatar" title="Usama Zahid Official Brand Logo">
@@ -477,9 +509,9 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
               <div className="uz-win-meta">
                 <div className="uz-win-name-row">
                   <h3 className="uz-win-name">USAMA ZAHID</h3>
-                  <span className="uz-win-role-pill">CONCIERGE // AI</span>
+                  <span className="uz-win-role-pill">AI ASSISTANT</span>
                 </div>
-                <p className="uz-win-tagline">Brand &amp; Product Systems Architect · 4-Week Builds</p>
+                <p className="uz-win-tagline">Brand &amp; Product Designer · Roles &amp; Builds</p>
               </div>
             </div>
             <div className="uz-win-actions">
@@ -489,13 +521,13 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
                 className="uz-win-cal-btn"
                 title="Book a 15-minute call"
               >
-                CALENDAR <span aria-hidden="true">↗</span>
+                BOOK CALL <span aria-hidden="true">↗</span>
               </button>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
                 className="uz-win-close-btn"
-                aria-label="Close concierge"
+                aria-label="Close assistant"
               >
                 ×
               </button>
@@ -503,23 +535,26 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
           </header>
 
           <div className="uz-win-chips" aria-label="Suggested topics">
-            <span className="uz-chips-label">EXPLORE</span>
-            <button type="button" className="uz-chip-pill" onClick={() => handleQuickTopic('pricing')}>
-              PRICING &amp; SCOPE <span>↗</span>
-            </button>
-            <button type="button" className="uz-chip-pill" onClick={() => handleQuickTopic('process')}>
-              4-WEEK PROCESS <span>↗</span>
+            <span className="uz-chips-label">ASK</span>
+            <button type="button" className="uz-chip-pill" onClick={() => handleQuickTopic('cv')}>
+              ROLES &amp; CV <span>↗</span>
             </button>
             <button type="button" className="uz-chip-pill" onClick={() => handleQuickTopic('casestudies')}>
               CASE STUDIES <span>↗</span>
+            </button>
+            <button type="button" className="uz-chip-pill" onClick={() => handleQuickTopic('pricing')}>
+              WAYS TO WORK <span>↗</span>
+            </button>
+            <button type="button" className="uz-chip-pill" onClick={() => handleQuickTopic('process')}>
+              PROCESS <span>↗</span>
             </button>
           </div>
 
           <div className="uz-win-body" tabIndex={0}>
             <div className="uz-session-label">
-              <span>SESSION / 001</span>
+              <span>PORTFOLIO / AI</span>
               <span>
-                <i className="uz-status-dot" /> STUDIO ONLINE
+                <i className="uz-status-dot" /> AVAILABLE
               </span>
             </div>
 
@@ -535,7 +570,7 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
                 )}
                 <div className={`uz-msg-card ${m.sender === 'user' ? 'user-card' : 'bot-card'}`}>
                   <div className="uz-msg-meta">
-                    <span>{m.sender === 'user' ? 'YOU' : 'USAMA ZAHID // CONCIERGE'}</span>
+                    <span>{m.sender === 'user' ? 'YOU' : 'USAMA ZAHID // AI'}</span>
                     <time>{m.time}</time>
                   </div>
                   <div className="uz-msg-text">
@@ -550,33 +585,33 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
 
                   {m.cardType === 'pricing' && (
                     <div className="uz-embedded-card uz-pricing-box">
-                      <div className="uz-card-kicker">01 / FLAGSHIP ENGAGEMENT</div>
+                      <div className="uz-card-kicker">01 / WAYS TO WORK TOGETHER</div>
                       <div className="uz-p-headline">
                         <div>
-                          <h4 className="uz-p-title">Brand-to-URL Sprint</h4>
-                          <span className="uz-p-time">FOUR WEEKS · CONTINUOUS BUILD</span>
+                          <h4 className="uz-p-title">Flexible Engagements</h4>
+                          <span className="uz-p-time">ROLES · SPRINTS · RETAINERS</span>
                         </div>
-                        <div className="uz-p-price">$24,000</div>
+                        <div className="uz-p-price">Custom Scope</div>
                       </div>
                       <p className="uz-p-desc">
-                        Brand strategy, visual identity system, user-centric product UI/UX, and production Next.js code with zero handoff gap.
+                        Scoped around your stage, whether hiring for a Product Design role or shipping a brand and Next.js product together.
                       </p>
                       <div className="uz-p-modular">
                         <div className="uz-p-tier">
-                          <span>Visual Infrastructure</span>
-                          <b>$12K–$18K</b>
+                          <span>Product / Brand Role</span>
+                          <b>Full-Time / Contract</b>
                         </div>
                         <div className="uz-p-tier">
-                          <span>Product &amp; AI UX</span>
-                          <b>$14K–$24K</b>
+                          <span>UX &amp; Brand Audit</span>
+                          <b>1–2 Weeks</b>
                         </div>
                         <div className="uz-p-tier">
-                          <span>Web Engineering</span>
-                          <b>$14K–$22K</b>
+                          <span>Brand-to-URL Sprint</span>
+                          <b>4 Weeks</b>
                         </div>
                         <div className="uz-p-tier">
-                          <span>Market Strategy</span>
-                          <b>$8K–$12K</b>
+                          <span>Design Partner</span>
+                          <b>Monthly Retainer</b>
                         </div>
                       </div>
                     </div>
@@ -650,6 +685,21 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
                     </div>
                   )}
 
+                  {m.cardType === 'cv' && (
+                    <div className="uz-embedded-card uz-cases-box">
+                      <div className="uz-case-card">
+                        <div className="uz-case-top">
+                          <b>Usama Zahid · CV &amp; Resume</b>
+                          <span className="uz-case-tag">6+ YRS EXPERIENCE</span>
+                        </div>
+                        <p>Product &amp; Brand Systems Designer · Figma, Design Systems, Next.js, TypeScript.</p>
+                        <a href="/cv/" className="uz-case-btn">
+                          OPEN FULL CV &amp; CREDENTIALS ↗
+                        </a>
+                      </div>
+                    </div>
+                  )}
+
                   {m.showCalBtn && (
                     <div className="uz-cta-cluster">
                       <button
@@ -702,10 +752,10 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Inquire regarding scope, pricing, or 4-week builds..."
+              placeholder="Ask about roles, CV, case studies, or a project..."
               className="uz-text-input"
               disabled={isLoading}
-              aria-label="Message to Usama Zahid Studio"
+              aria-label="Message Usama Zahid AI"
             />
             <button
               type="submit"
@@ -719,11 +769,22 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
 
           <div className="uz-win-status">
             <button type="button" onClick={() => setIsOpen(false)}>
-              <span>×</span> DISMISS CONCIERGE <kbd>ESC</kbd>
+              <span>×</span> CLOSE <kbd>ESC</kbd>
             </button>
-            <span className="uz-online">
-              <i className="uz-status-dot" /> ONLINE
-            </span>
+            <div className="uz-status-right">
+              {messages.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => setMessages([{ ...INITIAL_MESSAGE, time: getNowTime() }])}
+                  className="uz-clear-btn"
+                >
+                  CLEAR
+                </button>
+              )}
+              <span className="uz-online">
+                <i className="uz-status-dot" /> ONLINE
+              </span>
+            </div>
           </div>
         </aside>
       )}
@@ -778,12 +839,21 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
       <style jsx global>{`
         :root {
           --uz-ink: #040404;
-          --uz-paper: #F6F6F6;
+          --uz-paper: #F7F9E1;
+          --uz-card-surface: rgba(255, 255, 255, 0.68);
           --uz-indigo: #4B3FFF;
           --uz-graphite: #1C1C1C;
-          --uz-slate: #4A4A4A;
-          --uz-silver: #9A9A9A;
-          --uz-line: rgba(4, 4, 4, 0.16);
+          --uz-slate: #484850;
+          --uz-silver: #7A7A82;
+          --uz-line: rgba(4, 4, 4, 0.18);
+        }
+        html[data-theme="dark"] {
+          --uz-ink: #F7F9E1;
+          --uz-paper: #040404;
+          --uz-card-surface: #0E0E10;
+          --uz-slate: #B0B0BA;
+          --uz-silver: #8E8E98;
+          --uz-line: rgba(247, 249, 225, 0.18);
         }
         .uz-chat-launcher {
           position: fixed;
@@ -801,13 +871,18 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
           gap: 10px;
           min-height: 48px;
           padding: 6px 14px 6px 6px;
-          color: var(--uz-paper);
-          background: var(--uz-ink);
-          border: 1px solid var(--uz-ink);
-          transition: background 0.2s, color 0.2s, border-color 0.2s;
+          color: #F7F9E1;
+          background: #040404;
+          border: 1px solid #040404;
+          box-shadow: 3px 3px 0 var(--uz-indigo);
+          transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
+        }
+        html[data-theme="dark"] .uz-launcher-capsule {
+          border-color: rgba(247, 249, 225, 0.28);
         }
         .uz-launcher-capsule:hover {
-          color: var(--uz-paper);
+          transform: translate(1.5px, 1.5px);
+          box-shadow: 1.5px 1.5px 0 var(--uz-indigo);
           background: var(--uz-indigo);
           border-color: var(--uz-indigo);
         }
@@ -817,7 +892,7 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
           display: grid;
           place-items: center;
           flex: 0 0 auto;
-          background: #ffffff;
+          background: #F7F9E1;
           color: #040404;
           padding: 4px;
           box-sizing: border-box;
@@ -829,10 +904,10 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
           place-items: center;
           flex: 0 0 auto;
           background: #040404;
-          color: #ffffff;
+          color: #F7F9E1;
           padding: 5px;
           box-sizing: border-box;
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          border: 1px solid var(--uz-line);
         }
         .uz-launcher-copy {
           display: flex;
@@ -865,7 +940,7 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
           flex: 0 0 auto;
         }
 
-        /* Compact, high-density chat window */
+        /* Compact, high-density chat window with Swiss offset shadow */
         .uz-chat-window {
           position: fixed;
           z-index: 9999;
@@ -879,9 +954,23 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
           color: var(--uz-ink);
           background: var(--uz-paper);
           border: 1px solid var(--uz-ink);
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+          box-shadow: 8px 8px 0 var(--uz-indigo);
           font-family: var(--sans, Arial, sans-serif);
           animation: uz-panel-in 0.2s ease both;
+        }
+        .uz-status-right {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .uz-clear-btn {
+          font-size: 8px !important;
+          font-weight: 700 !important;
+          letter-spacing: 0.08em;
+          color: var(--uz-slate);
+        }
+        .uz-clear-btn:hover {
+          color: var(--uz-indigo) !important;
         }
         @keyframes uz-panel-in {
           from {
@@ -1235,7 +1324,7 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
         }
         .uz-case-card {
           padding: 7px;
-          background: #ffffff;
+          background: var(--uz-card-surface);
           border: 1px solid var(--uz-line);
           font-size: 10.5px;
         }
@@ -1348,7 +1437,7 @@ Directive: If the user asks about booking or scheduling, provide the link ${CAL_
           align-items: center;
           gap: 8px;
           border-top: 1px solid var(--uz-line);
-          background: #ffffff;
+          background: var(--uz-card-surface);
         }
         .uz-input-prompt {
           color: var(--uz-indigo);

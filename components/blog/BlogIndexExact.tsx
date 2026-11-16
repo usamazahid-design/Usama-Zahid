@@ -37,26 +37,107 @@ export default function BlogIndexExact({ featured, posts, title, description }: 
   const hasMore = visibleCount < filtered.length;
 
   return (
-    <section id="blog-list" style={{ paddingTop: '80px' }}>
-      <div className="pad wh" style={{ alignItems: 'flex-start' }}>
-        <div>
-          <h1 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, lineHeight: 1.15, marginBottom: '10px' }}>
-            {title || "SaaS Brand, Product & Web Engineering Essays"}
-          </h1>
-          <p style={{ color: 'var(--mute)', maxWidth: '640px', fontSize: '15px', lineHeight: 1.5, marginBottom: '14px' }}>
-            {description || "Field notes, teardowns, and tactical guides on building high-trust brand systems, user-centric product UI/UX, and production Next.js websites for fast-moving startups."}
-          </p>
-          <span className="lab">
-            {String(filtered.length).padStart(2, '0')} essays
-            {activeService !== 'ALL'
-              ? ` · ${activeService.replace(/-/g, ' ')}`
-              : ' · filter by service'}
+    <>
+      <section className="hero pad blog-hero" style={{ paddingTop: '110px', paddingBottom: 'clamp(40px, 5vw, 72px)' }}>
+        <div className="fo">
+          <span>Usama Zahid · Writing</span>
+          <span className="hero-avail">
+            <i className="hero-avail-dot" aria-hidden="true" />
+            {String(all.length).padStart(2, '0')} essays · Field notes &amp; teardowns
           </span>
+          <span>usamazahid.design</span>
         </div>
-        <Link className="see-all-link" href="/contact/" data-cur="Contact">
-          Start a project <span aria-hidden="true">&rarr;</span>
-        </Link>
-      </div>
+
+        <div className="hg">
+          <div className="ht">
+            <h1>
+              {title ? (
+                <span className="ln">
+                  <span style={{ '--d': '.05s' } as React.CSSProperties}>{title}</span>
+                </span>
+              ) : (
+                <>
+                  <span className="ln">
+                    <span style={{ '--d': '.05s' } as React.CSSProperties}>Design,</span>
+                  </span>
+                  <span className="ln">
+                    <span style={{ '--d': '.15s' } as React.CSSProperties}>Systems &amp;</span>
+                  </span>
+                  <span className="ln it2">
+                    <span style={{ '--d': '.25s' } as React.CSSProperties}>Shipping.</span>
+                  </span>
+                </>
+              )}
+            </h1>
+            <p className="sub">
+              {description ||
+                'Field notes, UX teardowns, and tactical guides on brand systems, product UI/UX, and production Next.js engineering.'}
+            </p>
+            <div className="hero-actions">
+              <Link
+                className="btn"
+                href={`/blog/${featured.service}/${featured.slug}/`}
+                data-cur="Read"
+              >
+                Read featured essay <span aria-hidden="true">&rarr;</span>
+              </Link>
+              <a className="btn btn-ghost" href="#blog-list" data-cur="Browse">
+                Browse all essays <span aria-hidden="true">&darr;</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="hl in">
+            <Link
+              href={`/blog/${featured.service}/${featured.slug}/`}
+              className="stg blog-feat-stage"
+              data-cur="Read"
+            >
+              <div className="stg-t">
+                <span className="nf-stage-title">Featured Essay</span>
+                <span className="stg-p">{featured.readingTime} min read</span>
+              </div>
+              <div className="blog-feat-media">
+                <Image
+                  src={featured.coverImage}
+                  alt={featured.title}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 40vw"
+                  className="blog-card-img"
+                  unoptimized
+                />
+              </div>
+              <div className="blog-feat-body">
+                <span className="lab">
+                  {featured.category.replace(/_/g, ' ')} · {formatDate(featured.date)}
+                </span>
+                <h3>{featured.title}</h3>
+                <p>{featured.excerpt}</p>
+              </div>
+              <div className="stg-b">
+                <span>Read full essay</span>
+                <span aria-hidden="true">→</span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="blog-list" style={{ paddingTop: 'clamp(36px, 5vw, 64px)' }}>
+        <div className="pad wh">
+          <div>
+            <h2>All essays</h2>
+            <span className="lab">
+              {String(filtered.length).padStart(2, '0')} essays
+              {activeService !== 'ALL'
+                ? ` · ${activeService.replace(/-/g, ' ')}`
+                : ' · filter by discipline'}
+            </span>
+          </div>
+          <Link className="see-all-link" href="/contact/" data-cur="Contact">
+            Start a project <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
 
       <div className="pad pf-filters">
         <div className="t-pills" role="tablist" aria-label="Filter by service">
@@ -148,5 +229,6 @@ export default function BlogIndexExact({ featured, posts, title, description }: 
         )}
       </div>
     </section>
+    </>
   );
 }

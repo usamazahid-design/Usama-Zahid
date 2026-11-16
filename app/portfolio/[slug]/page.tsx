@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const heroImage =
     project.hook.image.content.type === 'image' ? project.hook.image.content.src : '/images/og-image.jpg';
   const description = seoDescription(project.metaDescription ?? project.excerpt);
-  const pageTitle = project.seoTitle ?? `${project.title} — UI/UX Design Case Study`;
+  const pageTitle = project.seoTitle ?? `${project.title} | UI/UX Design Case Study`;
 
   return {
     title: pageTitle,

@@ -1,7 +1,8 @@
-﻿import HomeMarkDefs from '@/components/home/HomeMarkDefs';
+import HomeMarkDefs from '@/components/home/HomeMarkDefs';
 import HomeHeroExact from '@/components/home/HomeHeroExact';
 import HomeMarqueeExact from '@/components/home/HomeMarqueeExact';
 import HomeServicesExact from '@/components/home/HomeServicesExact';
+import HomeComparisonExact from '@/components/home/HomeComparisonExact';
 import HomeWorkExact from '@/components/home/HomeWorkExact';
 import HomeProcessExact from '@/components/home/HomeProcessExact';
 import HomeQuoteExact from '@/components/home/HomeQuoteExact';
@@ -19,11 +20,15 @@ import HomeClient from '@/components/home/HomeClient';
 export default function AuthenticDarkHome() {
   return (
     <>
+      <div className="uz-scroll-progress" aria-hidden="true">
+        <span id="uz-scroll-bar" />
+      </div>
       <HomeMarkDefs />
       <main id="top">
         <HomeHeroExact />
         <HomeMarqueeExact />
         <HomeServicesExact />
+        <HomeComparisonExact />
         <HomeWorkExact />
         <HomeProcessExact />
         <HomeQuoteExact />

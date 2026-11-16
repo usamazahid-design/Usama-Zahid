@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   CaseMedia,
@@ -117,6 +117,13 @@ function useChapterNav(
         if (top <= y) current = section.id;
       }
       setActive(current);
+
+      const bar = document.getElementById('uz-case-progress');
+      if (bar) {
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+        bar.style.transform = `scaleX(${pct.toFixed(4)})`;
+      }
     };
 
     const onClick = (e: MouseEvent) => {
@@ -206,7 +213,122 @@ function useStickyStack(stackRef: React.RefObject<HTMLElement | null>, deps: unk
   }, deps);
 }
 
-function MediaStack({ figures, accent }: { figures: Figure[]; accent: string }) {
+type LightboxState = {
+  figures: Figure[];
+  index: number;
+} | null;
+
+function CaseLightbox({
+  state,
+  onChangeIndex,
+  onClose,
+}: {
+  state: LightboxState;
+  onChangeIndex: (index: number) => void;
+  onClose: () => void;
+}) {
+  const total = state?.figures.length ?? 0;
+  const current = state ? state.figures[state.index] : null;
+
+  useEffect(() => {
+    if (!state) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight' && total > 1) onChangeIndex((state.index + 1) % total);
+      if (e.key === 'ArrowLeft' && total > 1) onChangeIndex((state.index - 1 + total) % total);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [state, total, onChangeIndex, onClose]);
+
+  if (!state || !current) return null;
+  return (
+    <div
+      className="uz-lightbox-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label={current.title}
+      onClick={onClose}
+    >
+      <div className="uz-lightbox-panel" onClick={(e) => e.stopPropagation()}>
+        <div className="uz-lightbox-bar">
+          <div>
+            <span className="lab">
+              Screen {String(state.index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+            </span>
+            <strong>{current.title}</strong>
+          </div>
+          <div className="uz-lightbox-actions">
+            {total > 1 ? (
+              <>
+                <button
+                  type="button"
+                  className="uz-lightbox-nav"
+                  onClick={() => onChangeIndex((state.index - 1 + total) % total)}
+                  aria-label="Previous screen"
+                >
+                  ← Prev
+                </button>
+                <button
+                  type="button"
+                  className="uz-lightbox-nav"
+                  onClick={() => onChangeIndex((state.index + 1) % total)}
+                  aria-label="Next screen"
+                >
+                  Next →
+                </button>
+              </>
+            ) : null}
+            <button type="button" className="uz-lightbox-close" onClick={onClose} aria-label="Close preview">
+              ESC · Close ×
+            </button>
+          </div>
+        </div>
+        <div className="uz-lightbox-img-wrap">
+          <img src={current.src} alt={current.alt} />
+        </div>
+        {current.caption ? <p className="uz-lightbox-cap">{current.caption}</p> : null}
+      </div>
+    </div>
+  );
+}
+
+function CaseActionBand() {
+  return (
+    <section className="pad work-cta-band" aria-label="Work with Usama Zahid">
+      <div className="work-cta-inner">
+        <div>
+          <span className="lab">Open to roles &amp; select client builds</span>
+          <h3>Want this level of systems thinking on your team or product?</h3>
+        </div>
+        <div className="work-cta-actions">
+          <a
+            className="btn"
+            href="https://cal.com/usama-zahid-haadwj/secret"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cur="Calendar"
+          >
+            Book a 15-min call <span aria-hidden="true">&rarr;</span>
+          </a>
+          <Link className="btn btn-ghost" href="/cv/" data-cur="CV">
+            View CV &amp; resume <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MediaStack({
+  figures,
+  accent,
+  onInspect,
+}: {
+  figures: Figure[];
+  accent: string;
+  onInspect?: (figure: Figure) => void;
+}) {
   if (figures.length === 0) return null;
   return (
     <div className="apps-stack">
@@ -215,8 +337,10 @@ function MediaStack({ figures, accent }: { figures: Figure[]; accent: string }) 
         return (
           <article key={`${figure.src}-${i}`} className="apps-card">
             <div
-              className={`bd apps-plate ${tone}`}
+              className={`bd apps-plate ${tone}${onInspect ? ' is-zoomable' : ''}`}
               style={tone === 'ind' ? { background: accent || 'var(--ind)' } : undefined}
+              onClick={onInspect ? () => onInspect(figure) : undefined}
+              data-cur={onInspect ? 'Zoom' : undefined}
             >
               <img src={figure.src} alt={figure.alt} loading="lazy" />
             </div>
@@ -245,16 +369,20 @@ function Plate({
   figure,
   tone,
   accent,
+  onInspect,
 }: {
   figure: Figure;
   tone: PlateTone;
   accent: string;
+  onInspect?: (figure: Figure) => void;
 }) {
   return (
     <figure className="work-plate">
       <div
-        className={`bd ${tone}`}
+        className={`bd ${tone}${onInspect ? ' is-zoomable' : ''}`}
         style={tone === 'ind' ? { background: accent || 'var(--ind)' } : undefined}
+        onClick={onInspect ? () => onInspect(figure) : undefined}
+        data-cur={onInspect ? 'Zoom' : undefined}
       >
         <img src={figure.src} alt={figure.alt} loading="lazy" />
       </div>
@@ -270,10 +398,12 @@ function WorkPanels({
   figures,
   accent,
   startFig = 1,
+  onInspect,
 }: {
   figures: Figure[];
   accent: string;
   startFig?: number;
+  onInspect?: (figure: Figure) => void;
 }) {
   if (figures.length === 0) return null;
   return (
@@ -289,7 +419,7 @@ function WorkPanels({
                 ? undefined
                 : ({
                     ['--pb' as string]: accent || '#4B3FFF',
-                    ['--pc' as string]: '#FDFDFD',
+                    ['--pc' as string]: '#F7F9E1',
                   } as React.CSSProperties)
             }
           >
@@ -304,7 +434,11 @@ function WorkPanels({
                 <p>{figure.caption || figure.alt}</p>
               </div>
             </div>
-            <div className="pa">
+            <div
+              className={`pa${onInspect ? ' is-zoomable' : ''}`}
+              onClick={onInspect ? () => onInspect(figure) : undefined}
+              data-cur={onInspect ? 'Zoom' : undefined}
+            >
               <img className="panel-img" src={figure.src} alt={figure.alt} loading="lazy" />
             </div>
           </article>
@@ -320,9 +454,8 @@ function InsightRows({ items }: { items: string[] }) {
     <div className="work-insight-list">
       {items.map((item, i) => (
         <article key={item} className="work-insight">
-          <span className="lab">{String(i + 1).padStart(2, '0')}</span>
-          <h3>{briefHead(item, 6)}</h3>
-          <p>{firstSentence(item)}</p>
+          <span className="lab">Insight {String(i + 1).padStart(2, '0')}</span>
+          <p>{item}</p>
         </article>
       ))}
     </div>
@@ -379,6 +512,7 @@ function CaseHero({
   liveUrl,
   hero,
   accent,
+  onInspect,
 }: {
   kind: 'UI / UX case study' | 'Product case study';
   name: string;
@@ -392,6 +526,7 @@ function CaseHero({
   liveUrl?: string;
   hero: Figure | null;
   accent: string;
+  onInspect?: (figure: Figure) => void;
 }) {
   const lines = nameLines(name);
   return (
@@ -409,18 +544,16 @@ function CaseHero({
       </div>
 
       <div className="work-hero-top">
-        <h1>
-          {lines.map((line, i) => (
-            <span key={line} className="ln">
-              <span style={{ '--d': `${0.05 + i * 0.1}s` } as React.CSSProperties}>{line}</span>
-            </span>
-          ))}
-          <span className="ln it2">
-            <span style={{ '--d': `${0.05 + lines.length * 0.1 + 0.05}s` } as React.CSSProperties}>
-              {punch}
-            </span>
-          </span>
-        </h1>
+        <div className="work-hero-lead">
+          <h1>
+            {lines.map((line, i) => (
+              <span key={line} className="ln">
+                <span style={{ '--d': `${0.05 + i * 0.1}s` } as React.CSSProperties}>{line}</span>
+              </span>
+            ))}
+          </h1>
+          <p className="work-hero-punch">{punch}</p>
+        </div>
         <div className="work-hero-side">
           <p className="sub">
             <b>
@@ -448,7 +581,12 @@ function CaseHero({
       </div>
 
       {hero ? (
-        <div className="stage work-hero-stage" style={{ background: accent }}>
+        <div
+          className={`stage work-hero-stage${onInspect ? ' is-zoomable' : ''}`}
+          style={{ background: accent }}
+          onClick={onInspect ? () => onInspect(hero) : undefined}
+          data-cur={onInspect ? 'Zoom' : undefined}
+        >
           <div className="full">
             <img src={hero.src} alt={hero.alt} />
           </div>
@@ -497,26 +635,33 @@ function CaseOverview({
   lead,
   problem,
   goals,
+  quotes = [],
   scope,
-  role,
-  platform,
   team,
   tools,
-  year,
+  platform,
+  metrics = [],
   goalLab = 'The goal',
 }: {
   lead: string;
   problem: string;
   goals: string[];
+  quotes?: string[];
   scope: string[];
-  role: string;
+  role?: string;
   platform: string;
   team: string;
   tools: string[];
-  year: string;
+  year?: string;
+  metrics?: { label: string; value: string; delta?: string }[];
   goalLab?: string;
 }) {
-  const goalHead = goals[0] ? briefHead(goals[0], 6) : 'Clarity first';
+  const hasQuotes = quotes.length > 0;
+  const goalHead = hasQuotes
+    ? 'User signals'
+    : goals[0]
+      ? briefHead(goals[0], 6)
+      : 'Clarity first';
   const goalBody =
     goals.length > 1
       ? goals
@@ -533,33 +678,50 @@ function CaseOverview({
       : scope[0] || 'Research through visual UI.';
 
   return (
-    <section className="pad work-overview" id="overview" style={{ paddingTop: 'clamp(64px,9vw,130px)' }}>
-      <SectionHead title="Overview" lab="Context & the problem" />
+    <section className="pad work-overview" id="overview" style={{ paddingTop: 'clamp(48px,7vw,96px)' }}>
+      <SectionHead title="Overview" lab="Context & impact" />
+      {metrics.length > 0 ? (
+        <div className="work-metrics-strip" aria-label="Measured project impact">
+          {metrics.slice(0, 4).map((m) => (
+            <div key={`${m.label}-${m.value}`} className="work-metric-card">
+              <span className="lab">{m.label}</span>
+              <strong>{m.value}</strong>
+              {m.delta ? <span className="work-metric-delta">{m.delta}</span> : null}
+            </div>
+          ))}
+        </div>
+      ) : null}
       <div className="ovw">
         <h2>{firstSentence(lead)}</h2>
         <dl className="info2">
-          <dt>Role</dt>
-          <dd>{role}</dd>
-          <dt>Platform</dt>
-          <dd>{platform}</dd>
           <dt>Team</dt>
           <dd>{team}</dd>
           <dt>Tools</dt>
           <dd>{tools.slice(0, 4).join(', ')}</dd>
-          <dt>Year</dt>
-          <dd>{year}</dd>
+          <dt>Deliverables</dt>
+          <dd>{scope.slice(0, 3).join(', ') || 'End-to-end UX & UI'}</dd>
+          <dt>Focus</dt>
+          <dd>{platform}</dd>
         </dl>
       </div>
       <div className="pc3">
         <div>
           <span className="lab">The problem</span>
           <h3>{briefHead(problem, 5)}</h3>
-          <p>{firstSentence(problem)}</p>
+          <p>{problem}</p>
         </div>
         <div>
           <span className="lab">{goalLab}</span>
           <h3>{goalHead}</h3>
-          <p>{goalBody}</p>
+          {hasQuotes ? (
+            <ul className="work-quotes-list">
+              {quotes.slice(0, 2).map((q) => (
+                <li key={q}>“{q.replace(/^["'\u201C]|["'\u201D]$/g, '')}”</li>
+              ))}
+            </ul>
+          ) : (
+            <p>{goalBody}</p>
+          )}
         </div>
         <div>
           <span className="lab">In scope</span>
@@ -571,12 +733,62 @@ function CaseOverview({
   );
 }
 
-function MediaPair({
+function MediaGrid({
   figures,
   accent,
+  onInspect,
 }: {
   figures: Figure[];
   accent: string;
+  onInspect?: (figure: Figure) => void;
+}) {
+  if (figures.length === 0) return null;
+  if (figures.length === 1) {
+    return <Plate figure={figures[0]} tone="ivo" accent={accent} onInspect={onInspect} />;
+  }
+  return (
+    <div className="work-media-grid">
+      {figures.map((figure, i) => {
+        const tone = PLATE[i % PLATE.length];
+        return (
+          <figure key={`${figure.src}-${i}`} className="work-media-item">
+            <div
+              className={`bd ${tone}${onInspect ? ' is-zoomable' : ''}`}
+              style={tone === 'ind' ? { background: accent || 'var(--ind)' } : undefined}
+              onClick={onInspect ? () => onInspect(figure) : undefined}
+              data-cur={onInspect ? 'Zoom' : undefined}
+            >
+              <img src={figure.src} alt={figure.alt} loading="lazy" />
+            </div>
+            <figcaption className="cap3">
+              <b
+                style={{
+                  display: 'block',
+                  fontFamily: 'var(--sans)',
+                  fontStyle: 'normal',
+                  color: 'var(--ink)',
+                  marginBottom: 4,
+                }}
+              >
+                {figure.title}
+              </b>
+              {figure.caption}
+            </figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  );
+}
+
+function MediaPair({
+  figures,
+  accent,
+  onInspect,
+}: {
+  figures: Figure[];
+  accent: string;
+  onInspect?: (figure: Figure) => void;
 }) {
   if (figures.length === 0) return null;
   return (
@@ -586,8 +798,10 @@ function MediaPair({
         return (
           <figure key={figure.src} className="work-media-item">
             <div
-              className={`bd ${tone}`}
+              className={`bd ${tone}${onInspect ? ' is-zoomable' : ''}`}
               style={tone === 'ind' ? { background: accent || 'var(--ind)' } : undefined}
+              onClick={onInspect ? () => onInspect(figure) : undefined}
+              data-cur={onInspect ? 'Zoom' : undefined}
             >
               <img src={figure.src} alt={figure.alt} loading="lazy" />
             </div>
@@ -621,6 +835,7 @@ function UIUXCaseExact({
 }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const visualRef = useRef<HTMLElement>(null);
+  const [lightbox, setLightbox] = useState<LightboxState>(null);
   const name = shortTitle(project.title);
   const hero = imageOf(project.hook.image);
   const accent = project.accentColor || 'var(--ind)';
@@ -628,10 +843,32 @@ function UIUXCaseExact({
   const researchMedia = imagesOf(project.research.artifacts);
   const flowMedia = imagesOf(project.flows.diagrams);
   const wireMedia = imagesOf(project.wireframes.frames);
-  const visualMedia = imagesOf([
-    ...project.visualDesign.screens,
-    ...project.outcome.screens,
-  ]);
+  const visualMedia =
+    project.visualDesign.screens.length > 0
+      ? imagesOf(project.visualDesign.screens)
+      : imagesOf(project.outcome.screens);
+  const outcomeMedia =
+    project.visualDesign.screens.length > 0 ? imagesOf(project.outcome.screens) : [];
+
+  const gallery = useMemo(
+    () => [
+      ...(hero ? [hero] : []),
+      ...researchMedia,
+      ...flowMedia,
+      ...wireMedia,
+      ...visualMedia,
+      ...outcomeMedia,
+    ],
+    [hero, researchMedia, flowMedia, wireMedia, visualMedia, outcomeMedia]
+  );
+
+  const openInspect = (figure: Figure) => {
+    const idx = gallery.findIndex((g) => g.src === figure.src);
+    setLightbox({
+      figures: idx >= 0 ? gallery : [figure],
+      index: idx >= 0 ? idx : 0,
+    });
+  };
   const chapters = useMemo(
     () => [
       { id: 'overview', label: 'Overview' },
@@ -660,6 +897,9 @@ function UIUXCaseExact({
       className="brand-case work-case"
       style={{ ['--case-accent' as string]: accent }}
     >
+      <div className="uz-scroll-progress" aria-hidden="true">
+        <span id="uz-case-progress" />
+      </div>
       <CaseHero
         kind="UI / UX case study"
         name={name}
@@ -673,6 +913,7 @@ function UIUXCaseExact({
         liveUrl={project.outcome.liveUrl}
         hero={hero}
         accent={accent}
+        onInspect={openInspect}
       />
 
       <nav className="chn" aria-label="Case study chapters">
@@ -688,11 +929,10 @@ function UIUXCaseExact({
         problem={project.problem.statement}
         goals={project.problem.goals}
         scope={project.scope}
-        role={project.role}
         platform={project.platform}
         team={project.team}
         tools={project.tools}
-        year={project.year}
+        metrics={project.outcome.metrics}
       />
 
       {/* Research — home services rhythm */}
@@ -721,7 +961,7 @@ function UIUXCaseExact({
         </div>
         {researchMedia.length > 0 ? (
           <div className="work-media-band">
-            <MediaPair figures={researchMedia} accent={accent} />
+            <MediaPair figures={researchMedia} accent={accent} onInspect={openInspect} />
           </div>
         ) : null}
       </section>
@@ -735,17 +975,15 @@ function UIUXCaseExact({
             : 'One primary path.'}
         </p>
         <p className="cap3 work-body">
-          {firstSentence(
-            project.flows.summary ||
-              'One primary path from intent to completion — filters attached to the task, not floating as decoration.'
-          )}
+          {project.flows.summary ||
+            'One primary path from intent to completion — filters attached to the task, not floating as decoration.'}
         </p>
         {flowMedia.length > 0 ? (
           <div className="work-media-band">
             {flowMedia.length === 1 ? (
-              <Plate figure={flowMedia[0]} tone="cr" accent={accent} />
+              <Plate figure={flowMedia[0]} tone="cr" accent={accent} onInspect={openInspect} />
             ) : (
-              <MediaPair figures={flowMedia} accent={accent} />
+              <MediaPair figures={flowMedia} accent={accent} onInspect={openInspect} />
             )}
           </div>
         ) : null}
@@ -757,10 +995,10 @@ function UIUXCaseExact({
           <SectionHead title="Wireframes" lab="Low to mid-fidelity" />
           <p className="dh2">Structure before skin.</p>
           {project.wireframes.summary ? (
-            <p className="cap3 work-body">{firstSentence(project.wireframes.summary)}</p>
+            <p className="cap3 work-body">{project.wireframes.summary}</p>
           ) : null}
         </div>
-        <WorkPanels figures={wireMedia} accent={accent} startFig={1} />
+        <WorkPanels figures={wireMedia} accent={accent} startFig={1} onInspect={openInspect} />
       </section>
 
       {/* Visual UI */}
@@ -777,12 +1015,12 @@ function UIUXCaseExact({
               <div key={token.token}>
                 <span className="lab">{token.token}</span>
                 <h3>{briefHead(token.detail, 5)}</h3>
-                <p>{firstSentence(token.detail)}</p>
+                <p>{token.detail}</p>
               </div>
             ))}
           </div>
         ) : null}
-        <MediaStack figures={visualMedia} accent={accent} />
+        <MediaStack figures={visualMedia} accent={accent} onInspect={openInspect} />
       </section>
 
       {/* Outcome */}
@@ -791,11 +1029,12 @@ function UIUXCaseExact({
           <SectionHead title="Outcome" lab="What shipped" />
           <p className="dh2">{italicPunch(project.hook.outcomeLine)}</p>
         </div>
-        {imagesOf(project.outcome.screens).length > 0 ? (
+        {outcomeMedia.length > 0 ? (
           <WorkPanels
-            figures={imagesOf(project.outcome.screens)}
+            figures={outcomeMedia}
             accent={accent}
             startFig={wireMedia.length + 1}
+            onInspect={openInspect}
           />
         ) : null}
         <div className="pad">
@@ -835,18 +1074,25 @@ function UIUXCaseExact({
       <section className="pad work-sec work-reflect pq" id="reflection">
         <SectionHead title="Reflection" lab="Honest takeaways" />
         <blockquote>{firstSentence(project.reflection.narrative)}</blockquote>
+        {project.reflection.narrative.length > firstSentence(project.reflection.narrative).length ? (
+          <p className="cap3 work-body" style={{ marginTop: 14 }}>
+            {project.reflection.narrative}
+          </p>
+        ) : null}
         {project.reflection.nextMoves.length > 0 ? (
           <div className="pc3">
             {project.reflection.nextMoves.slice(0, 3).map((move, i) => (
               <div key={move}>
                 <span className="lab">Next {String(i + 1).padStart(2, '0')}</span>
                 <h3>{briefHead(move, 5)}</h3>
-                <p>{firstSentence(move)}</p>
+                <p>{move}</p>
               </div>
             ))}
           </div>
         ) : null}
       </section>
+
+      <CaseActionBand />
 
       <section className="pad work-sec" id="next">
         <SectionHead
@@ -861,6 +1107,11 @@ function UIUXCaseExact({
           </Link>
         )}
       </section>
+      <CaseLightbox
+        state={lightbox}
+        onChangeIndex={(index) => setLightbox((prev) => (prev ? { ...prev, index } : null))}
+        onClose={() => setLightbox(null)}
+      />
     </div>
   );
 }
@@ -874,6 +1125,7 @@ function ProductCaseExact({
 }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const workRef = useRef<HTMLElement>(null);
+  const [lightbox, setLightbox] = useState<LightboxState>(null);
   const name = shortTitle(project.title);
   const hero = imageOf(project.hook.image);
   const accent = project.accentColor || 'var(--ind)';
@@ -882,6 +1134,25 @@ function ProductCaseExact({
   const processMedia = imagesOf([...project.designDecisions.sketches, ...project.theWork.midFi]);
   const patternMedia = imagesOf(project.aiUxPatterns.components);
   const hiFiMedia = imagesOf([...project.theWork.hiFi, ...project.outcome.screens]);
+
+  const gallery = useMemo(
+    () => [
+      ...(hero ? [hero] : []),
+      ...researchMedia,
+      ...processMedia,
+      ...patternMedia,
+      ...hiFiMedia,
+    ],
+    [hero, researchMedia, processMedia, patternMedia, hiFiMedia]
+  );
+
+  const openInspect = (figure: Figure) => {
+    const idx = gallery.findIndex((g) => g.src === figure.src);
+    setLightbox({
+      figures: idx >= 0 ? gallery : [figure],
+      index: idx >= 0 ? idx : 0,
+    });
+  };
 
   const chapters = useMemo(
     () => [
@@ -912,6 +1183,9 @@ function ProductCaseExact({
       className="brand-case work-case"
       style={{ ['--case-accent' as string]: accent }}
     >
+      <div className="uz-scroll-progress" aria-hidden="true">
+        <span id="uz-case-progress" />
+      </div>
       <CaseHero
         kind="Product case study"
         name={name}
@@ -925,6 +1199,7 @@ function ProductCaseExact({
         liveUrl={project.outcome.liveUrl}
         hero={hero}
         accent={accent}
+        onInspect={openInspect}
       />
 
       <nav className="chn" aria-label="Case study chapters">
@@ -938,29 +1213,23 @@ function ProductCaseExact({
       <CaseOverview
         lead={project.context.summary}
         problem={project.aiProblem.statement}
-        goals={
-          project.aiProblem.quotes.length > 0
-            ? project.aiProblem.quotes
-                .slice(0, 3)
-                .map((q) => firstSentence(q.replace(/^["'\u201C]|["'\u201D]$/g, '')))
-            : project.scope.slice(0, 3)
-        }
-        goalLab={project.aiProblem.quotes.length > 0 ? 'The signal' : 'The goal'}
+        goals={project.scope.slice(0, 3)}
+        quotes={project.aiProblem.quotes}
+        goalLab={project.aiProblem.quotes.length > 0 ? 'User signal' : 'The goal'}
         scope={project.scope}
-        role={project.role}
         platform={project.platform}
         team={project.team}
         tools={project.tools}
-        year={project.year}
+        metrics={project.outcome.metrics}
       />
 
-      <section className="pad" id="research" style={{ paddingTop: 'clamp(80px,12vw,170px)' }}>
+      <section className="pad work-sec" id="research">
         <SectionHead title="Research" lab="Methods & findings" />
         <p className="work-lead">What users actually needed.</p>
         <div className="pc3" style={{ marginBottom: 'clamp(28px,4vw,48px)' }}>
           <div>
             <span className="lab">Methods</span>
-            <h3>How we learned</h3>
+            <h3>Research methods</h3>
             <ul className="kw" style={{ marginTop: 12 }}>
               {project.uxResearch.methods.map((m) => (
                 <li key={m}>{m}</li>
@@ -975,12 +1244,10 @@ function ProductCaseExact({
             </div>
           ))}
         </div>
-        {researchMedia.slice(0, 3).map((figure, i) => (
-          <Plate key={figure.src} figure={figure} tone={PLATE[i % PLATE.length]} accent={accent} />
-        ))}
+        <MediaGrid figures={researchMedia.slice(0, 4)} accent={accent} onInspect={openInspect} />
       </section>
 
-      <section className="pad" id="framing" style={{ paddingTop: 'clamp(80px,12vw,170px)' }}>
+      <section className="pad work-sec" id="framing">
         <SectionHead title="Framing" lab="Mental models" />
         <p className="work-lead">{firstSentence(project.problemFraming.statement)}</p>
         {project.problemFraming.expectationGap ? (
@@ -998,37 +1265,41 @@ function ProductCaseExact({
             figure={imageOf(project.problemFraming.gapDiagram)!}
             tone="ivo"
             accent={accent}
+            onInspect={openInspect}
           />
         ) : null}
       </section>
 
-      <section className="pad" id="decisions" style={{ paddingTop: 'clamp(80px,12vw,170px)' }}>
-        <SectionHead title="Decisions" lab="Trade-offs we made" />
-        <p className="work-lead">Chosen paths, with reasons.</p>
+      <section className="pad work-sec" id="decisions">
+        <SectionHead title="Decisions" lab="Key trade-offs" />
+        <p className="work-lead">Chosen paths, vs. what was cut.</p>
         {project.designDecisions.options.length > 0 ? (
-          <div className="pc3" style={{ marginBottom: 'clamp(28px,4vw,48px)' }}>
+          <div className="work-tradeoffs" style={{ marginBottom: 'clamp(28px,4vw,48px)' }}>
             {project.designDecisions.options.slice(0, 3).map((opt, i) => (
-              <div key={`${opt.chosen}-${i}`}>
+              <div key={`${opt.chosen}-${i}`} className="work-decision-card">
                 <span className="lab">Decision {String(i + 1).padStart(2, '0')}</span>
-                <h3>{firstSentence(opt.chosen).replace(/\.$/, '')}</h3>
-                <p>{opt.reasoning || `Chose over: ${opt.rejected}`}</p>
+                <div className="work-decision-chosen">
+                  <span className="work-pill-win">✓ Chosen</span>
+                  <h3>{opt.chosen}</h3>
+                </div>
+                {opt.rejected ? (
+                  <div className="work-decision-rejected">
+                    <span className="work-pill-cut">✕ Rejected</span>
+                    <span>{opt.rejected}</span>
+                  </div>
+                ) : null}
+                {opt.reasoning ? <p>{opt.reasoning}</p> : null}
               </div>
             ))}
           </div>
         ) : null}
-        {imagesOf(project.designDecisions.sketches)
-          .slice(0, 2)
-          .map((figure, i) => (
-            <Plate key={figure.src} figure={figure} tone={PLATE[i % PLATE.length]} accent={accent} />
-          ))}
+        <MediaGrid figures={imagesOf(project.designDecisions.sketches).slice(0, 2)} accent={accent} onInspect={openInspect} />
       </section>
 
-      <section className="pad" id="process" style={{ paddingTop: 'clamp(80px,12vw,170px)' }}>
+      <section className="pad work-sec" id="process">
         <SectionHead title="Process" lab="Mid-fi to hi-fi" />
         <p className="work-lead">Building the interface in layers.</p>
-        {processMedia.map((figure, i) => (
-          <Plate key={figure.src} figure={figure} tone={PLATE[(i + 1) % PLATE.length]} accent={accent} />
-        ))}
+        <MediaGrid figures={processMedia} accent={accent} onInspect={openInspect} />
         {project.theWork.designSystem.length > 0 ? (
           <div className="pc3" style={{ marginTop: 'clamp(28px,4vw,48px)' }}>
             {project.theWork.designSystem.slice(0, 3).map((token) => (
@@ -1042,8 +1313,8 @@ function ProductCaseExact({
         ) : null}
       </section>
 
-      <section className="pad" id="patterns" style={{ paddingTop: 'clamp(80px,12vw,170px)' }}>
-        <SectionHead title="Patterns" lab="States & edge cases" />
+      <section className="pad work-sec" id="patterns">
+        <SectionHead title="Patterns" lab="States & usability shifts" />
         <p className="work-lead">Patterns that keep the product honest.</p>
         {project.aiUxPatterns.states.length > 0 ? (
           <div className="pc3" style={{ marginBottom: 'clamp(28px,4vw,48px)' }}>
@@ -1056,16 +1327,34 @@ function ProductCaseExact({
             ))}
           </div>
         ) : null}
-        {patternMedia.map((figure, i) => (
-          <Plate key={figure.src} figure={figure} tone={PLATE[i % PLATE.length]} accent={accent} />
-        ))}
+        <MediaGrid figures={patternMedia} accent={accent} onInspect={openInspect} />
+        {project.aiUxPatterns.edgeCases.length > 0 ? (
+          <div className="work-edge-grid" style={{ marginTop: 'clamp(24px,3vw,40px)' }}>
+            {project.aiUxPatterns.edgeCases.slice(0, 4).map((edge) => (
+              <div key={edge.scenario} className="work-edge-card">
+                <span className="lab">Edge Case</span>
+                <strong>{edge.scenario}</strong>
+                <p>{edge.handling}</p>
+              </div>
+            ))}
+          </div>
+        ) : null}
         {project.usabilityTesting.beforeAfter.length > 0 ? (
-          <div className="pc3" style={{ marginTop: 'clamp(28px,4vw,48px)' }}>
+          <div className="work-shifts-grid" style={{ marginTop: 'clamp(28px,4vw,48px)' }}>
             {project.usabilityTesting.beforeAfter.slice(0, 3).map((row, i) => (
-              <div key={`${row.change}-${i}`}>
-                <span className="lab">Shift {String(i + 1).padStart(2, '0')}</span>
-                <h3>{firstSentence(row.change).replace(/\.$/, '')}</h3>
-                <p>{row.change}</p>
+              <div key={`${row.change}-${i}`} className="work-shift-card">
+                <span className="lab">Usability Shift {String(i + 1).padStart(2, '0')}</span>
+                <div className="work-shift-pair">
+                  <div className="work-shift-before">
+                    <span>Before</span>
+                    <p>{row.before}</p>
+                  </div>
+                  <div className="work-shift-after">
+                    <span>After</span>
+                    <p>{row.after}</p>
+                  </div>
+                </div>
+                <p className="work-shift-change">{row.change}</p>
               </div>
             ))}
           </div>
@@ -1074,13 +1363,12 @@ function ProductCaseExact({
 
       <section
         ref={workRef}
-        className="pad"
+        className="pad work-sec"
         id="outcome"
-        style={{ paddingTop: 'clamp(80px,12vw,170px)' }}
       >
         <SectionHead title="Outcome" lab="What shipped" />
         <p className="work-lead">{project.hook.outcomeLine}</p>
-        <MediaStack figures={hiFiMedia} accent={accent} />
+        <MediaStack figures={hiFiMedia} accent={accent} onInspect={openInspect} />
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 'clamp(28px,4vw,48px)' }}>
           {project.outcome.liveUrl ? (
             <a
@@ -1099,7 +1387,7 @@ function ProductCaseExact({
         </div>
       </section>
 
-      <section className="pad" id="reflection" style={{ paddingTop: 'clamp(80px,12vw,170px)' }}>
+      <section className="pad work-sec" id="reflection">
         <SectionHead title="Reflection" lab="Honest takeaways" />
         <p className="work-lead">{firstSentence(project.reflection.narrative)}</p>
         <p className="cap3" style={{ maxWidth: '46em', marginBottom: 'clamp(28px,4vw,48px)' }}>
@@ -1118,7 +1406,9 @@ function ProductCaseExact({
         ) : null}
       </section>
 
-      <section className="pad" id="next" style={{ paddingTop: 'clamp(80px,12vw,170px)' }}>
+      <CaseActionBand />
+
+      <section className="pad work-sec" id="next">
         <SectionHead
           title="Next project"
           lab={nextProject ? categoryDisplay(nextProject.category) : 'Work index'}
@@ -1131,6 +1421,11 @@ function ProductCaseExact({
           </Link>
         )}
       </section>
+      <CaseLightbox
+        state={lightbox}
+        onChangeIndex={(index) => setLightbox((prev) => (prev ? { ...prev, index } : null))}
+        onClose={() => setLightbox(null)}
+      />
     </div>
   );
 }
